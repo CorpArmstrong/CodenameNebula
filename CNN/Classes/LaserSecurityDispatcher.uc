@@ -1,5 +1,5 @@
 //-----------------------------------------------------------
-//
+//  LaserSecurityDispatcher
 //-----------------------------------------------------------
 class LaserSecurityDispatcher expands Actor;
 var() float delay;
