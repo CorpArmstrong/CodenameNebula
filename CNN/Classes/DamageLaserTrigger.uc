@@ -1,7 +1,7 @@
 //=============================================================================
 // DamageLaserTrigger.
 //=============================================================================
-class DamageLaserTrigger extends Trigger;
+class DamageLaserTrigger extends CNNTrigger;
 
 var LaserEmitter emitter;
 var() bool bIsOn;
