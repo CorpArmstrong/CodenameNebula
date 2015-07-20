@@ -4419,7 +4419,6 @@ Maps/NYC_hellskitchen.dx
 Maps/NYC_subway.dx
 Maps/NYC_supergraphic.dx
 Music/Riot-Instrumental.umx
-Textures/aitex.utx
 Textures/X3tex.utx
 ceski/
 System/ceski.u
@@ -4427,6 +4426,455 @@ System/ceskiAudioMission50.u
 System/ceskiText.u
 Maps/RescueTong.dx
 HotelCarone/*
+<<<<<<< HEAD
+backup/
+shot
+System/Shot
+*.bmp
+*.jpg
+Sounds/x3sounds.uax
+System/D3D10Drv.int
+System/Deus Ex-Apocalypse Inside.bat
+System/DeusExML.ini
+System/DeusExML.int
+System/DeusExML.u
+System/DxMod.u
+System/FLUnlimited.u
+Maps/dxai_nyc_v16.unr
+Maps/dxai_nyc_v17.unr
+Maps/dxai_nyc_v18.unr
+Maps/dxai_nyc_v19.unr
+Maps/dxai_nyc_v20.unr
+Maps/dxai_nyc_v21.unr
+Maps/dxai_nyc_v22.unr
+Maps/dxai_nyc_v23.unr
+Maps/dxai_nyc_v24.unr
+Maps/dxai_nyc_v25.unr
+Maps/dxai_nyc_v26.unr
+Maps/dxai_nyc_v27.unr
+Maps/hotel.dx
+Maps/mon.dx
+Maps/sad.dx
+Maps/store.dx
+Music/SickAndTired-Instrumental.umx
+Music/Stereo_DXPS2Theme.umx
+Music/away.umx
+Music/oh.it
+Music/oh.umx
+MyLevel/Classes/DukeDenton.uc
+MyLevel/Classes/VagerDenton.uc
+MyLevel/Classes/amsterDenton.uc
+MyLevel/Classes/deusdenton.uc
+MyLevel/Classes/uber_alles.uc
+New Vision/Maps/06_HongKong_Helibase.dx
+New Vision/Maps/06_HongKong_WanChai_Market.dx
+New Vision/Maps/06_HongKong_WanChai_Street.dx
+New Vision/Maps/06_HongKong_WanChai_Underworld.dx
+New Vision/Maps/08_NYC_Street.dx
+New Vision/Maps/11_Paris_Everett.dx
+New Vision/Maps/15_Area51_Bunker.dx
+New Vision/Maps/15_Area51_Final.dx
+New Vision/Maps/15_Area51_Page.dx
+New Vision/Maps/99_Endgame1.dx
+New Vision/Maps/99_Endgame2.dx
+New Vision/Maps/99_Endgame3.dx
+New Vision/Maps/99_Endgame4.dx
+New Vision/NV.ico
+New Vision/Readme.txt
+New Vision/Textures/Airfield.utx
+New Vision/Textures/BatteryPark.utx
+New Vision/Textures/Catacombs.utx
+New Vision/Textures/Cmd_tunnels.utx
+New Vision/Textures/Constructor.utx
+New Vision/Textures/CoreTexBrick.utx
+New Vision/Textures/CoreTexCeramic.utx
+New Vision/Textures/CoreTexConcrete.utx
+New Vision/Textures/CoreTexEarth.utx
+New Vision/Textures/CoreTexFoliage.utx
+New Vision/Textures/CoreTexGlass.utx
+New Vision/Textures/CoreTexMetal.utx
+New Vision/Textures/CoreTexMisc.utx
+New Vision/Textures/CoreTexPaper.utx
+New Vision/Textures/CoreTexSky.utx
+New Vision/Textures/CoreTexStone.utx
+New Vision/Textures/CoreTexStucco.utx
+New Vision/Textures/CoreTexTextile.utx
+New Vision/Textures/CoreTexTiles.utx
+New Vision/Textures/CoreTexWallObj.utx
+New Vision/Textures/CoreTexWood.utx
+New Vision/Textures/Dockyard.utx
+New Vision/Textures/Effects.utx
+New Vision/Textures/FreeClinic.utx
+New Vision/Textures/G_Station.utx
+New Vision/Textures/HK_BuildingExt.utx
+New Vision/Textures/HK_Decorations.utx
+New Vision/Textures/HK_Helibase.utx
+New Vision/Textures/HK_Interior.utx
+New Vision/Textures/HK_MJ12Lab.utx
+New Vision/Textures/HK_Signs.utx
+New Vision/Textures/HK_VersaLife.utx
+New Vision/Textures/MJ12_lab.utx
+New Vision/Textures/Mobile_Camp.utx
+New Vision/Textures/MolePeople.utx
+New Vision/Textures/NYCBar.utx
+New Vision/Textures/NewYorkCity.utx
+New Vision/Textures/OceanLab.utx
+New Vision/Textures/Paris.utx
+New Vision/Textures/Rocket.utx
+New Vision/Textures/SubBase.utx
+New Vision/Textures/Subway.utx
+New Vision/Textures/Supertanker.utx
+New Vision/Textures/UNATCO.utx
+New Vision/Textures/V_Com_Center.utx
+New Vision/Textures/area51textures.utx
+System/DXOgg.u
+System/FrozenHell.u
+System/FrozenHellAudiomission00.u
+System/FrozenHellAudiomission01.u
+System/FrozenHellAudiomission01_infolink.u
+System/FrozenHellAudiomission06.u
+System/FrozenHellAudiomission12.u
+System/FrozenHellAudiomission29.u
+System/FrozenHellAudiomission30.u
+System/FrozenHellAudiomission34.u
+System/FrozenHellText.u
+System/FunLine Server.bat
+System/GaussGun.u
+System/M4A1.u
+System/Mutators.ini
+System/MyLevel.u
+System/TM.ini
+System/Terminus.ini
+System/TerminusMachina.lnk
+System/TerminusUser.ini
+System/UccMake.bat
+System/clyzmsmod.u
+System/d3d10drv/common.fxh
+System/d3d10drv/complexsurface.fx
+System/d3d10drv/finalpass.fx
+System/d3d10drv/firstpass.fx
+System/d3d10drv/fogsurface.fx
+System/d3d10drv/gouraudpolygon.fx
+System/d3d10drv/hdr.fx
+System/d3d10drv/polyflags.fxh
+System/d3d10drv/postprocessing.fxh
+System/d3d10drv/states.fxh
+System/d3d10drv/tile.fx
+System/d3d10drv/unreal_pom.fx
+System/d3d10drv/unrealpool.fxh
+System/nihilumAudioMission18.u
+ereg.url
+games.pdf
+nd.url
+readme.txt
+s3tcmake/1.bat
+s3tcmake/Airfield.utx
+s3tcmake/ApocalypseInsideTextures/low/Aldrin_low.pcx
+s3tcmake/ApocalypseInsideTextures/low/SermonOnTheMount.pcx
+s3tcmake/HK_VersaLife.utx
+s3tcmake/MJ12_lab.utx
+s3tcmake/Mobile_Camp.utx
+s3tcmake/MolePeople.utx
+s3tcmake/NYCBar.utx
+s3tcmake/NewYorkCity.utx
+s3tcmake/OceanLab.utx
+s3tcmake/Paris.utx
+s3tcmake/Readme.txt
+s3tcmake/Rocket.utx
+s3tcmake/SubBase.utx
+s3tcmake/Subway.utx
+s3tcmake/Supertanker.utx
+s3tcmake/UNATCO.utx
+s3tcmake/V_Com_Center.utx
+s3tcmake/area51textures.utx
+s3tcmake/srclow/Airfield.utx
+s3tcmake/srclow/BatteryPark.utx
+s3tcmake/srclow/Catacombs.utx
+s3tcmake/srclow/Cmd_tunnels.utx
+s3tcmake/srclow/Constructor.utx
+s3tcmake/srclow/CoreTexBrick.utx
+s3tcmake/srclow/CoreTexCeramic.utx
+s3tcmake/srclow/CoreTexConcrete.utx
+s3tcmake/srclow/CoreTexEarth.utx
+s3tcmake/srclow/CoreTexFoliage.utx
+s3tcmake/srclow/CoreTexGlass.utx
+s3tcmake/srclow/CoreTexMetal.utx
+s3tcmake/srclow/CoreTexMisc.utx
+s3tcmake/srclow/CoreTexPaper.utx
+s3tcmake/srclow/CoreTexSky.utx
+s3tcmake/srclow/CoreTexStone.utx
+s3tcmake/srclow/CoreTexStucco.utx
+s3tcmake/srclow/CoreTexTextile.utx
+s3tcmake/srclow/CoreTexTiles.utx
+s3tcmake/srclow/CoreTexWallObj.utx
+s3tcmake/srclow/CoreTexWood.utx
+s3tcmake/srclow/Dockyard.utx
+s3tcmake/srclow/Effects.utx
+s3tcmake/srclow/FreeClinic.utx
+s3tcmake/srclow/G_Station.utx
+s3tcmake/srclow/HK_BuildingExt.utx
+s3tcmake/srclow/HK_Decorations.utx
+s3tcmake/srclow/HK_Helibase.utx
+s3tcmake/srclow/HK_Interior.utx
+s3tcmake/srclow/HK_MJ12Lab.utx
+s3tcmake/srclow/HK_Signs.utx
+s3tcmake/srclow/HK_VersaLife.utx
+s3tcmake/srclow/MJ12_lab.utx
+s3tcmake/srclow/Mobile_Camp.utx
+s3tcmake/srclow/MolePeople.utx
+s3tcmake/srclow/NYCBar.utx
+s3tcmake/srclow/NewYorkCity.utx
+s3tcmake/srclow/OceanLab.utx
+s3tcmake/srclow/Paris.utx
+s3tcmake/srclow/Rocket.utx
+s3tcmake/srclow/SubBase.utx
+s3tcmake/srclow/Subway.utx
+s3tcmake/srclow/Supertanker.utx
+s3tcmake/srclow/UNATCO.utx
+s3tcmake/srclow/V_Com_Center.utx
+DeusExText/Text/Mission01/01_EmailMenu_jreyes.txt
+DeusExText/Text/Mission01/01_EmailMenu_klloyd.txt
+DeusExText/Text/Mission01/01_Newspaper01.txt
+DeusExText/Text/Mission01/01_Newspaper02.txt
+DeusExText/Text/Mission01/01_Newspaper03.txt
+DeusExText/Text/Mission01/01_Newspaper04.txt
+DeusExText/Text/Mission01/01_Newspaper05.txt
+DeusExText/Text/Mission01/01_Newspaper06.txt
+DeusExText/Text/Mission01/01_Newspaper07.txt
+DeusExText/Text/Mission01/01_Newspaper08.txt
+DeusExText/Text/Mission02/02_Book01.txt
+DeusExText/Text/Mission02/02_Book02.txt
+DeusExText/Text/Mission02/02_Book03.txt
+DeusExText/Text/Mission02/02_Book04.txt
+DeusExText/Text/Mission02/02_Book05.txt
+DeusExText/Text/Mission02/02_Book06.txt
+DeusExText/Text/Mission02/02_Book07.txt
+DeusExText/Text/Mission02/02_Book08.txt
+DeusExText/Text/Mission02/02_Book09.txt
+DeusExText/Text/Mission02/02_Book10.txt
+DeusExText/Text/Mission02/02_Bulletin01.txt
+DeusExText/Text/Mission02/02_Bulletin02.txt
+DeusExText/Text/Mission02/02_Bulletin03.txt
+DeusExText/Text/Mission02/02_Bulletin04.txt
+DeusExText/Text/Mission02/02_BulletinMenu.txt
+DeusExText/Text/Mission02/02_Datacube01.txt
+DeusExText/Text/Mission02/02_Datacube02.txt
+DeusExText/Text/Mission02/02_Datacube03.txt
+DeusExText/Text/Mission02/02_Datacube05.txt
+DeusExText/Text/Mission02/02_Datacube06.txt
+DeusExText/Text/Mission02/02_Datacube07.txt
+DeusExText/Text/Mission02/02_Datacube08.txt
+DeusExText/Text/Mission02/02_Datacube09.txt
+DeusExText/Text/Mission02/02_Datacube10.txt
+DeusExText/Text/Mission02/02_Datacube11.txt
+DeusExText/Text/Mission02/02_Datacube13.txt
+DeusExText/Text/Mission02/02_Datacube14.txt
+DeusExText/Text/Mission02/02_Datacube15.txt
+DeusExText/Text/Mission02/02_Datacube16.txt
+DeusExText/Text/Mission02/02_Datacube17.txt
+DeusExText/Text/Mission02/02_Datacube18.txt
+DeusExText/Text/Mission02/02_Email01.txt
+DeusExText/Text/Mission02/02_Email02.txt
+DeusExText/Text/Mission02/02_Email03.txt
+DeusExText/Text/Mission02/02_Email04.txt
+DeusExText/Text/Mission02/02_Email05.txt
+DeusExText/Text/Mission02/02_Email06.txt
+DeusExText/Text/Mission02/02_Email07.txt
+DeusExText/Text/Mission02/02_Email08.txt
+DeusExText/Text/Mission02/02_Email09.txt
+DeusExText/Text/Mission02/02_Email10.txt
+DeusExText/Text/Mission02/02_Email11.txt
+DeusExText/Text/Mission02/02_Email12.txt
+DeusExText/Text/Mission02/02_Email13.txt
+DeusExText/Text/Mission02/02_Email14.txt
+DeusExText/Text/Mission02/02_Email15.txt
+DeusExText/Text/Mission02/02_Email16.txt
+DeusExText/Text/Mission02/02_EmailMenu_Alice_Priest.txt
+DeusExText/Text/Mission02/02_EmailMenu_hidden.txt
+DeusExText/Text/Mission02/02_EmailMenu_jallred.txt
+DeusExText/Text/Mission02/02_EmailMenu_jsteward.txt
+DeusExText/Text/Mission02/02_EmailMenu_pdenton.txt
+DeusExText/Text/Mission02/02_EmailMenu_tfrase.txt
+DeusExText/Text/Mission02/02_Newspaper01.txt
+DeusExText/Text/Mission02/02_Newspaper02.txt
+DeusExText/Text/Mission02/02_Newspaper03.txt
+DeusExText/Text/Mission02/02_Newspaper04.txt
+DeusExText/Text/Mission02/02_Newspaper05.txt
+DeusExText/Text/Mission02/02_Newspaper06.txt
+DeusExUI.u
+Docs/ConEditDocumentation.doc
+Docs/DeusExSDK.doc
+Docs/EditorDocumentation.doc
+Docs/MusicDocumentation.doc
+Headers/DxHeaders.zip
+s3tcmake/ApocalypseInsideTextures/low/southparkComic.pcx
+s3tcmake/BatteryPark.utx
+s3tcmake/Catacombs.utx
+s3tcmake/Cmd_tunnels.utx
+s3tcmake/CoreTexBrick.utx
+s3tcmake/CoreTexCeramic.utx
+s3tcmake/CoreTexConcrete.utx
+s3tcmake/CoreTexEarth.utx
+s3tcmake/CoreTexFoliage.utx
+s3tcmake/CoreTexGlass.utx
+s3tcmake/CoreTexMetal.utx
+s3tcmake/CoreTexMisc.utx
+DeusExText/Text/Mission01/01_Book03.txt
+DeusExText/Text/Mission01/01_Book04.txt
+DeusExText/Text/Mission01/01_Book05.txt
+DeusExText/Text/Mission01/01_Book06.txt
+DeusExText/Text/Mission01/01_Book07.txt
+DeusExText/Text/Mission01/01_Book08.txt
+DeusExText/Text/Mission01/01_Book09.txt
+DeusExText/Text/Mission01/01_Book10.txt
+DeusExText/Text/Mission01/01_Bulletin01.txt
+DeusExText/Text/Mission01/01_Bulletin02.txt
+DeusExText/Text/Mission01/01_Bulletin05.txt
+DeusExText/Text/Mission01/01_Bulletin06.txt
+DeusExText/Text/Mission01/01_Bulletin07.txt
+DeusExText/Text/Mission01/01_Bulletin08.txt
+DeusExText/Text/Mission01/01_BulletinMenu.txt
+DeusExText/Text/Mission01/01_Datacube01.txt
+DeusExText/Text/Mission01/01_Datacube03.txt
+DeusExText/Text/Mission01/01_Datacube04.txt
+DeusExText/Text/Mission01/01_Datacube05.txt
+DeusExText/Text/Mission01/01_Datacube06.txt
+DeusExText/Text/Mission01/01_Datacube07.txt
+DeusExText/Text/Mission01/01_Datacube09.txt
+DeusExText/Text/Mission01/01_Email01.txt
+DeusExText/Text/Mission01/01_Email02.txt
+DeusExText/Text/Mission01/01_Email03.txt
+DeusExText/Text/Mission01/01_Email05.txt
+DeusExText/Text/Mission01/01_Email06.txt
+DeusExText/Text/Mission01/01_Email07.txt
+DeusExText/Text/Mission01/01_Email09.txt
+DeusExText/Text/Mission01/01_Email10.txt
+DeusExText/Text/Mission01/01_Email11.txt
+DeusExText/Text/Mission01/01_Email12.txt
+DeusExText/Text/Mission01/01_Email13.txt
+DeusExText/Text/Mission01/01_Email14.txt
+DeusExText/Text/Mission01/01_Email15.txt
+DeusExText/Text/Mission01/01_Email16.txt
+DeusExText/Text/Mission01/01_Email17.txt
+DeusExText/Text/Mission01/01_EmailMenu_JCD.txt
+DeusExText/Text/Mission01/01_EmailMenu_ajacobson.txt
+DeusExText/Text/Mission01/01_EmailMenu_anavarre.txt
+DeusExText/Text/Mission01/01_EmailMenu_ghermann.txt
+DeusExText/Text/Mission01/01_EmailMenu_jmanderley.txt
+DeusExText/Text/Mission01/01_EmailMenu_jreed.txt
+GRID32.OCX
+Maps/00_FrozenHell_Intro.dx
+Maps/01_FrozenHell_Medionusquam.dx
+Maps/03_FrozenHell_Atlantis.dx
+Maps/06_FrozenHell_NYC_Streets.dx
+Maps/06_FrozenHell_NYC_graveyard.dx
+Maps/3dstore_presentation_v7.unr
+Maps/CityOnTheHill_AIHQ.dx
+Maps/DXAI_NYC_subway.dx
+Textures/meacomputer3.pcx
+Textures/paul.pcx
+Tools/SAMPLE.cnn
+DeusExText/Text/Mission00/00_Book01.txt
+DeusExText/Text/Mission00/00_Datacube01.txt
+DeusExText/Text/Mission00/00_Datacube02.txt
+DeusExText/Text/Mission00/00_Datacube03.txt
+DeusExText/Text/Mission00/00_Datacube04.txt
+DeusExText/Text/Mission01/01_Book01.txt
+DeusExText/Text/Mission01/01_Book02.txt
+DeusExConversations/NYC_Smuggler_Shared.con
+DeusExConversations/UNATCOBarks.con
+DeusExConversations/UNATCOBarks2.con
+DeusExText/Text/Misc/DeusExCredits.txt
+DeusExText/Text/Misc/DeusExQuotes.txt
+DeusExConversations/
+Maps/DXMP_Abbottabad.dx
+Maps/DXMP_CityOnTheHill(backup).dx
+Maps/DXMP_CityOnTheHill.dx
+Maps/DXMP_nyc_v17.dx
+Maps/GlaceBay.dx
+Maps/Moon_v4.dx
+Maps/NYC_hellskitchenHQ.dx
+Maps/RPG_CityOnTheHill.dx
+Maps/Tantalus_house_test.dx
+Maps/dxai_nyc.dx
+Maps/dxai_nyc2.dx
+System/nihilum.u
+DXApocalypseInside/maps/dxai_nyc_v13.unr
+DXApocalypseInside/maps/dxai_nyc_v14.unr
+DXApocalypseInside/maps/dxai_nyc_v15.unr
+DXApocalypseInside/maps/dxai_nyc_v16.unr
+DXApocalypseInside/maps/dxai_nyc_v1p1.unr
+DXApocalypseInside/maps/dxai_nyc_v2.dx
+DXApocalypseInside/maps/dxai_nyc_v24.unr
+DXApocalypseInside/maps/dxai_nyc_v3.dx
+DXApocalypseInside/maps/dxai_nyc_v4addedN.DX
+DXApocalypseInside/maps/dxai_nyc_v5.dx
+DXApocalypseInside/maps/dxai_nyc_v6.dx
+DXApocalypseInside/maps/dxai_nyc_v7.dx
+DXApocalypseInside/maps/dxai_nyc_v8.dx
+DXApocalypseInside/maps/dxai_nyc_v9.dx
+DXApocalypseInside/models/terrain_test.t3d
+DXFrozenHell/00_FrozenHell_Intro.dx
+DXFrozenHell/01_Medionusquam.dx
+DXFrozenHell/01_Medionusquam_v2.dx
+DXFrozenHell/01_Medionusquam_v3.dx
+DXFrozenHell/03_FrozenHell_Atlantis.dx
+DXFrozenHell/06_FrozenHell_NYC_Streets.dx
+DXFrozenHell/06_FrozenHell_NYC_graveyard.dx
+DXFrozenHell/DXFHentry.dx
+DXFrozenHell/mon.dx
+Textures/2052map.pcx
+Textures/3dstore.utx
+Textures/AITex - Copy.utx
+Textures/DeusExCharacters.utx
+s3tcmake/Constructor.utx
+s3tcmake/CoreTexPaper.utx
+s3tcmake/CoreTexSky.utx
+s3tcmake/CoreTexStone.utx
+s3tcmake/CoreTexTextile.utx
+s3tcmake/CoreTexTiles.utx
+s3tcmake/CoreTexWallObj.utx
+s3tcmake/CoreTexWood.utx
+s3tcmake/Dockyard.utx
+s3tcmake/Effects.utx
+s3tcmake/FreeClinic.utx
+s3tcmake/G_Station.utx
+s3tcmake/HK_BuildingExt.utx
+s3tcmake/HK_Decorations.utx
+s3tcmake/HK_Helibase.utx
+s3tcmake/HK_Interior.utx
+s3tcmake/HK_MJ12Lab.utx
+s3tcmake/HK_Signs.utx
+DXApocalypseInside/
+System/nihilumText.u
+System/otpUIfix.u
+System/sstm.ini
+Textures/X3.utx
+Textures/jcdentontex1.pcx
+Textures/joker.pcx
+Textures/kiss.pcx
+Textures/makeup.pcx
+Textures/manson.pcx
+Textures/meacomputer.pcx
+Textures/meacomputer2.pcx
+aitex.utx
+s3tcmake/CoreTexStucco.utx
+Cache0000.tmp
+Cache0001.tmp
+Cache0002.tmp
+Cache0003.tmp
+Cache0004.tmp
+Cache000E.tmp
+Cache0010.tmp
+Cache0031.tmp
+Cache0032.tmp
+ConvEdit/ConvEdit.cab
+ConvEdit/Setup.lst
+DXAccessDenied/01_NYC_UNATCOHQ.dx
+DXAccessDenied/01_NYC_UNATCOIsland.dx
+s3tcmake/srclow/area51textures.utx
+support.txt
+=======
 burden/*
 Help/Burden_of_80_Proof_Readme.txt
 Help/Burden_of_80_Proof_web_site.url
@@ -4440,3 +4888,4 @@ System/burdenText.u
 System/burdenUser.ini
 System/CaroneElevatorSet.u
 Textures/burdenInfoLinks.utx
+>>>>>>> 8af174bd8c49ee21b2e50a75c1589c0bee9b175e
