@@ -9,5 +9,5 @@ class ApocalypseInsideMenuUIWindow extends MenuUIWindow
 
 defaultproperties
 {
-    ExitMessage="Are you sure you want to exit |nApocalypse Inside?"
+    ExitMessage="There is no wrong choice. Are you sure you want to exit |nApocalypse Inside?"
 }
