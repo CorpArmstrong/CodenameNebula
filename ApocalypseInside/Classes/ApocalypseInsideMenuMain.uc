@@ -81,7 +81,7 @@ function ShowVersionInfo()
 
 defaultproperties
 {
-    ButtonNames(0)="New Game (Fuck it)"
+    ButtonNames(0)="New Game"
     ButtonNames(1)="Save Game"
     ButtonNames(2)="Load Game"
     ButtonNames(3)="Settings"
@@ -103,7 +103,7 @@ defaultproperties
     buttonDefaults(7)=(Y=265,Action=2,Invoke=None,Key=""),
     buttonDefaults(8)=(Y=301,Action=1,Invoke=Class'menumpmain',Key=""),
     buttonDefaults(9)=(Y=359,Action=6,Invoke=None,Key=""),
-    Title="Welcome to Apocalypse Inside"
+    Title="Welcome to DX: Apocalypse Inside"
     ClientWidth=258
     ClientHeight=400
     verticalOffset=2

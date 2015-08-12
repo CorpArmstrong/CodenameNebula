@@ -1,14 +1,20 @@
 //=============================================================================
 // TantalusDenton.uc
 //=============================================================================
-class TantalusDenton extends JCDentonMale;
+class TantalusDenton extends Human;
 
 event TravelPostAccept()
 {
     Super.TravelPostAccept();
 
-    //MultiSkins[0] = Texture'DeusExCharacters.Skins.NathanMadisonTex0';
-//    MultiSkins[3] = Texture'DeusExCharacters.Skins.NathanMadisonTex0';
+   switch(PlayerSkin)
+	{
+		case 0:	MultiSkins[0] = Texture'ApocalypseInside.Skins.TantalusFace'; break;
+		case 1:	MultiSkins[0] = Texture'ApocalypseInside.Skins.TantalusFace'; break;
+		case 2:	MultiSkins[0] = Texture'ApocalypseInside.Skins.TantalusFace'; break;
+		case 3:	MultiSkins[0] = Texture'ApocalypseInside.Skins.TantalusFace'; break;
+		case 4:	MultiSkins[0] = Texture'ApocalypseInside.Skins.TantalusFace'; break;
+	}
 }
 
 // ----------------------------------------------------------------------
@@ -100,7 +106,7 @@ function ShowIntro(optional bool bStartNewGame)
 	AugmentationSystem.DeactivateAll();
 
 	// Reset the player
-	Level.Game.SendPlayer(Self, "NYC_supergraphic");
+	Level.Game.SendPlayer(Self, "OpheliaHotel");
 }
 
 // ----------------------------------------------------------------------
@@ -129,19 +135,20 @@ function ShowCredits(optional bool bLoadIntro)
 
 defaultproperties
 {
-    TruePlayerName="Tantalus Denton"
+    TruePlayerName="Thomas D"
+	BindName=Tantalus
     Credits=0
-    strStartMap="Area51"
+    strStartMap="01_Area51_Clones"
     CarcassType=Class'JCDentonMaleCarcass'
     Mesh=LodMesh'DeusExCharacters.GM_Trench'
-    MultiSkins(0)=Texture'DeusExCharacters.Skins.NathanMadisonTex0'
-    MultiSkins(1)=Texture'DeusExItems.Skins.PinkMaskTex'
-    MultiSkins(2)=Texture'DeusExItems.Skins.PinkMaskTex'
-    MultiSkins(3)=Texture'DeusExCharacters.Skins.PantsTex5'
-    MultiSkins(4)=Texture'DeusExCharacters.Skins.ThugMale2Tex0'
-    MultiSkins(5)=Texture'PeterShirt'
-    MultiSkins(6)=Texture'DeusExItems.Skins.GrayMaskTex'
-    MultiSkins(7)=Texture'DeusExItems.Skins.BlackMaskTex'
-    FamiliarName="Tantalus"
+    MultiSkins(0)=Texture'ApocalypseInside.Skins.TantalusFace'
+    MultiSkins(1)=Texture'DeusExCharacters.Skins.StantonDowdTex2'
+    MultiSkins(2)=Texture'DeusExCharacters.Skins.MJ12TroopTex1'
+    MultiSkins(3)=Texture'ApocalypseInside.Skins.TantalusFace'
+    MultiSkins(4)=Texture'DeusExCharacters.Skins.JockTex1'
+    MultiSkins(5)=Texture'DeusExCharacters.Skins.SmugglerTex2'
+    MultiSkins(6)=Texture'DeusExCharacters.Skins.FramesTex4'
+    MultiSkins(7)=FireTexture'Effects.Laser.LaserSpot2'
+    FamiliarName="Tantalus Denton"
     UnfamiliarName="Tantalus Denton"
 }
