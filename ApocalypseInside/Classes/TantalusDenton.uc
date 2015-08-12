@@ -142,7 +142,7 @@ defaultproperties
     CarcassType=Class'JCDentonMaleCarcass'
     Mesh=LodMesh'DeusExCharacters.GM_Trench'
     MultiSkins(0)=Texture'ApocalypseInside.Skins.TantalusFace'
-    MultiSkins(1)=Texture'DeusExCharacters.Skins.SmugglerTex2'
+    MultiSkins(1)=Texture'DeusExCharacters.Skins.StantonDowdTex2'
     MultiSkins(2)=Texture'DeusExCharacters.Skins.MJ12TroopTex1'
     MultiSkins(3)=Texture'ApocalypseInside.Skins.TantalusFace'
     MultiSkins(4)=Texture'DeusExCharacters.Skins.JockTex1'

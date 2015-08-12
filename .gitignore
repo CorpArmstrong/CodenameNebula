@@ -4889,3 +4889,18 @@ System/burdenUser.ini
 System/CaroneElevatorSet.u
 Textures/burdenInfoLinks.utx
 >>>>>>> 8af174bd8c49ee21b2e50a75c1589c0bee9b175e
+HDTP/HDTP - Release 1.lnk
+HDTP/AccessingDemoMap.txt
+HDTP/
+Maps/00_HDTP_Demo.dx
+System/HDTPcharacters.u
+System/HDTPUser.ini
+System/HDTPPapers.u
+System/HDTPItems.u
+System/HDTPDemo.u
+System/HDTPDecos.u
+System/HDTPBookOpen.u
+System/HDTPBookClosed.u
+System/HDTP.int
+System/HDTP.ini
+Maps/50_station9-1.dx
