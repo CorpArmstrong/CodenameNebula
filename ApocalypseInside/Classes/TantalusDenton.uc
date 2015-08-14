@@ -132,6 +132,47 @@ function ShowCredits(optional bool bLoadIntro)
 }
 */
 
+// ----------------------------------------------------------------------
+// UpdatePlayerSkin()
+//
+// overrides the original so we can use our custom skins
+// ----------------------------------------------------------------------
+
+function UpdatePlayerSkin()
+{
+	local PaulDenton paul;
+	local PaulDentonCarcass paulCarcass;
+	local JCDentonMaleCarcass jcCarcass;
+	local JCDouble jc;
+
+	// Paul Denton
+	foreach AllActors(class'PaulDenton', paul)
+		break;
+
+	if (paul != None)
+		paul.SetSkin(Self);
+
+	// Paul Denton Carcass
+	foreach AllActors(class'PaulDentonCarcass', paulCarcass)
+		break;
+
+	if (paulCarcass != None)
+		paulCarcass.SetSkin(Self);
+
+	// JC Denton Carcass
+	foreach AllActors(class'JCDentonMaleCarcass', jcCarcass)
+		break;
+
+	if (jcCarcass != None)
+		jcCarcass.SetSkin(Self);
+
+	// JC's stunt double
+	foreach AllActors(class'JCDouble', jc)
+		break;
+
+	if (jc != None)
+		jc.SetSkin(Self);
+}
 
 defaultproperties
 {
