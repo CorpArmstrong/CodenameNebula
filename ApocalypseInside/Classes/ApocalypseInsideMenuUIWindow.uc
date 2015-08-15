@@ -24,8 +24,8 @@ function StartNewGame()
 	}
 	else
 	{
-	    // Add here ApocalypseInsideMenuSelectDifficulty
-		root.InvokeMenuScreen(Class'MenuSelectDifficulty');
+		//root.InvokeMenuScreen(Class'MenuSelectDifficulty');
+		root.InvokeMenuScreen(Class'ApocalypseInsideMenuSelectDifficulty');
 	}
 }
 
@@ -57,7 +57,8 @@ event bool BoxOptionSelected(Window button, int buttonNumber)
 			if (buttonNumber == 0)
 				player.StartTrainingMission();
 			else
-				root.InvokeMenuScreen(Class'MenuSelectDifficulty'); // Add here ApocalypseInsideMenuSelectDifficulty
+				//root.InvokeMenuScreen(Class'MenuSelectDifficulty');
+			    root.InvokeMenuScreen(Class'ApocalypseInsideMenuSelectDifficulty');
 			break;
 
 		case MB_Training:
@@ -73,9 +74,12 @@ event bool BoxOptionSelected(Window button, int buttonNumber)
 		case MB_JoinGameWarning:
 			if (buttonNumber == 0)
 			{
+			/*
 				if (Self.IsA('MenuScreenJoinGame'))
 					MenuScreenJoinGame(Self).RefreshServerList();
+			*/ // Commented! 15.08.2015
 			}
+
 			break;
 	}
 
