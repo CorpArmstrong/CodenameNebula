@@ -9,11 +9,12 @@ class ApocalypseInsideMenuSelectDifficulty expands MenuSelectDifficulty;
 
 function InvokeNewGameScreen(float difficulty)
 {
-    // local ApocalypseInsideMenuScreenNewGame newGame;
-	local MenuScreenNewGame newGame;
+    local ApocalypseInsideMenuScreenNewGame newGame;
+	//local MenuScreenNewGame newGame;
 
-    // newGame = ApocalypseInsideMenuScreenNewGame(root.InvokeMenuScreen(Class'ApocalypseInsideMenuScreenNewGame'));
-	newGame = MenuScreenNewGame(root.InvokeMenuScreen(Class'MenuScreenNewGame'));
+	//newGame = MenuScreenNewGame(root.InvokeMenuScreen(Class'MenuScreenNewGame'));
+	newGame = ApocalypseInsideMenuScreenNewGame(
+            root.InvokeMenuScreen(Class'ApocalypseInsideMenuScreenNewGame'));
 
 	if (newGame != None)
 		newGame.SetDifficulty(difficulty);
