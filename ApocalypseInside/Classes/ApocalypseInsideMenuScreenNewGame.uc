@@ -5,6 +5,7 @@ class ApocalypseInsideMenuScreenNewGame expands MenuScreenNewGame;
 
 // Replace textures here.
 DefaultProperties {
+HeaderNameLabel="Real Fucking Name"
   //texPortraits(0)=Texture'DeusExUI.UserInterface.MenuNewGameJCDenton_1'
   //texPortraits(1)=Texture'DeusExUI.UserInterface.MenuNewGameJCDenton_2'
   //texPortraits(2)=Texture'DeusExUI.UserInterface.MenuNewGameJCDenton_3'

@@ -1,7 +1,7 @@
 //=============================================================================
 // TantalusDenton.uc
 //=============================================================================
-class TantalusDenton extends Human;
+class TantalusDenton extends DeusExPlayer;
 
 event TravelPostAccept()
 {
