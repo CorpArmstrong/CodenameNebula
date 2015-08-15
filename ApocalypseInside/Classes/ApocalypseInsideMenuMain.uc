@@ -30,14 +30,14 @@ function UpdateButtonStatus()
 
    // Don't disable in mp if dead.
 
-	if (((info != None) && (info.MissionNumber < 0)) || 
+	if (((info != None) && (info.MissionNumber < 0)) ||
 	   ((player.IsInState('Dying')) || (player.IsInState('Paralyzed')) || (player.IsInState('Interpolating'))))
 	{
       if (Player.Level.NetMode == NM_Standalone)
       {
          winButtons[1].SetSensitivity(False);
          winButtons[7].SetSensitivity(False);
-      } 
+      }
    }
 
    // Disable the "Save Game", "New Game", "Intro", "Training" and "Load Game" menu choices if in multiplayer
@@ -76,7 +76,15 @@ function ShowVersionInfo()
 	version.SetText(player.GetDeusExVersion());
 }
 
+
 // ----------------------------------------------------------------------
+// StartNewGame()
+// ----------------------------------------------------------------------
+
+function StartNewGame()
+{
+    root.InvokeMenuScreen(Class'ApocalypseInsideMenuSelectDifficulty');
+}
 // ----------------------------------------------------------------------
 
 defaultproperties
@@ -93,7 +101,8 @@ defaultproperties
     ButtonNames(9)="Exit"
     buttonXPos=7
     buttonWidth=245
-    buttonDefaults(0)=(Y=13,Action=3,Invoke=None,Key=""),
+    //buttonDefaults(0)=(Y=13,Action=3,Invoke=None,Key=""),
+    buttonDefaults(0)=(Y=13,Action=MA_NewGame,Invoke=Class'ApocalypseInsideMenuSelectDifficulty',Key=""),
     buttonDefaults(1)=(Y=49,Action=1,Invoke=Class'MenuScreenSaveGame',Key=""),
     buttonDefaults(2)=(Y=85,Action=1,Invoke=Class'MenuScreenLoadGame',Key=""),
     buttonDefaults(3)=(Y=121,Action=0,Invoke=Class'MenuSettings',Key=""),
