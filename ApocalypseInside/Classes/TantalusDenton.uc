@@ -9,11 +9,56 @@ event TravelPostAccept()
 
    switch(PlayerSkin)
 	{
-		case 0:	MultiSkins[0] = Texture'ApocalypseInside.Skins.TantalusFace'; break;
-		case 1:	MultiSkins[0] = Texture'ApocalypseInside.Skins.TantalusFace'; break;
-		case 2:	MultiSkins[0] = Texture'ApocalypseInside.Skins.TantalusFace'; break;
-		case 3:	MultiSkins[0] = Texture'ApocalypseInside.Skins.TantalusFace'; break;
-		case 4:	MultiSkins[0] = Texture'ApocalypseInside.Skins.TantalusFace'; break;
+		case 0:		
+			MultiSkins[0] = Texture'ApocalypseInside.Skins.TantalusFace';
+			MultiSkins[1] = Texture'DeusExCharacters.Skins.StantonDowdTex2';
+			MultiSkins[2] = Texture'DeusExCharacters.Skins.MJ12TroopTex1';
+			MultiSkins[3] = Texture'ApocalypseInside.Skins.TantalusFace';
+			MultiSkins[4] = Texture'DeusExCharacters.Skins.JockTex1';
+			MultiSkins[5] = Texture'DeusExCharacters.Skins.SmugglerTex2';
+			MultiSkins[6] = Texture'DeusExCharacters.Skins.FramesTex4';
+			MultiSkins[7] = FireTexture'Effects.Laser.LaserSpot2';
+		break;
+		case 1:	
+			MultiSkins[0] = Texture'ApocalypseInside.Skins.TantalusAsian';
+			MultiSkins[1] = Texture'DeusExCharacters.Skins.TobyAtanweTex2';
+			MultiSkins[2] = Texture'DeusExCharacters.Skins.GordonQuickTex3';
+			MultiSkins[3] = Texture'ApocalypseInside.Skins.TantalusFace';
+			MultiSkins[4] = Texture'DeusExCharacters.Skins.MaxChenTex1';
+			MultiSkins[5] = Texture'DeusExCharacters.Skins.TobyAtanweTex2';
+			MultiSkins[6] = Texture'DeusExCharacters.Skins.FramesTex4';
+			//MultiSkins[7] = FireTexture'Effects.Fire.Spark_Electric'; //causes ucc to return error
+		break;
+		case 2:	
+			MultiSkins[0] = Texture'ApocalypseInside.Skins.TantalusBlack'; 
+			MultiSkins[1] = Texture'DeusExCharacters.Skins.SmugglerTex2';
+			MultiSkins[2] = Texture'DeusExCharacters.Skins.PantsTex5';
+			MultiSkins[3] = Texture'ApocalypseInside.Skins.TantalusFace';
+			MultiSkins[4] = Texture'DeusExCharacters.Skins.WaltonSimonsTex1';
+			MultiSkins[5] = Texture'DeusExCharacters.Skins.SmugglerTex2';
+			MultiSkins[6] = Texture'DeusExCharacters.Skins.FramesTex4';
+			MultiSkins[7] = FireTexture'Effects.Laser.LaserSpot2';
+		break;
+		case 3:	
+			MultiSkins[0] = Texture'ApocalypseInside.Skins.TantalusGinger'; 
+			MultiSkins[1] = Texture'ApocalypseInside.Skins.NSFJacket';
+			MultiSkins[2] = Texture'DeusExCharacters.Skins.ThugMaleTex3';
+			MultiSkins[3] = Texture'ApocalypseInside.Skins.TantalusFace';
+			MultiSkins[4] = Texture'DeusExCharacters.Skins.JuanLebedevTex1';
+			MultiSkins[5] = Texture'DeusExItems.Skins.PinkMaskTex';
+			MultiSkins[6] = Texture'DeusExCharacters.Skins.FramesTex4';
+			//MultiSkins[7] = FireTexture'Effects.water.WaterDrop1';
+		break;
+		case 4:	
+			MultiSkins[0] = Texture'ApocalypseInside.Skins.TantalusGoatee'; 
+			MultiSkins[1] = Texture'DeusExCharacters.Skins.JosephManderleyTex2';
+			MultiSkins[2] = Texture'DeusExCharacters.Skins.LowerClassMale2Tex2';
+			MultiSkins[3] = Texture'ApocalypseInside.Skins.TantalusFace';
+			MultiSkins[4] = Texture'DeusExCharacters.Skins.JCDentonTex1';
+			MultiSkins[5] = Texture'DeusExCharacters.Skins.JosephManderleyTex2';
+			MultiSkins[6] = Texture'DeusExCharacters.Skins.FramesTex4';
+			MultiSkins[7] = FireTexture'Effects.Fire.SparkFX1';
+		break;
 	}
 }
 
