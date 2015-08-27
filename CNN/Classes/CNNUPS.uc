@@ -14,7 +14,7 @@ function PostBeginPlay()
 
     super.PostBeginPlay();
 
-    self.DrawType = DT_None;
+    //self.DrawType = DT_None;
 
     for ( i = 0; i < 12+3; i ++ )
     {
@@ -190,7 +190,9 @@ DefaultProperties
      HitSound2=None
      Die=None
 
+	bPlayDying=false;
     DrawType=DT_Sprite;
     bInvincible=false;
     bCollideActors=false;
+    bHidden=true;
 }
