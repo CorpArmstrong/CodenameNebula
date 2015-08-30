@@ -6,6 +6,8 @@ var bool bLasersOn, bLasersOff;
 var LaserSecurityDispatcher laserDipatcher;
 var bool bFirstFrame;
 
+var () name CamTag;
+
 // ----------------------------------------------------------------------
 // FirstFrame()
 //
@@ -45,6 +47,7 @@ function PreTravel()
 function Timer() {
   local Mover mv;
   local DamageLaserTrigger A;
+  local SecurityCamera Cam;
 
   if (!bFirstFrame)
   {
@@ -66,6 +69,14 @@ function Timer() {
               }
               if (laserDipatcher!=None){
                 laserDipatcher.ToggleOn();
+
+                foreach AllActors(class'SecurityCamera', Cam)
+				{if (Cam.Tag == 'SCam1')
+			    {
+			   	   Cam.bActive = true;
+                  player.ClientMessage("cam+");
+			    }}
+
                 player.ClientMessage("TogleOn включил");
               }
 
@@ -84,6 +95,16 @@ function Timer() {
               if (laserDipatcher!=None)
               {
                laserDipatcher.ToggleOff();
+
+               foreach AllActors(class'SecurityCamera', Cam)
+			   {
+			   if (Cam.Tag == 'SCam1')
+			   {
+			   	   Cam.bActive = false;
+			   		player.ClientMessage("cam-");
+			   }
+			   }
+
                player.ClientMessage("TogleOff выключил");
               }
 
@@ -102,5 +123,5 @@ function Timer() {
 
 defaultproperties
 {
-
+CamTag='SCam1';
 }

@@ -1,7 +1,7 @@
 //-----------------------------------------------------------
 // for ups only
 //-----------------------------------------------------------
-class UpsSelfDestructTrigger expands RayCastTrigger;
+class UpsSelfDestructTrigger expands CollisionTrigger;
 var () name PawnTag;
 
 function ToggleON()
@@ -24,28 +24,28 @@ local Actor grenade;
 		grenade.SetLocation( p.Location + vect(+50,0,+40) );
 		grenade.SetPhysics(PHYS_None);
 		grenade.AttachTag = PawnTag;  //not working *trollface*
-		msgbox("grenade+");
+		gameLog("grenade+");
 
 		grenade = Spawn(class'LAM', none);
 		//grenade = ScriptedPawn(Spawn(class'CNNSphereFragment', none));
 		grenade.SetLocation( p.Location + vect(-50,0,+40) );
 		grenade.SetPhysics(PHYS_None);
 		grenade.AttachTag = PawnTag;  //not working *trollface*
-		msgbox("grenade+");
+		gameLog("grenade+");
 
 		grenade = Spawn(class'LAM', none);
 		//grenade = ScriptedPawn(Spawn(class'CNNSphereFragment', none));
 		grenade.SetLocation( p.Location + vect(0,+50,+40) );
 		grenade.SetPhysics(PHYS_None);
 		grenade.AttachTag = PawnTag;  //not working *trollface*
-		msgbox("grenade+");
+		gameLog("grenade+");
 
 		grenade = Spawn(class'LAM', none);
 		//grenade = ScriptedPawn(Spawn(class'CNNSphereFragment', none));
 		grenade.SetLocation( p.Location + vect(0,-50,+40) );
 		grenade.SetPhysics(PHYS_None);
 		grenade.AttachTag = PawnTag;  //not working *trollface*
-		msgbox("grenade+");
+		gameLog("grenade+");
 
 	}
 }

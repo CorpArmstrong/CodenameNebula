@@ -1,7 +1,7 @@
 //-----------------------------------------------------------
 //
 //-----------------------------------------------------------
-class PawnSetOrder expands RayCastTrigger;
+class SetOrderTrigger expands CollisionTrigger;
 
 
 
@@ -21,7 +21,7 @@ local ScriptedPawn A;
 		if ( A.Tag == PawnTag )
 		{
 			A.SetOrders( PawnOrder, PawnOrderTag, true );
-			msgbox("order+");
+			gamelog("order+");
 		}
 	}
 }

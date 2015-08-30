@@ -1,7 +1,7 @@
 //-----------------------------------------------------------
 //
 //-----------------------------------------------------------
-class RayCastTrigger expands CNNSimpleTrigger;
+class CollisionTrigger expands CNNSimpleTrigger;
 
 
 var (Trigger) enum ETouchProximityType // TODO touchprox to touch
@@ -51,7 +51,7 @@ super.tick(fDT);
                 if (VSize(distaceToObj) <= self.CollisionRadius)
                 {
 					bObjectInside = true;
-					//msgbox("inside");
+					//gamelog("inside");
 				}
 				else
 				{
@@ -76,12 +76,12 @@ super.tick(fDT);
 
 function ToggleON()
 {
-	msgbox("TogleON()");
+	gamelog("TogleON()");
 }
 
 function ToggleOFF()
 {
-	msgbox("TogleOFF()");
+	gamelog("TogleOFF()");
 }
 
 
