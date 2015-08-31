@@ -3,7 +3,7 @@
 //=============================================================================
 class DamageLaserTrigger extends CNNTrigger;
 
-var LaserEmitter emitter;
+var CNNLaserEmitter emitter;
 var() bool bIsOn;
 var() bool bNoAlarm;			// if True, does NOT sound alarm
 
@@ -218,7 +218,7 @@ function BeginPlay()
 	Super.BeginPlay();
 
 	LastHitActor = None;
-	emitter = Spawn(class'LaserEmitter');
+	emitter = Spawn(class'CNNLaserEmitter');
 
 	if (emitter != None)
 	{
