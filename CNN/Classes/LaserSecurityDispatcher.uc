@@ -6,6 +6,10 @@ var() float delay;
 var() name targetTag[4];
 var() bool bIsOn;
 
+var bool bLazersMoveInsideNow; // need for return lazer movers to waiting position
+                               // when lazer system is disabled.
+							   // for preventing damage player by mover
+
 function PostBeginPlay()
 {
     DeusExPlayer(GetPlayerPawn()).ClientMessage("!!!!!!!!!!!!!!");
@@ -13,7 +17,10 @@ function PostBeginPlay()
 
 function Timer()
 {
-    SendMessages();
+    if( bIsOn )
+		SendMessages();
+
+    bLazersMoveInsideNow = !bLazersMoveInsideNow;
 
     DeusExPlayer(GetPlayerPawn()).ClientMessage("function Timer()");
 }
@@ -23,12 +30,10 @@ function SendMessages()
     local Mover m;
     local int i;
 
-    if( bIsOn )
-    {
         for (i = 0; i < 4; i ++ )
             foreach AllActors( class 'Mover', m, targetTag[i] )
         	    m.Trigger( Self, None );
-    }
+
 }
 
 function Tick(float fDT)
@@ -41,6 +46,7 @@ Super.Tick(fDT);
 function ToggleOn()
 {
     bIsOn = true;
+    bLazersMoveInsideNow = true;
     SendMessages();
     SetTimer(delay, true);
     DeusExPlayer(GetPlayerPawn()).ClientMessage("function ToggleOn()");
@@ -49,15 +55,19 @@ function ToggleOn()
 function ToggleOff()
 {
     bIsOn = false;
-    SendMessages();
-    SetTimer(0.1, false);
+
+	if (bLazersMoveInsideNow)
+		SendMessages();// for return on deffault positions
+
+	SetTimer(0.1, false);
     DeusExPlayer(GetPlayerPawn()).ClientMessage("function ToggleOff()");
 }
 
 
 DefaultProperties
 {
-    bIsOn=False;
+    bLazersMoveInsideNow=false;
+	bIsOn=False;
     delay=20
     targetTag(0)="LaserEmittersMoverFR"
     targetTag(1)="LaserEmittersMoverFL"
