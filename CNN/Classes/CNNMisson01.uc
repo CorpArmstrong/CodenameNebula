@@ -72,13 +72,8 @@ function Timer() {
 
                   foreach AllActors(class'SecurityCamera', Cam)
 				  {
-				      if (Cam.Tag == 'SCam1')
+				      if (Cam.Tag == 'SCam1' && !Cam.bActive)
 			          {
-			       	   	  //if (!cam.bActive)
-   						  //{
-						  //    cam.Trigger(none, none);
-						  //    cam.team = -1;
-						  //}
                           player.ToggleCameraState(cam, none);
                           player.ClientMessage("cam+");
 			          }
@@ -105,20 +100,9 @@ function Timer() {
 
                    foreach AllActors(class'SecurityCamera', Cam)
 			       {
-			       		if (Cam.Tag == 'SCam1')
+			       		if (Cam.Tag == 'SCam1' && Cam.bActive)
 			       		{
-			       	   		//Cam.bActive = false;
-
-							//if (cam.bActive)
-   							//{
-							//    cam.UnTrigger(none, none);
-							//    cam.team = -1;
-							//}
                             player.ToggleCameraState(cam, none);
-
-
-
-
 			   	   	   		player.ClientMessage("cam-");
 			       		}
 			       }
