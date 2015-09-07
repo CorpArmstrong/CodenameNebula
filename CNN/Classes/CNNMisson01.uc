@@ -68,16 +68,18 @@ function Timer() {
                  A.Trigger(None, None);
               }
               if (laserDipatcher!=None){
-                laserDipatcher.ToggleOn();
+                  laserDipatcher.ToggleOn();
 
-                foreach AllActors(class'SecurityCamera', Cam)
-				{if (Cam.Tag == 'SCam1')
-			    {
-			   	   Cam.bActive = true;
-                  player.ClientMessage("cam+");
-			    }}
+                  foreach AllActors(class'SecurityCamera', Cam)
+				  {
+				      if (Cam.Tag == 'SCam1' && !Cam.bActive)
+			          {
+                          player.ToggleCameraState(cam, none);
+                          player.ClientMessage("cam+");
+			          }
+				  }
 
-                player.ClientMessage("TogleOn включил");
+                  player.ClientMessage("TogleOn включил");
               }
 
               bLasersOn = true;
@@ -94,18 +96,18 @@ function Timer() {
               }
               if (laserDipatcher!=None)
               {
-               laserDipatcher.ToggleOff();
+                  laserDipatcher.ToggleOff();
 
-               foreach AllActors(class'SecurityCamera', Cam)
-			   {
-			   if (Cam.Tag == 'SCam1')
-			   {
-			   	   Cam.bActive = false;
-			   		player.ClientMessage("cam-");
-			   }
-			   }
+                   foreach AllActors(class'SecurityCamera', Cam)
+			       {
+			       		if (Cam.Tag == 'SCam1' && Cam.bActive)
+			       		{
+                            player.ToggleCameraState(cam, none);
+			   	   	   		player.ClientMessage("cam-");
+			       		}
+			       }
 
-               player.ClientMessage("TogleOff выключил");
+               	   player.ClientMessage("TogleOff выключил");
               }
 
               bLasersOff = true;
