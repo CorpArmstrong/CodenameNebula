@@ -5,6 +5,8 @@ class TantalusDenton extends JCDentonMale;
 
 var travel BioEnergyController bioc;
 
+var AiDataLinkPlay aidataLinkPlay;		
+
 // ----------------------------------------------------------------------
 // PostBeginPlay()
 //
@@ -179,6 +181,93 @@ function Destroyed() {
 	}
 }
 
+//invokes new hud initially for infolinks. found how to do it on http://www.offtopicproductions.com/tacks/CustomInfolinkPortraits/GameReaction%20Forums%20-%20Custom%20InfoLink%20Portraits.htm
+
+function Possess() 
+{ 
+
+local DeusExRootWindow root; 
+
+Super.Possess(); 
+
+root = DeusExRootWindow(rootWindow); 
+
+root.hud.Destroy(); 
+root.hud = DeusexHUD(root.NewChild(Class'ApocalypseInsideHUD'));
+
+root.hud.UpdateSettings(Self); 
+root.hud.SetWindowAlignments(HALIGN_Full,VALIGN_Full, 0, 0); 
+
+} 
+
+// ----------------------------------------------------------------------
+// StartDataLinkTransmission()
+//
+// Locates and starts the DataLink passed in
+// ----------------------------------------------------------------------
+
+function Bool StartDataLinkTransmission(
+	String datalinkName, 
+	Optional DataLinkTrigger datalinkTrigger)
+{
+	local Conversation activeDataLink;
+	local bool bDataLinkPlaySpawned;
+
+	// Don't allow DataLinks to start if we're in PlayersOnly mode
+	if ( Level.bPlayersOnly )
+		return False;
+
+	activeDataLink = GetActiveDataLink(datalinkName);
+
+	if ( activeDataLink != None )
+	{
+		// Search to see if there's an active aiDataLinkPlay object 
+		// before creating one
+
+		if ( aidataLinkPlay == None )
+		{
+			aidatalinkPlay = Spawn(class'AiDataLinkPlay');
+			bDataLinkPlaySpawned = True;
+		}
+
+		// Call SetConversation(), which returns 
+		if (aidatalinkPlay.SetConversation(activeDataLink))
+		{
+			aidatalinkPlay.SetTrigger(datalinkTrigger);
+
+			if (aidatalinkPlay.StartConversation(Self))
+			{
+				return True;
+			}
+			else
+			{
+				// Datalink must already be playing, or in queue
+				if (bDataLinkPlaySpawned)
+				{
+					aidatalinkPlay.Destroy();
+					aidatalinkPlay = None;
+				}
+				
+				return False;
+			}
+		}
+		else
+		{
+			// Datalink must already be playing, or in queue
+			if (bDataLinkPlaySpawned)
+			{
+				aidatalinkPlay.Destroy();
+				aidatalinkPlay = None;
+			}
+			return False;
+		}
+	}
+	else
+	{
+		return False;
+	}
+}
+
 defaultproperties
 {
     TruePlayerName="Thomas D"
@@ -197,5 +286,5 @@ defaultproperties
     MultiSkins(7)=FireTexture'Effects.Laser.LaserSpot2'
     FamiliarName="Tantalus Denton"
     UnfamiliarName="Tantalus Denton"
-    Tag="Asshole"
+    Tag="Tag"
 }
