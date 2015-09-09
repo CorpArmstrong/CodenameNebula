@@ -7,6 +7,7 @@ class CNNUPS extends CNNDog;
 
 var JJElecEmitter em[15];
 var CNNSphereFragment spheres[6];
+var LAM grenades[4];
 
 function PostBeginPlay()
 {
@@ -19,7 +20,7 @@ function PostBeginPlay()
     for ( i = 0; i < 12+3; i ++ )
     {
         em[i] = Spawn(class'JJElecEmitter', self);
-        em[i].SetLocation(self.Location + vect(0,0,40));
+        em[i].SetLocation(self.Location + vect(0,0,25));
         if ( i < 12 )
         {
            em[i].AttachTag = self.Tag;
@@ -35,7 +36,7 @@ function PostBeginPlay()
     for ( i = 0; i < 3; i ++ )
     {
         spheres[i] = Spawn(class'CNNSphereFragment', self);
-        spheres[i].SetLocation(self.Location + vect(0,0,40));
+        spheres[i].SetLocation(self.Location + vect(0,0,25));
 //        spheres[i].mesh = LodMesh'DeusExItems.Binoculars';
         spheres[i].AttachTag = self.Tag;
         spheres[i].DrawScale = 0.2f * (i+1);
@@ -47,19 +48,19 @@ function PostBeginPlay()
         spheres[i].DrawScale = 0.05f;
     }
 
-    spheres[3].SetLocation(self.Location + vect(0,0,40) + vect(23,0,0));
+    spheres[3].SetLocation(self.Location + vect(0,0,25) + vect(23,0,0));
     spheres[3].AttachTag = self.Tag;
   //spheres[3].Style = STY_Normal;
   //spheres[3].bUnlit = true;
     spheres[3].MultiSkins[0] = Texture'Effects.Virus_SFX'; //Texture'Effects.LaserBeam1';
 
-    spheres[4].SetLocation(self.Location + vect(0,0,40) + vect(0,23,0));
+    spheres[4].SetLocation(self.Location + vect(0,0,25) + vect(0,23,0));
     spheres[4].AttachTag = self.Tag;
   //spheres[4].Style = STY_Normal;
   //spheres[4].bUnlit = true;
     spheres[4].MultiSkins[0] = Texture'Effects.Virus_SFX'; //Texture'Effects.LaserBeam1';
 
-    spheres[5].SetLocation(self.Location + vect(0,0,40) + vect(0,0,23));
+    spheres[5].SetLocation(self.Location + vect(0,0,25) + vect(0,0,23));
     spheres[5].AttachTag = self.Tag;
   //spheres[5].Style = STY_Normal;
   //spheres[5].bUnlit = true;
@@ -93,6 +94,8 @@ function PostBeginPlay()
     em[12].proxy.Skin=Texture'Effects.Virus_SFX';
     em[13].proxy.Skin=Texture'Effects.Virus_SFX';
     em[14].proxy.Skin=Texture'Effects.Virus_SFX';
+
+    SelfDestructionGrenades();
 }
 
 function PlayDogBark()
@@ -171,6 +174,47 @@ function Tick(float deltaTime)
           //----------------------------------------
 }
 
+function SelfDestructionGrenades()
+{
+local int i;
+
+	for ( i = 0; i < 4; i ++ )
+	{
+		grenades[i] = Spawn(class'LAM', none);
+		grenades[i].SetPhysics(PHYS_None);
+		grenades[i].AttachTag = self.Tag;
+//		grenades[i].DrawType = DT_none;
+		grenades[i].bHidden = true;
+		grenades[i].fuseLength = 0.01;
+		grenades[i].bDisabled = true;
+		grenades[i].SetCollision( false, false, false);
+	}
+
+	grenades[0].SetLocation( self.Location + vect(+50,0,-25) );
+	grenades[1].SetLocation( self.Location + vect(-50,0,-25) );
+	grenades[2].SetLocation( self.Location + vect(0,+50,-25) );
+	grenades[3].SetLocation( self.Location + vect(0,-50,-25) );
+}
+
+function SelfDestruction()
+{
+local int i;
+
+	self.bInvincible = false;
+	//self.bCollideActors = true;
+	self.SetCollision( true, true, true);
+
+	for ( i = 0; i < 4; i ++ )
+	{
+		grenades[i].bDisabled = false;
+		grenades[i].bDamaged = true;
+		grenades[i].Explode(grenades[i].Location, Vector(grenades[i].Rotation));
+	}
+	//destroy();
+}
+
+
+
 function Destroyed()
 {
     local int i;
@@ -190,9 +234,14 @@ DefaultProperties
      HitSound2=None
      Die=None
 
+	CarcassType=None
+
+	CollisionHeight=50;
+
 	bPlayDying=false;
     DrawType=DT_Sprite;
-    bInvincible=false;
-    bCollideActors=false;
+    //DrawType=DT_Mesh;
+    bInvincible=true;
+    bCollideActors=true;
     bHidden=true;
 }

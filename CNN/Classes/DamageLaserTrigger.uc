@@ -145,6 +145,8 @@ function Tick(float deltaTime)
 
 function Timer()
 {
+local CNNUPS ups;
+
 	if (!bIsOn)
 	{
 		SetTimer(0.1, False);
@@ -160,8 +162,14 @@ function Timer()
 
         if ( emitter.HitActor.IsA('Pawn') )
 		{
-           emitter.HitActor.TakeDamage(pawnDamage, None, emitter.HitActor.Location, vect(0,0,0), damageType );
+			emitter.HitActor.TakeDamage(pawnDamage, None, emitter.HitActor.Location, vect(0,0,0), damageType );
         }
+
+		if( emitter.HitActor.IsA('CNNUPS') )
+		{
+			ups = CNNUPS(emitter.HitActor);
+			ups.SelfDestruction();
+		}
 
    		//damagee.TakeDamage(damageAmount, None, Location, vect(0,0,0), damageType);
     }
