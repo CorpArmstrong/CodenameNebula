@@ -35,41 +35,43 @@ event TravelPostAccept() {
 		break;
 		case 1:
 			MultiSkins[0] = Texture'ApocalypseInside.Skins.TantalusAsian';
-			MultiSkins[1] = Texture'DeusExCharacters.Skins.TobyAtanweTex2';
-			MultiSkins[2] = Texture'DeusExCharacters.Skins.GordonQuickTex3';
+			MultiSkins[1] = Texture'DeusExCharacters.Skins.JockTex2';
+			MultiSkins[2] = Texture'DeusExCharacters.Skins.ThugMaleTex3';
 			MultiSkins[3] = Texture'ApocalypseInside.Skins.TantalusFace';
-			MultiSkins[4] = Texture'DeusExCharacters.Skins.MaxChenTex1';
-			MultiSkins[5] = Texture'DeusExCharacters.Skins.TobyAtanweTex2';
+			MultiSkins[4] = Texture'DeusExCharacters.Skins.PaulDentonTex1';
+			MultiSkins[5] = Texture'DeusExItems.Skins.PinkMaskTex';
 			MultiSkins[6] = Texture'DeusExCharacters.Skins.FramesTex4';
 			//MultiSkins[7] = FireTexture'Effects.Fire.Spark_Electric'; //causes ucc to return error
 		break;
 		case 2:
+			Mesh=LodMesh'DeusExCharacters.GM_Suit';
 			MultiSkins[0] = Texture'ApocalypseInside.Skins.TantalusBlack';
-			MultiSkins[1] = Texture'DeusExCharacters.Skins.SmugglerTex2';
-			MultiSkins[2] = Texture'DeusExCharacters.Skins.PantsTex5';
-			MultiSkins[3] = Texture'ApocalypseInside.Skins.TantalusFace';
-			MultiSkins[4] = Texture'DeusExCharacters.Skins.WaltonSimonsTex1';
-			MultiSkins[5] = Texture'DeusExCharacters.Skins.SmugglerTex2';
-			MultiSkins[6] = Texture'DeusExCharacters.Skins.FramesTex4';
-			MultiSkins[7] = FireTexture'Effects.Laser.LaserSpot2';
+			MultiSkins[1] = Texture'DeusExCharacters.Skins.LowerClassMale2Tex2';
+			MultiSkins[2] = Texture'DeusExItems.Skins.PinkMaskTex';
+			MultiSkins[3] = Texture'DeusExCharacters.Skins.MIBTex1';
+			MultiSkins[4] = Texture'DeusExCharacters.Skins.MIBTex1';
+			MultiSkins[5] = Texture'DeusExCharacters.Skins.FramesTex4';
+			MultiSkins[6] = FireTexture'Effects.Laser.LaserSpot2';
+			MultiSkins[7] = Texture'DeusExItems.Skins.PinkMaskTex';
 		break;
 		case 3:
+			Mesh=LodMesh'DeusExCharacters.GM_DressShirt';
 			MultiSkins[0] = Texture'ApocalypseInside.Skins.TantalusGinger';
-			MultiSkins[1] = Texture'ApocalypseInside.Skins.NSFJacket';
-			MultiSkins[2] = Texture'DeusExCharacters.Skins.ThugMaleTex3';
-			MultiSkins[3] = Texture'ApocalypseInside.Skins.TantalusFace';
-			MultiSkins[4] = Texture'DeusExCharacters.Skins.JuanLebedevTex1';
-			MultiSkins[5] = Texture'DeusExItems.Skins.PinkMaskTex';
+			MultiSkins[1] = Texture'DeusExItems.Skins.PinkMaskTex';
+			MultiSkins[2] = Texture'DeusExItems.Skins.PinkMaskTex';
+			MultiSkins[3] = Texture'DeusExCharacters.Skins.ThugMale3Tex2';
+			MultiSkins[4] = Texture'DeusExItems.Skins.PinkMaskTex';
+			MultiSkins[5] = Texture'ApocalypseInside.Skins.NSFJacket';
 			MultiSkins[6] = Texture'DeusExCharacters.Skins.FramesTex4';
 			//MultiSkins[7] = FireTexture'Effects.water.WaterDrop1';
 		break;
 		case 4:
 			MultiSkins[0] = Texture'ApocalypseInside.Skins.TantalusGoatee';
-			MultiSkins[1] = Texture'DeusExCharacters.Skins.JosephManderleyTex2';
-			MultiSkins[2] = Texture'DeusExCharacters.Skins.LowerClassMale2Tex2';
-			MultiSkins[3] = Texture'ApocalypseInside.Skins.TantalusFace';
+			MultiSkins[1] = Texture'DeusExCharacters.Skins.SmugglerTex2';
+			MultiSkins[2] = Texture'DeusExCharacters.Skins.ThugMale3Tex2';
+			MultiSkins[3] = Texture'DeusExCharacters.Skins.JCDentonTex0';
 			MultiSkins[4] = Texture'DeusExCharacters.Skins.JCDentonTex1';
-			MultiSkins[5] = Texture'DeusExCharacters.Skins.JosephManderleyTex2';
+			MultiSkins[5] = Texture'DeusExCharacters.Skins.SmugglerTex2';
 			MultiSkins[6] = Texture'DeusExCharacters.Skins.FramesTex4';
 			MultiSkins[7] = FireTexture'Effects.Fire.SparkFX1';
 		break;
@@ -107,7 +109,7 @@ function ShowIntro(optional bool bStartNewGame)
 	AugmentationSystem.DeactivateAll();
 
 	// Reset the player
-	Level.Game.SendPlayer(Self, "OpheliaHotel");
+	Level.Game.SendPlayer(Self, "aceclub");
 }
 
 // ----------------------------------------------------------------------
@@ -183,7 +185,7 @@ function Destroyed() {
 
 //invokes new hud initially for infolinks. found how to do it on http://www.offtopicproductions.com/tacks/CustomInfolinkPortraits/GameReaction%20Forums%20-%20Custom%20InfoLink%20Portraits.htm
 
-function Possess() 
+/*function Possess() 
 { 
 
 local DeusExRootWindow root; 
@@ -198,7 +200,7 @@ root.hud = DeusexHUD(root.NewChild(Class'ApocalypseInsideHUD'));
 root.hud.UpdateSettings(Self); 
 root.hud.SetWindowAlignments(HALIGN_Full,VALIGN_Full, 0, 0); 
 
-} 
+} */
 
 // ----------------------------------------------------------------------
 // StartDataLinkTransmission()
