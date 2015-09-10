@@ -10,11 +10,11 @@ var () name PawnTag;
 var () name PawnOrder;
 var () name PawnOrderTag;
 
-function ToggleON()
+function ActivatedON()
 {
 local ScriptedPawn A;
 
-	super.ToggleON();
+	super.ActivatedON();
 
 	foreach  AllActors(class'ScriptedPawn', A)
 	{

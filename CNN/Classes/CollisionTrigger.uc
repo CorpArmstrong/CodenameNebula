@@ -65,23 +65,36 @@ super.tick(fDT);
 	if ( bPrevInsideValue != bObjectInside )
 	{
 		if ( !bPrevInsideValue && bObjectInside )
-			ToggleON();
+			TouchIN();
 
 		if ( bPrevInsideValue && !bObjectInside )
-			ToggleOFF();
+			TouchOUT();
 	}
 
 
 }
 
-function ToggleON()
+
+function TouchIN() // analog Touch
 {
-	gamelog("TogleON()");
+	ActivatedON();
 }
 
-function ToggleOFF()
+function TouchOUT() // analog UnTouch
 {
-	gamelog("TogleOFF()");
+	ActivatedOFF();
+}
+
+
+
+function ActivatedON() // when trigger become activated
+{
+	gamelog("ActivatedON()");
+}
+
+function ActivatedOFF() // when trigger is deactivated
+{
+	gamelog("ActivatedOFF()");
 }
 
 
