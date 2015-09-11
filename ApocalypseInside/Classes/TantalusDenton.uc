@@ -109,7 +109,7 @@ function ShowIntro(optional bool bStartNewGame)
 	AugmentationSystem.DeactivateAll();
 
 	// Reset the player
-	Level.Game.SendPlayer(Self, "aceclub");
+	Level.Game.SendPlayer(Self, "50_OpheliaDocks-v13");
 }
 
 // ----------------------------------------------------------------------
