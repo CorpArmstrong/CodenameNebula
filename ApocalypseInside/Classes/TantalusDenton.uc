@@ -7,6 +7,8 @@ var travel BioEnergyController bioc;
 
 var AiDataLinkPlay aidataLinkPlay;		
 
+//var String playerBias;
+
 // ----------------------------------------------------------------------
 // PostBeginPlay()
 //
@@ -19,11 +21,16 @@ function PostBeginPlay() {
 }
 
 event TravelPostAccept() {
+	local flagbase flags;
 	Super.TravelPostAccept();
 
+	
+	flags = flagbase;
+	
    	switch(PlayerSkin)
 	{
 		case 0:
+			flags.SetBool('Bias_Templar',True);
 			MultiSkins[0] = Texture'ApocalypseInside.Skins.TantalusFace';
 			MultiSkins[1] = Texture'DeusExCharacters.Skins.StantonDowdTex2';
 			MultiSkins[2] = Texture'DeusExCharacters.Skins.MJ12TroopTex1';
@@ -34,6 +41,7 @@ event TravelPostAccept() {
 			MultiSkins[7] = FireTexture'Effects.Laser.LaserSpot2';
 		break;
 		case 1:
+			flags.SetBool('Bias_Triad',True);
 			MultiSkins[0] = Texture'ApocalypseInside.Skins.TantalusAsian';
 			MultiSkins[1] = Texture'DeusExCharacters.Skins.JockTex2';
 			MultiSkins[2] = Texture'DeusExCharacters.Skins.ThugMaleTex3';
@@ -44,6 +52,7 @@ event TravelPostAccept() {
 			//MultiSkins[7] = FireTexture'Effects.Fire.Spark_Electric'; //causes ucc to return error
 		break;
 		case 2:
+			flags.SetBool('Bias_MJ12',True);
 			Mesh=LodMesh'DeusExCharacters.GM_Suit';
 			MultiSkins[0] = Texture'ApocalypseInside.Skins.TantalusBlack';
 			MultiSkins[1] = Texture'DeusExCharacters.Skins.LowerClassMale2Tex2';
@@ -55,6 +64,7 @@ event TravelPostAccept() {
 			MultiSkins[7] = Texture'DeusExItems.Skins.PinkMaskTex';
 		break;
 		case 3:
+			flags.SetBool('Bias_NSF',True);
 			Mesh=LodMesh'DeusExCharacters.GM_DressShirt';
 			MultiSkins[0] = Texture'ApocalypseInside.Skins.TantalusGinger';
 			MultiSkins[1] = Texture'DeusExItems.Skins.PinkMaskTex';
@@ -66,6 +76,7 @@ event TravelPostAccept() {
 			//MultiSkins[7] = FireTexture'Effects.water.WaterDrop1';
 		break;
 		case 4:
+			flags.SetBool('Bias_UNATCO',True);
 			MultiSkins[0] = Texture'ApocalypseInside.Skins.TantalusGoatee';
 			MultiSkins[1] = Texture'DeusExCharacters.Skins.SmugglerTex2';
 			MultiSkins[2] = Texture'DeusExCharacters.Skins.ThugMale3Tex2';
@@ -77,6 +88,7 @@ event TravelPostAccept() {
 		break;
 	}
 }
+
 
 // ----------------------------------------------------------------------
 // ShowMainMenu()
@@ -109,7 +121,7 @@ function ShowIntro(optional bool bStartNewGame)
 	AugmentationSystem.DeactivateAll();
 
 	// Reset the player
-	Level.Game.SendPlayer(Self, "50_OpheliaDocks-v13");
+	Level.Game.SendPlayer(Self, "nyctest");
 }
 
 // ----------------------------------------------------------------------
