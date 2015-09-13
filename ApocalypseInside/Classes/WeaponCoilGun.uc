@@ -22,6 +22,10 @@ simulated function PreBeginPlay()
 	}
 }
 
+function name WeaponDamageType()
+	{
+		return 'KnockedOut';
+	}
 //Reload time is down considerably
 
 defaultproperties
@@ -30,8 +34,8 @@ defaultproperties
      NoiseLevel=0.010000
      EnviroEffective=ENVEFF_Air
      Concealability=CONC_All
-     ShotTime=2.000000
-     HitDamage=18
+     ShotTime=4.000000
+     HitDamage=50
      maxRange=48000
      AccurateRange=28800
      BaseAccuracy=0.800000
@@ -39,7 +43,7 @@ defaultproperties
      bCanHaveLaser=True
 	 AmmoNames(0)=Class'DeusEx.AmmoDart'
      AmmoNames(1)=Class'DeusEx.AmmoBattery'
-	 StunDuration=70.000000
+	 //StunDuration=70.000000
      recoilStrength=0.300000
      mpReloadTime=1.500000
      mpHitDamage=12
