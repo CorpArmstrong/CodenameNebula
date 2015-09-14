@@ -6,10 +6,15 @@ class AugIcarus extends Augmentation;
 var float mpAugValue;
 var float mpEnergyDrain;
 
+
+
 state Active
 {
 Begin:
 	Player.SetPhysics(PHYS_Spider);
+	//IAmWarren();
+	//Super.Fly();
+	//displayMode = DM_ThirdPerson;
 }
 
 function Deactivate()

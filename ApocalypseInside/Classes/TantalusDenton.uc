@@ -7,6 +7,8 @@ var travel BioEnergyController bioc;
 
 var AiDataLinkPlay aidataLinkPlay;		
 
+//var String playerBias;
+
 // ----------------------------------------------------------------------
 // PostBeginPlay()
 //
@@ -19,11 +21,16 @@ function PostBeginPlay() {
 }
 
 event TravelPostAccept() {
+	local flagbase flags;
 	Super.TravelPostAccept();
 
+	
+	flags = flagbase;
+	
    	switch(PlayerSkin)
 	{
 		case 0:
+			flags.SetBool('Bias_Templar',True);
 			MultiSkins[0] = Texture'ApocalypseInside.Skins.TantalusFace';
 			MultiSkins[1] = Texture'DeusExCharacters.Skins.StantonDowdTex2';
 			MultiSkins[2] = Texture'DeusExCharacters.Skins.MJ12TroopTex1';
@@ -34,6 +41,7 @@ event TravelPostAccept() {
 			MultiSkins[7] = FireTexture'Effects.Laser.LaserSpot2';
 		break;
 		case 1:
+			flags.SetBool('Bias_Triad',True);
 			MultiSkins[0] = Texture'ApocalypseInside.Skins.TantalusAsian';
 			MultiSkins[1] = Texture'DeusExCharacters.Skins.JockTex2';
 			MultiSkins[2] = Texture'DeusExCharacters.Skins.ThugMaleTex3';
@@ -44,6 +52,7 @@ event TravelPostAccept() {
 			//MultiSkins[7] = FireTexture'Effects.Fire.Spark_Electric'; //causes ucc to return error
 		break;
 		case 2:
+			flags.SetBool('Bias_MJ12',True);
 			Mesh=LodMesh'DeusExCharacters.GM_Suit';
 			MultiSkins[0] = Texture'ApocalypseInside.Skins.TantalusBlack';
 			MultiSkins[1] = Texture'DeusExCharacters.Skins.LowerClassMale2Tex2';
@@ -55,6 +64,7 @@ event TravelPostAccept() {
 			MultiSkins[7] = Texture'DeusExItems.Skins.PinkMaskTex';
 		break;
 		case 3:
+			flags.SetBool('Bias_NSF',True);
 			Mesh=LodMesh'DeusExCharacters.GM_DressShirt';
 			MultiSkins[0] = Texture'ApocalypseInside.Skins.TantalusGinger';
 			MultiSkins[1] = Texture'DeusExItems.Skins.PinkMaskTex';
@@ -66,6 +76,7 @@ event TravelPostAccept() {
 			//MultiSkins[7] = FireTexture'Effects.water.WaterDrop1';
 		break;
 		case 4:
+			flags.SetBool('Bias_UNATCO',True);
 			MultiSkins[0] = Texture'ApocalypseInside.Skins.TantalusGoatee';
 			MultiSkins[1] = Texture'DeusExCharacters.Skins.SmugglerTex2';
 			MultiSkins[2] = Texture'DeusExCharacters.Skins.ThugMale3Tex2';
@@ -77,6 +88,7 @@ event TravelPostAccept() {
 		break;
 	}
 }
+
 
 // ----------------------------------------------------------------------
 // ShowMainMenu()
@@ -109,7 +121,7 @@ function ShowIntro(optional bool bStartNewGame)
 	AugmentationSystem.DeactivateAll();
 
 	// Reset the player
-	Level.Game.SendPlayer(Self, "50_OpheliaDocks-v13");
+	Level.Game.SendPlayer(Self, "nyctest");
 }
 
 // ----------------------------------------------------------------------
@@ -185,7 +197,7 @@ function Destroyed() {
 
 //invokes new hud initially for infolinks. found how to do it on http://www.offtopicproductions.com/tacks/CustomInfolinkPortraits/GameReaction%20Forums%20-%20Custom%20InfoLink%20Portraits.htm
 
-/*function Possess() 
+function Possess() 
 { 
 
 local DeusExRootWindow root; 
@@ -200,7 +212,7 @@ root.hud = DeusexHUD(root.NewChild(Class'ApocalypseInsideHUD'));
 root.hud.UpdateSettings(Self); 
 root.hud.SetWindowAlignments(HALIGN_Full,VALIGN_Full, 0, 0); 
 
-} */
+} 
 
 // ----------------------------------------------------------------------
 // StartDataLinkTransmission()
@@ -269,6 +281,53 @@ function Bool StartDataLinkTransmission(
 		return False;
 	}
 }
+
+// ----------------------------------------------------------------------
+// InitializeSubSystems()
+// ----------------------------------------------------------------------
+
+function InitializeSubSystems()
+{
+	// Spawn the BarkManager
+	if (BarkManager == None)
+		BarkManager = Spawn(class'BarkManager', Self);
+
+	// Spawn the Color Manager
+	CreateColorThemeManager();
+    ThemeManager.SetOwner(self);
+
+	// install the augmentation system if not found
+	if (AugmentationSystem == None)
+	{
+		AugmentationSystem = Spawn(class'AiAugmentationManager', Self);
+		AugmentationSystem.CreateAugmentations(Self);
+		AugmentationSystem.AddDefaultAugmentations();        
+        AugmentationSystem.SetOwner(Self);       
+	}
+	else
+	{
+		AugmentationSystem.SetPlayer(Self);
+        AugmentationSystem.SetOwner(Self);
+	}
+
+	// install the skill system if not found
+	if (SkillSystem == None)
+	{
+		SkillSystem = Spawn(class'SkillManager', Self);
+		SkillSystem.CreateSkills(Self);
+	}
+	else
+	{
+		SkillSystem.SetPlayer(Self);
+	}
+
+   if ((Level.Netmode == NM_Standalone) || (!bBeltIsMPInventory))
+   {
+      // Give the player a keyring
+      CreateKeyRing();
+   }
+}
+
 
 defaultproperties
 {
