@@ -61,9 +61,9 @@ defaultproperties
      FireOffset=(X=-24.000000,Y=10.000000,Z=14.000000)
      shakemag=50.000000
      FireSound=Sound'DeusExSounds.Weapons.ProdFire'
-     AltFireSound=Sound'DeusExSounds.Weapons.PlasmaRifleReloadEnd'
-     CockingSound=Sound'DeusExSounds.Weapons.PlasmaRifleReload'
-     SelectSound=Sound'DeusExSounds.Weapons.ProdSelect'
+     AltFireSound=Sound'DeusExSounds.Weapons.ProdReloadEnd'
+     CockingSound=Sound'DeusExSounds.Weapons.ProdSelect'
+     SelectSound=Sound'DeusExSounds.Weapons.PlasmaRifleReload'
      InventoryGroup=3
      ItemName="Coil Gun"
      PlayerViewOffset=(X=24.000000,Y=-18.000000,Z=-10.000000)

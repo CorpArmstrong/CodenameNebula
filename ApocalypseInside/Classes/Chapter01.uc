@@ -3,16 +3,17 @@
 //=============================================================================
 class Chapter01 expands MissionScript;
 
-function SelectBias()
-{
-	/*if(playerBias=="Templar")
-	{
-		flags.SetBool('Bias_Templar',True);
-	}*/
-}
-
+function Timer() {
+	
+	Super.Timer();
+	
+	if (Player.IsInState('Dying'))
+		{
+			Level.Game.SendPlayer(Player, "AvatarServer?Difficulty="$Player.combatDifficulty);
+		}
+	}
 
 defaultproperties
 {
-     missionName="Liberty Island"
+     missionName="Escape from Area 51"
 }

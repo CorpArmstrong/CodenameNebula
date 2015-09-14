@@ -197,7 +197,7 @@ function Destroyed() {
 
 //invokes new hud initially for infolinks. found how to do it on http://www.offtopicproductions.com/tacks/CustomInfolinkPortraits/GameReaction%20Forums%20-%20Custom%20InfoLink%20Portraits.htm
 
-/*function Possess() 
+function Possess() 
 { 
 
 local DeusExRootWindow root; 
@@ -212,7 +212,7 @@ root.hud = DeusexHUD(root.NewChild(Class'ApocalypseInsideHUD'));
 root.hud.UpdateSettings(Self); 
 root.hud.SetWindowAlignments(HALIGN_Full,VALIGN_Full, 0, 0); 
 
-} */
+} 
 
 // ----------------------------------------------------------------------
 // StartDataLinkTransmission()
@@ -281,6 +281,53 @@ function Bool StartDataLinkTransmission(
 		return False;
 	}
 }
+
+// ----------------------------------------------------------------------
+// InitializeSubSystems()
+// ----------------------------------------------------------------------
+
+function InitializeSubSystems()
+{
+	// Spawn the BarkManager
+	if (BarkManager == None)
+		BarkManager = Spawn(class'BarkManager', Self);
+
+	// Spawn the Color Manager
+	CreateColorThemeManager();
+    ThemeManager.SetOwner(self);
+
+	// install the augmentation system if not found
+	if (AugmentationSystem == None)
+	{
+		AugmentationSystem = Spawn(class'AiAugmentationManager', Self);
+		AugmentationSystem.CreateAugmentations(Self);
+		AugmentationSystem.AddDefaultAugmentations();        
+        AugmentationSystem.SetOwner(Self);       
+	}
+	else
+	{
+		AugmentationSystem.SetPlayer(Self);
+        AugmentationSystem.SetOwner(Self);
+	}
+
+	// install the skill system if not found
+	if (SkillSystem == None)
+	{
+		SkillSystem = Spawn(class'SkillManager', Self);
+		SkillSystem.CreateSkills(Self);
+	}
+	else
+	{
+		SkillSystem.SetPlayer(Self);
+	}
+
+   if ((Level.Netmode == NM_Standalone) || (!bBeltIsMPInventory))
+   {
+      // Give the player a keyring
+      CreateKeyRing();
+   }
+}
+
 
 defaultproperties
 {
