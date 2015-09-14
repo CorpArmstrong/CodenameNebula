@@ -40,7 +40,7 @@ defaultproperties
      EnergyRate=0.000000
      Icon=Texture'DeusExUI.UserInterface.AugIconRunSilent'
      smallIcon=Texture'DeusExUI.UserInterface.AugIconRunSilent_Small'
-     AugmentationName="Run Silent"
+     AugmentationName="Icarus Landing System"
      Description="The Icarus Landing System biomod lets you land safely after falling from any reasonable distance.|n|nTECH ONE: Sound made while moving is reduced slightly.|n|nTECH TWO: Sound made while moving is reduced moderately.|n|nTECH THREE: Sound made while moving is reduced significantly.|n|nTECH FOUR: An agent is completely silent."
      MPInfo="When active, you do not make footstep sounds.  Energy Drain: Low"
      LevelValues(0)=0.750000

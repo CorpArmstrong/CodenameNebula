@@ -37,7 +37,7 @@ defaultproperties
      augClasses(18)=Class'DeusEx.AugDatalink'
      augClasses(19)=Class'DeusEx.AugHeartLung'
      augClasses(20)=Class'DeusEx.AugPower'
-     augClasses(21)=Class'DeusEx.AugIcarus'
+     augClasses(21)=Class'ApocalypseInside.AugIcarus'
      defaultAugs(0)=Class'DeusEx.AugLight'
      defaultAugs(1)=Class'DeusEx.AugIFF'
      defaultAugs(2)=Class'DeusEx.AugDatalink'

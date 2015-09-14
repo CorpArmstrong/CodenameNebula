@@ -5,7 +5,7 @@ class AiDataLinkPlay expands DataLinkPlay
 	transient;
 
 // Array of Bind -> Display names. Yes, horrible hack. Oh well.
-var S_InfoLinkNames infoLinkNames[18];
+var S_InfoLinkNames infoLinkNames[19];
 
 
 defaultproperties
