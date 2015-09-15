@@ -43,7 +43,7 @@ defaultproperties
      defaultAugs(2)=Class'DeusEx.AugDatalink'
      AugLocationFull="You can't add any more augmentations to that location!"
      NoAugInSlot="There is no augmentation in that slot"
-     HighPowerDrain="High power drain detected"
+     //HighPowerDrain="High power drain detected"
      bHidden=True
      bTravel=True
 }

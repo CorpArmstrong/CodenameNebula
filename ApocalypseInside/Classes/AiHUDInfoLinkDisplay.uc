@@ -18,13 +18,12 @@ class AiHUDInfoLinkDisplay expands HUDInfoLinkDisplay
 function SetSpeaker(String bindName, String displayName)
 {
 	local String portraitStringName;
-	local DeusExLevelInfo info;
-
+	
 	winName.SetText(displayName);
 
 	// Default portrait name based on bind naem
 
-	portraitStringName = "AIInfoPortraits." $ Left(bindName, 16);
+	portraitStringName = "AiInfoPortraits." $ Left(bindName, 16);
 
 
 
