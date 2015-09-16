@@ -7,13 +7,35 @@ class AiDataLinkPlay expands DataLinkPlay
 // Array of Bind -> Display names. Yes, horrible hack. Oh well.
 var S_InfoLinkNames infoLinkNames[19];
 
+// ----------------------------------------------------------------------
+// GetDisplayName()
+//this is just for Janus. Hopefully this is temporary
+// ----------------------------------------------------------------------
+
+function String GetDisplayName(String bindName)
+{
+	local int nameIndex;
+	local string displayName;
+
+	displayName = "Janus";
+
+	for(nameIndex=0; nameIndex<arrayCount(infoLinkNames); nameIndex++)
+	{
+		if (infoLinkNames[nameIndex].BindName == bindName)
+		{
+			displayName = infoLinkNames[nameIndex].DisplayName;
+			break;
+		}
+	}
+	return displayName;
+}
 
 defaultproperties
 {
      startSound=Sound'DeusExSounds.UserInterface.DataLinkStart'
      blinkRate=0.500000
      startDelay=1.500000
-     endDelay=1.000000
+     endDelay=5.000000
      perCharDelay=0.030000
      infoLinkNames(0)=(BindName="AlexJacobson",displayName="Alex Jacobson")
      infoLinkNames(1)=(BindName="AnnaNavarre",displayName="Anna Navarre")

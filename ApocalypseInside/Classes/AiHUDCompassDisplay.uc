@@ -41,7 +41,7 @@ event InitWindow()
 }
 
 // ----------------------------------------------------------------------
-// Tick()
+// >:(Tick()
 //
 // Used to update the position of the compass based on the
 // direction the player is facing.
@@ -52,21 +52,21 @@ event Tick(float deltaSeconds)
 	// Only continue if we moved
 	if (lastPlayerYaw != player.Rotation.Yaw)
 	{
-		lastPlayerYaw = player.Rotation.Yaw;
+		//lastPlayerYaw = player.Rotation.Yaw;
 
 		// Based on the player's rotation and the map's True North, calculate
 		// where to draw the tick marks and letters
-		drawPos = clipWidthHalf - (((lastPlayerYaw - mapNorth) & 65535) / UnitsPerPixel);
+		//drawPos = clipWidthHalf - (((lastPlayerYaw - mapNorth) & 65535) / UnitsPerPixel);
 
 		// We have two tickmark windows to compensate what happens with
 		// the wrap condition.
 
-		if ((drawPos > 0) && (drawPos < clipWidth))
+		/*if ((drawPos > 0) && (drawPos < clipWidth))
 			wrapPos = drawPos - tickWidth;
 		else if (drawPos - tickWidth < (clipWidthHalf))
 			wrapPos = drawPos + tickWidth;
 		else
-			wrapPos = 100;
+			wrapPos = 100;*/
 
 	}
 }
@@ -82,18 +82,6 @@ event VisibilityChanged(bool bNewVisibility)
 	bTickEnabled = bNewVisibility;
 }
 
-// ----------------------------------------------------------------------
-// PostDrawWindow()
-// ----------------------------------------------------------------------
-
-function PostDrawWindow(GC gc)
-{
-	PostDrawBackground(gc);
-}
-
-// ----------------------------------------------------------------------
-// PostDrawBackground()
-// ----------------------------------------------------------------------
 
 function DrawBackground(GC gc)
 {
@@ -102,6 +90,14 @@ function DrawBackground(GC gc)
 	gc.DrawTexture(11, 6, 256, 256, 0, 0, texBackground);
 }
 
+//>:(
+function PostDrawBackground(GC gc)
+{
+	// Draw the tick box
+	/*gc.SetTileColor(colBackground);
+	gc.SetStyle(DSTY_Masked);
+	gc.DrawTexture(11, 6, 60, 19, 0, 0, texTickBox);*/
+}
 
 // ----------------------------------------------------------------------
 // PostDrawBorder()
@@ -123,14 +119,27 @@ function DrawBorder(GC gc)
 
 function CreateCompassWindow()
 {
-	local Window winCompassClip;
+	/*local Window winCompassClip;
 
 	winCompassClip = NewChild(Class'Window');
 	winCompassClip.SetSize(clipWidth, 256);
-	winCompassClip.SetPos(13, 7);
+	winCompassClip.SetPos(13, 7);*/
 }
 
+//>:(
+function Window CreateTickWindow(Window winParent)
+{
+	/*local Window winCompass;
 
+	winCompass = winParent.NewChild(Class'Window');
+	winCompass.SetPos(0, 0);
+	winCompass.SetSize(tickWidth, 15);
+	winCompass.SetBackground(Texture'HUDCompassTicks');
+	winCompass.SetBackgroundStyle(DSTY_Masked);
+	winCompass.SetTileColor(colTickMarks);
+
+	return winCompass;*/
+}
 // ----------------------------------------------------------------------
 // SetVisibility()
 // ----------------------------------------------------------------------
@@ -142,6 +151,19 @@ function SetVisibility( bool bNewVisibility )
 	bTickEnabled = bNewVisibility;
 }
 
+//dont need this
+function GetMapTrueNorth()
+{
+	/*local DeusExLevelInfo info;
+
+	if (player != None) 
+	{
+		info = player.GetLevelInfo();
+
+		if (info != None)
+			mapNorth = info.TrueNorth;
+	}*/
+}
 
 // ----------------------------------------------------------------------
 // ----------------------------------------------------------------------
@@ -153,5 +175,5 @@ defaultproperties
      tickWidth=240
      texBackground=Texture'DeusExUI.UserInterface.ComputerHackBackground'
      texBorder=Texture'DeusExUI.UserInterface.ComputerHackBorder'
-     texTickBox=Texture'DeusExUI.UserInterface.HUDCompassTickBox'
+     //texTickBox=Texture'DeusExUI.UserInterface.HUDCompassTickBox'
 }

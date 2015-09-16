@@ -25,10 +25,13 @@ event InitWindow()
 
 	ammo			= HUDAmmoDisplay(NewChild(Class'HUDAmmoDisplay'));
 	hit				= HUDHitDisplay(NewChild(Class'HUDHitDisplay'));
+	cross.Destroy(); 
 	cross			= Crosshair(NewChild(Class'Crosshair'));
 	belt			= HUDObjectBelt(NewChild(Class'HUDObjectBelt'));
 	activeItems		= HUDActiveItemsDisplay(NewChild(Class'HUDActiveItemsDisplay'));
+	damageDisplay.Destroy();
 	damageDisplay	= DamageHUDDisplay(NewChild(Class'AiDamageHUDDisplay'));
+	compass.Destroy(); 
 	compass     	= HUDCompassDisplay(NewChild(Class'AiHUDCompassDisplay'));
 	hms				= HUDMultiSkills(NewChild(Class'HUDMultiSkills'));
 
@@ -59,7 +62,7 @@ function HUDInfoLinkDisplay CreateInfoLinkWindow()
 {
 	if ( infolink != None )
 		return None;
-
+	
 	infolink = HUDInfoLinkDisplay(NewChild(Class'AiHUDInfoLinkDisplay'));
 
 	// Hide Log window

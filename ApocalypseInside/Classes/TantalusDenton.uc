@@ -5,7 +5,7 @@ class TantalusDenton extends JCDentonMale;
 
 var travel BioEnergyController bioc;
 
-var AiDataLinkPlay aidataLinkPlay;		
+//var AiDataLinkPlay aidataLinkPlay;		
 
 //var String playerBias;
 
@@ -235,21 +235,21 @@ function Bool StartDataLinkTransmission(
 
 	if ( activeDataLink != None )
 	{
-		// Search to see if there's an active aiDataLinkPlay object 
+		// Search to see if there's an active DataLinkPlay object 
 		// before creating one
 
-		if ( aidataLinkPlay == None )
+		if ( dataLinkPlay == None )
 		{
-			aidatalinkPlay = Spawn(class'AiDataLinkPlay');
+			datalinkPlay = Spawn(class'AiDataLinkPlay');
 			bDataLinkPlaySpawned = True;
 		}
 
 		// Call SetConversation(), which returns 
-		if (aidatalinkPlay.SetConversation(activeDataLink))
+		if (datalinkPlay.SetConversation(activeDataLink))
 		{
-			aidatalinkPlay.SetTrigger(datalinkTrigger);
+			datalinkPlay.SetTrigger(datalinkTrigger);
 
-			if (aidatalinkPlay.StartConversation(Self))
+			if (datalinkPlay.StartConversation(Self))
 			{
 				return True;
 			}
@@ -258,8 +258,8 @@ function Bool StartDataLinkTransmission(
 				// Datalink must already be playing, or in queue
 				if (bDataLinkPlaySpawned)
 				{
-					aidatalinkPlay.Destroy();
-					aidatalinkPlay = None;
+					datalinkPlay.Destroy();
+					datalinkPlay = None;
 				}
 				
 				return False;
@@ -270,8 +270,8 @@ function Bool StartDataLinkTransmission(
 			// Datalink must already be playing, or in queue
 			if (bDataLinkPlaySpawned)
 			{
-				aidatalinkPlay.Destroy();
-				aidatalinkPlay = None;
+				datalinkPlay.Destroy();
+				datalinkPlay = None;
 			}
 			return False;
 		}
@@ -324,7 +324,7 @@ function InitializeSubSystems()
    if ((Level.Netmode == NM_Standalone) || (!bBeltIsMPInventory))
    {
       // Give the player a keyring
-      CreateKeyRing();
+      //CreateKeyRing();
    }
 }
 
@@ -347,5 +347,5 @@ defaultproperties
     MultiSkins(7)=FireTexture'Effects.Laser.LaserSpot2'
     FamiliarName="Tantalus Denton"
     UnfamiliarName="Tantalus Denton"
-    Tag="Tag"
+    Tag="TantalusTag"
 }
