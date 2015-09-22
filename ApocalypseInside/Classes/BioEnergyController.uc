@@ -25,6 +25,7 @@ function PostBeginPlay() {
 	vc = vect(0, 0, 0);
 }
 
+
 function Tick(float deltaTime) {
 
 	// First time, assign player.
@@ -37,7 +38,7 @@ function Tick(float deltaTime) {
 	// Check if player isn't dead, if so - turn off the timer.
 	if (_player != none)
 	{
-		_player.ClientMessage("Player - dibil");
+		//_player.ClientMessage("your Chinese skill is");
 		if (_player.Energy > 0)
 		{
 			adjustDamageTimer(false);
