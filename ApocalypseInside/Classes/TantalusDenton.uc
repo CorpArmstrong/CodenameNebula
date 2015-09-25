@@ -155,38 +155,7 @@ function ShowCredits(optional bool bLoadIntro)
 
 function UpdatePlayerSkin()
 {
-	local PaulDenton paul;
-	local PaulDentonCarcass paulCarcass;
-	local JCDentonMaleCarcass jcCarcass;
-	local JCDouble jc;
-
-	// Paul Denton
-	foreach AllActors(class'PaulDenton', paul)
-		break;
-
-	if (paul != None)
-		paul.SetSkin(Self);
-
-	// Paul Denton Carcass
-	foreach AllActors(class'PaulDentonCarcass', paulCarcass)
-		break;
-
-	if (paulCarcass != None)
-		paulCarcass.SetSkin(Self);
-
-	// JC Denton Carcass
-	foreach AllActors(class'JCDentonMaleCarcass', jcCarcass)
-		break;
-
-	if (jcCarcass != None)
-		jcCarcass.SetSkin(Self);
-
-	// JC's stunt double
-	foreach AllActors(class'JCDouble', jc)
-		break;
-
-	if (jc != None)
-		jc.SetSkin(Self);
+	
 }
 
 function Destroyed() {
@@ -313,7 +282,7 @@ function InitializeSubSystems()
 	// install the skill system if not found
 	if (SkillSystem == None)
 	{
-		SkillSystem = Spawn(class'SkillManager', Self);
+		SkillSystem = Spawn(class'AiSkillManager', Self);
 		SkillSystem.CreateSkills(Self);
 	}
 	else
@@ -328,6 +297,78 @@ function InitializeSubSystems()
    }
 }
 
+// ----------------------------------------------------------------------
+// CreateThemeManager()
+// ----------------------------------------------------------------------
+
+function CreateColorThemeManager()
+{
+	if (ThemeManager == None)
+	{
+		ThemeManager = Spawn(Class'ColorThemeManager', Self);
+
+		// Add all default themes.
+
+		// Menus
+		ThemeManager.AddTheme(Class'ColorThemeMenu_Default');
+		ThemeManager.AddTheme(Class'ColorThemeMenu_BlueAndGold');
+		ThemeManager.AddTheme(Class'ColorThemeMenu_CoolGreen');
+		ThemeManager.AddTheme(Class'ColorThemeMenu_Cops');
+		ThemeManager.AddTheme(Class'ColorThemeMenu_Cyan');
+		ThemeManager.AddTheme(Class'ColorThemeMenu_DesertStorm');
+		ThemeManager.AddTheme(Class'ColorThemeMenu_DriedBlood');
+		ThemeManager.AddTheme(Class'ColorThemeMenu_Dusk');
+		ThemeManager.AddTheme(Class'ColorThemeMenu_Earth');
+		ThemeManager.AddTheme(Class'ColorThemeMenu_Green');
+		ThemeManager.AddTheme(Class'ColorThemeMenu_Grey');
+		ThemeManager.AddTheme(Class'ColorThemeMenu_IonStorm');
+		ThemeManager.AddTheme(Class'ColorThemeMenu_Lava');
+		ThemeManager.AddTheme(Class'ColorThemeMenu_NightVision');
+		ThemeManager.AddTheme(Class'ColorThemeMenu_Ninja');
+		ThemeManager.AddTheme(Class'ColorThemeMenu_Olive');
+		ThemeManager.AddTheme(Class'ColorThemeMenu_PaleGreen');
+		ThemeManager.AddTheme(Class'ColorThemeMenu_Pastel');
+		ThemeManager.AddTheme(Class'ColorThemeMenu_Plasma');
+		ThemeManager.AddTheme(Class'ColorThemeMenu_Primaries');
+		ThemeManager.AddTheme(Class'ColorThemeMenu_Purple');
+		ThemeManager.AddTheme(Class'ColorThemeMenu_Red');
+		ThemeManager.AddTheme(Class'ColorThemeMenu_Seawater');
+		ThemeManager.AddTheme(Class'ColorThemeMenu_SoylentGreen');
+		ThemeManager.AddTheme(Class'ColorThemeMenu_Starlight');
+		ThemeManager.AddTheme(Class'ColorThemeMenu_Steel');
+		ThemeManager.AddTheme(Class'ColorThemeMenu_SteelGreen');
+		ThemeManager.AddTheme(Class'ColorThemeMenu_Superhero');
+		ThemeManager.AddTheme(Class'ColorThemeMenu_Terminator');
+		ThemeManager.AddTheme(Class'ColorThemeMenu_Violet');
+
+		// HUD
+		ThemeManager.AddTheme(Class'ColorThemeHUD_Default');
+		ThemeManager.AddTheme(Class'ColorThemeHUD_Amber');
+		ThemeManager.AddTheme(Class'ColorThemeHUD_ApostleMod');
+		ThemeManager.AddTheme(Class'ColorThemeHUD_Cops');
+		ThemeManager.AddTheme(Class'ColorThemeHUD_Cyan');
+		ThemeManager.AddTheme(Class'ColorThemeHUD_DarkBlue');
+		ThemeManager.AddTheme(Class'ColorThemeHUD_DesertStorm');
+		ThemeManager.AddTheme(Class'ColorThemeHUD_DriedBlood');
+		ThemeManager.AddTheme(Class'ColorThemeHUD_Dusk');
+		ThemeManager.AddTheme(Class'ColorThemeHUD_Grey');
+		ThemeManager.AddTheme(Class'ColorThemeHUD_IonStorm');
+		ThemeManager.AddTheme(Class'ColorThemeHUD_NightVision');
+		ThemeManager.AddTheme(Class'ColorThemeHUD_Ninja');
+		ThemeManager.AddTheme(Class'ColorThemeHUD_PaleGreen');
+		ThemeManager.AddTheme(Class'ColorThemeHUD_Pastel');
+		ThemeManager.AddTheme(Class'ColorThemeHUD_Plasma');
+		ThemeManager.AddTheme(Class'ColorThemeHUD_Primaries');
+		ThemeManager.AddTheme(Class'ColorThemeHUD_Purple');
+		ThemeManager.AddTheme(Class'ColorThemeHUD_Red');
+		ThemeManager.AddTheme(Class'ColorThemeHUD_SoylentGreen');
+		ThemeManager.AddTheme(Class'ColorThemeHUD_Starlight');
+		ThemeManager.AddTheme(Class'ColorThemeHUD_SteelGreen');
+		ThemeManager.AddTheme(Class'ColorThemeHUD_Superhero');
+		ThemeManager.AddTheme(Class'ColorThemeHUD_Terminator');
+		ThemeManager.AddTheme(Class'ColorThemeHUD_Violet');
+	}
+}
 
 defaultproperties
 {
