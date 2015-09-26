@@ -121,7 +121,7 @@ function ShowIntro(optional bool bStartNewGame)
 	AugmentationSystem.DeactivateAll();
 
 	// Reset the player
-	Level.Game.SendPlayer(Self, "nyctest");
+	Level.Game.SendPlayer(Self, "moon_mine");
 }
 
 // ----------------------------------------------------------------------
@@ -149,19 +149,18 @@ function ShowCredits(optional bool bLoadIntro)
 
 // ----------------------------------------------------------------------
 // UpdatePlayerSkin()
-//
-// overrides the original so we can use our custom skins
 // ----------------------------------------------------------------------
 
 function UpdatePlayerSkin()
 {
-	
-}
+	local UberAlles uber;
 
-function Destroyed() {
-	if (bioc != none) {
-		bioc.Destroy();
-	}
+	foreach AllActors(class'UberAlles', uber)
+		break;
+
+	if (uber != None)
+		uber.SetSkin(Self);
+
 }
 
 //invokes new hud initially for infolinks. found how to do it on http://www.offtopicproductions.com/tacks/CustomInfolinkPortraits/GameReaction%20Forums%20-%20Custom%20InfoLink%20Portraits.htm
@@ -375,6 +374,8 @@ defaultproperties
     TruePlayerName="Thomas D"
 	BindName=Tantalus
     Credits=0
+	MenuThemeName="ApostleMod"
+	HUDThemeName="ApostleMod"
     strStartMap="01_Area51_Clones"
     CarcassType=Class'JCDentonMaleCarcass'
     Mesh=LodMesh'DeusExCharacters.GM_Trench'
