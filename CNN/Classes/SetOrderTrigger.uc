@@ -1,7 +1,7 @@
 //-----------------------------------------------------------
 //
 //-----------------------------------------------------------
-class SetOrderTrigger expands CollisionTrigger;
+class SetOrderTrigger expands CNNSimpleTrigger;
 
 
 
@@ -21,7 +21,7 @@ local ScriptedPawn A;
 		if ( A.Tag == PawnTag )
 		{
 			A.SetOrders( PawnOrder, PawnOrderTag, true );
-			gamelog("order+");
+			DebugInfo("order+");
 		}
 	}
 }

@@ -1,7 +1,7 @@
 //-----------------------------------------------------------
 //
 //-----------------------------------------------------------
-class CNNSphereFragment extends Actor;
+class CNNSphereFragment extends CNNActor;
 
 //var texture myTexture;
 

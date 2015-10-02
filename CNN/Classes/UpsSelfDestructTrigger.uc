@@ -1,7 +1,7 @@
 //-----------------------------------------------------------
 // for ups only
 //-----------------------------------------------------------
-class UpsSelfDestructTrigger expands CollisionTrigger;
+class UpsSelfDestructTrigger expands CNNSimpleTrigger;
 var () name PawnTag;
 
 function ActivatedON()
