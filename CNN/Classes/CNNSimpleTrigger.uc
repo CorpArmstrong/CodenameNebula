@@ -78,7 +78,6 @@ function PostBeginPlay()
 
 function DebugInfo ( string message )
 {
-    local DeusExPlayer player;
     local String mess;
 
     if (!bShowDebugInfo) return;
@@ -94,15 +93,11 @@ function DebugInfo ( string message )
 
     mess = mess$":" @ message;
 
-
-    player = DeusExPlayer(GetPlayerPawn());
-
-	if ( player != None )
-	    player.clientMessage( mess );
+	GameLog(mess);
 }
 
 
-function GameLog_ ( string message )
+function GameLog ( string message )
 {
     local DeusExPlayer player;
 
