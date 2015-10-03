@@ -23,9 +23,9 @@ defaultproperties
 
     SkillName="French"
 
-    Description="Practical knowledge of human physiology can be applied by an agent in the field allowing more efficient use of medkits.|n|nUNTRAINED: An agent can use medkits.|n|nTRAINED: An agent can heal slightly more damage and reduce the period of toxic poisoning.|n|nADVANCED: An agent can heal moderately more damage and further reduce the period of toxic poisoning.|n|nMASTER: An agent can perform a heart bypass with household materials."
+    Description="Earn trust of the French by speaking in their mother tong.|n|nUNTRAINED: An agent cannot speak French.|n|nTRAINED: Elementary French, survival level.|n|nADVANCED: Intermediate linguistic level, you can communicate with the French to convince them, especially patriots who are rather annoyed by non-Francophone tourists.|n|nMASTER: Vous pouvez liser ce text et les autres textes dans le monde."
 
-    SkillIcon=Texture'DeusExUI.UserInterface.SkillIconMedicine'
+    SkillIcon=Texture'ApocalypseInside.SkillIcons.skilliconFrench'
 
     cost(0)=900
 

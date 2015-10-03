@@ -66,17 +66,18 @@ defaultproperties
      SelectSound=Sound'DeusExSounds.Weapons.PlasmaRifleReload'
      InventoryGroup=3
      ItemName="Coil Gun"
-     PlayerViewOffset=(X=24.000000,Y=-18.000000,Z=-10.000000)
-     PlayerViewMesh=LodMesh'DeusExItems.PlasmaRifle'
-     PickupViewMesh=LodMesh'DeusExItems.PlasmaRiflePickup'
-     ThirdPersonMesh=LodMesh'DeusExItems.PlasmaRifle3rd'
-     Icon=Texture'DeusExUI.Icons.BeltIconHideAGun'
-     largeIcon=Texture'DeusExUI.Icons.LargeIconHideAGun'
+     PlayerViewOffset=(X=11.00,Y=-4.00,Z=-13.00)
+    PlayerViewMesh=LodMesh'DeusExItems.Shotgun'
+    PickupViewMesh=LodMesh'DeusExItems.ShotgunPickup'
+    ThirdPersonMesh=LodMesh'DeusExItems.Shotgun3rd'
+     Icon=Texture'DeusExUI.Icons.BeltIconShotgun'
+     largeIcon=Texture'DeusExUI.Icons.BeltIconShotgun'
      largeIconWidth=47
      largeIconHeight=37
      Description="A Coil Gin utilizes electromagnetic coils to propel a metallic projectile. The principle is the same as you eject a dvd from an optical drive, but the coil gun uses much more powerful capacitors. Due to long recharge time of the capacitors this weapon can't fire very fast, however it is silent, long-distance and easy to use to injure your opponents in a non-lethal manner."
      beltDescription="COIL"
-     Mesh=LodMesh'DeusExItems.PlasmaRiflePickup'
+     Mesh=LodMesh'DeusExItems.ShotgunPickup'
      CollisionRadius=8.000000
      CollisionHeight=0.800000
+	 bHasMuzzleFlash=False
 }
