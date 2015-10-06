@@ -3,6 +3,8 @@
 //-----------------------------------------------------------
 class CNNSimpleTrigger expands Triggers;
 
+#exec Texture Import File=Textures\S_CNNTrig.pcx Name=S_CNNTrig Mips=Off Flags=2
+
 var (Trigger) bool bShowDebugInfo;
 var (DebugInfo) bool bShowTime;
 var (DebugInfo) bool bShowName;
@@ -36,6 +38,16 @@ var float NextCheckAfter;
 
 var bool bObjectInside;
 
+//var (Events) name Event;
+var (Events) name EventActOFF;
+//var (Events) name EventTouchIN;         // TODO
+//var (Events) name EventTouchOUT;        // TODO
+//var (Events) name EventTrigger;         // TODO
+//var (Events) name EventTriggerUn;       // TODO
+
+var (Events) bool UntrigWhenActOFF;
+//var (Events) bool UntrigWhenTouchOUT;  // TODO
+//var (Events) bool UntrigWhenTriggerUn; // TODO
 
 function PostBeginPlay()
 {
@@ -218,23 +230,29 @@ function Tick( float fDT )
 
 function TouchIN() // analog Touch
 {
+	DebugInfo("TouchIN()");
 	ActivatedON();
 }
 
+
 function TouchOUT() // analog UnTouch
 {
+	DebugInfo("TouchOUT()");
 	ActivatedOFF();
 }
 
 
 function Trigger( Actor Other, Pawn EventInstigator )
 {
+	DebugInfo("Trigger()");
 	ActivatedON();
 	super.Trigger( Other, EventInstigator );
 }
 
+
 function UnTrigger( Actor Other, Pawn EventInstigator )
 {
+	DebugInfo("UnTrigger()");
 	ActivatedOFF();
 	super.UnTrigger( Other, EventInstigator );
 }
@@ -242,12 +260,36 @@ function UnTrigger( Actor Other, Pawn EventInstigator )
 
 function ActivatedON() // when trigger become activated
 {
-	DebugInfo("ActivatedON()");
+local Actor A;
+
+	// [...] <- your actions
+
+	// or super.ActivatedON()
+
+	// you can use activating somethig
+	if( Event != '' )
+		foreach AllActors( class 'Actor', A, Event )
+			A.Trigger( self, self.Instigator );
 }
+
 
 function ActivatedOFF() // when trigger is deactivated
 {
-	DebugInfo("ActivatedOFF()");
+local Actor A;
+
+	// [...] <- your actions
+
+	// or super.ActivatedOFF()
+
+	// you can UnTrig your general event - when activating is OFF
+	if( Event != '' && UntrigWhenActOFF )
+		foreach AllActors( class 'Actor', A, Event )
+			A.UnTrigger( self, self.Instigator );
+
+	// and you can use this event for activating somethig
+	if( EventActOFF != '' )
+		foreach AllActors( class 'Actor', A, Event )
+			A.Trigger( self, self.Instigator );
 }
 
 
@@ -261,4 +303,6 @@ DefaultProperties
 	TouchProximityType=TPT_TouchByTag;
 	CheckCollisionEvery=CC_dot1sec;
 	NextCheckAfter=0;
+
+	Texture=Texture'CNN.S_CNNTrig';
 }

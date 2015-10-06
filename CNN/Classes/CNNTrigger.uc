@@ -12,5 +12,5 @@ function MsgBox ( string message )
 
 DefaultProperties
 {
-
+	Texture=Texture'CNN.S_CNNTrig';
 }

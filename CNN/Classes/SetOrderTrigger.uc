@@ -14,8 +14,6 @@ function ActivatedON()
 {
 local ScriptedPawn A;
 
-	super.ActivatedON();
-
 	foreach  AllActors(class'ScriptedPawn', A)
 	{
 		if ( A.Tag == PawnTag )
@@ -24,6 +22,8 @@ local ScriptedPawn A;
 			DebugInfo("order+");
 		}
 	}
+
+	super.ActivatedON();
 }
 
 DefaultProperties
