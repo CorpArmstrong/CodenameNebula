@@ -244,4 +244,6 @@ DefaultProperties
     bInvincible=true;
     bCollideActors=true;
     bHidden=true;
+
+	InitialInventory(0)=(Inventory=Class'CNN.CNNWeaponUPSMelee')
 }
