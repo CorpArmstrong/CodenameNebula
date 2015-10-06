@@ -24,7 +24,7 @@ defaultproperties
 
     Description="Learn how to pilot an aircraft in order to be independent from pilots-for-hire.|n|nUNTRAINED: An agent cannot pilot aircrafts.|n|nTRAINED: An agent can pilot a Cessna but will likely crash anything else.|n|nADVANCED: An agent can pilot a helicopter.|n|nMASTER: An agent knows how to start a launch sequence of a space shuttle all by him/herself."
 
-    SkillIcon=Texture'DeusExUI.UserInterface.SkillIconWeaponHeavy'
+    SkillIcon=Texture'ApocalypseInside.SkillIcons.skilliconPiloting'
 
     cost(0)=900
 

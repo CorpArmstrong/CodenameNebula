@@ -13,6 +13,8 @@ class Textures expands TantalusDenton;
 #exec TEXTURE IMPORT FILE=Textures\TantalusMenu3.pcx NAME=TantalusMenu3 GROUP=UI MIPS=Off
 #exec TEXTURE IMPORT FILE=Textures\TantalusMenu4.pcx NAME=TantalusMenu4 GROUP=UI MIPS=Off
 #exec TEXTURE IMPORT FILE=Textures\TantalusMenu5.pcx NAME=TantalusMenu5 GROUP=UI MIPS=Off
+#exec TEXTURE IMPORT FILE=Textures\skilliconFrench.pcx NAME=skilliconFrench GROUP=SkillIcons MIPS=Off
+#exec TEXTURE IMPORT FILE=Textures\skilliconPiloting.pcx NAME=skilliconPiloting GROUP=SkillIcons MIPS=Off
 
 defaultproperties
 {

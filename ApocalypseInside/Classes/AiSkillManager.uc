@@ -7,15 +7,15 @@ class AiSkillManager extends SkillManager;
 
 defaultproperties
 {
-    skillClasses(0)=Class'AiSkillPiloting'//was Heavy
+    skillClasses(0)=Class'SkillWeaponPistol'
 	
-	skillClasses(1)=Class'SkillWeaponPistol'
+	skillClasses(1)=Class'SkillWeaponLowTech'
+	
+	skillClasses(2)=Class'AiSkillPiloting'//was Heavy
 
-    skillClasses(2)=Class'AiSkillChinese'//wasRifle
+    skillClasses(3)=Class'AiSkillChinese'//wasRifle
 
-    skillClasses(3)=Class'SkillWeaponLowTech'
-
-    skillClasses(4)=Class'SkillDemolition'
+    skillClasses(4)=Class'AiSkillFrench' //was Demolition
 
     skillClasses(5)=Class'SkillEnviro'
 
