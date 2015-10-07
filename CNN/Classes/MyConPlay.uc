@@ -35,7 +35,6 @@ Begin:
 	GotoState('PlayEvent');
 }
 
-DefaultProperties
+defaultproperties
 {
-
 }

@@ -14,10 +14,9 @@ class gratewindow expands Decoration;
 
 defaultproperties
 {
-	bStatic=False
-	Class=CNN.gratewindow
-	Mesh=CNN.gratewindow
-	DrawType=DT_Mesh
-	CollisionHeight=+00077.015625
-	CollisionRadius=+00126.703125
+     bStatic=False
+     DrawType=DT_Mesh
+     Mesh=LodMesh'CNN.GrateWindow'
+     CollisionRadius=126.703125
+     CollisionHeight=77.015625
 }

@@ -47,8 +47,7 @@ function TurnOff()
     bExpect = false;
 }
 
-DefaultProperties
+defaultproperties
 {
-    CheckDelay=0.2
-    bExpect=False
+     CheckDelay=0.200000
 }

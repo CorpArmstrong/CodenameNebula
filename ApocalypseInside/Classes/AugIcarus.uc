@@ -6,12 +6,10 @@ class AugIcarus extends Augmentation;
 var float mpAugValue;
 var float mpEnergyDrain;
 
-
-
 state Active
 {
 Begin:
-	Player.SetPhysics(PHYS_Spider);
+	//Player.SetPhysics(PHYS_Spider);    // ?
 	//IAmWarren();
 	//Super.Fly();
 	//displayMode = DM_ThirdPerson;
@@ -19,7 +17,8 @@ Begin:
 
 function Deactivate()
 {
-		Player.SetPhysics(PHYS_Falling);
+		super.Deactivate();
+		//Player.SetPhysics(PHYS_Falling); // ??
 }
 
 simulated function PreBeginPlay()
@@ -36,6 +35,7 @@ simulated function PreBeginPlay()
 
 defaultproperties
 {
+	 mpAugValue=2.000000
      mpEnergyDrain=20.000000
      EnergyRate=0.000000
      Icon=Texture'DeusExUI.UserInterface.AugIconRunSilent'
@@ -46,6 +46,7 @@ defaultproperties
      LevelValues(0)=0.750000
      LevelValues(1)=0.500000
      LevelValues(2)=0.250000
+     LevelValues(3)=2.000000
      AugmentationLocation=LOC_Leg
      MPConflictSlot=8
 }
