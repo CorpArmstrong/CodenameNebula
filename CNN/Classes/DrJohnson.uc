@@ -5,15 +5,14 @@ class DrJohnson expands CNNCivilian;
 
 defaultproperties
 {
+     CarcassType=Class'DeusEx.GarySavageCarcass'
      Orders=Standing
-     bKeepWeaponDrawn=True
-     InitialInventory(0)=(Inventory=Class'DeusEx.WeaponCrowbar',Count=1)
-
-	 CarcassType=Class'DeusEx.GarySavageCarcass'
      WalkingSpeed=0.213333
+     bKeepWeaponDrawn=True
      bImportant=True
      bInvincible=True
      BaseAssHeight=-23.000000
+     InitialInventory(0)=(Inventory=Class'DeusEx.WeaponCrowbar')
      GroundSpeed=180.000000
      Mesh=LodMesh'DeusExCharacters.GM_Trench_F'
      MultiSkins(0)=Texture'DeusExCharacters.Skins.GarySavageTex0'

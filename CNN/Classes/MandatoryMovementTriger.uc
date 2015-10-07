@@ -88,8 +88,6 @@ function Touch(Actor Other)
 	}
 }
 
-
-DefaultProperties
+defaultproperties
 {
-
 }

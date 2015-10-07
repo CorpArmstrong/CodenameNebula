@@ -94,43 +94,12 @@ function CalcTrace(float deltaTime)
 	}
 }
 
-
-
-
-
-
-
-
-DefaultProperties
+defaultproperties
 {
- accumTime=0;
-
-
-
- changePosTime=1.0;
- beamTexture=FireTexture'Effects.Electricity.Nano_SFX'
- bEmitLight=True
- bFlicker=false         // delay
- bInitiallyOn=True
- DamageAmount=1
- damageTime=0.5
- flickerTime=0.8
-// randomAngle=65536.0
- randomAngle=12000.0
-// randomAngle=1000.0
- //bRandomBeam=false
- //bDirectional=false
-// Physics=PHYS_Rotating
-/*
-     bRandomBeam=True
-     bDirectional=True
-     DrawType=DT_Sprite
-     Texture=Texture'Engine.S_Inventory'
-     SoundRadius=64
-     AmbientSound=Sound'Ambient.Ambient.Electricity4'
-     LightBrightness=128
-     LightHue=150
-     LightSaturation=32
-     LightRadius=6
-*/
+     changePosTime=1.000000
+     randomAngle=12000.000000
+     DamageAmount=1
+     damageTime=0.500000
+     bFlicker=False
+     flickerTime=0.800000
 }

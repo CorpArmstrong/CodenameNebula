@@ -10,7 +10,7 @@ function MsgBox ( string message )
     player.clientMessage( message );
 }
 
-DefaultProperties
+defaultproperties
 {
-	Texture=Texture'CNN.S_CNNTrig';
+     Texture=Texture'CNN.S_CNNTrig'
 }

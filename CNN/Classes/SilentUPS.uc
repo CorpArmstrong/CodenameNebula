@@ -6,6 +6,7 @@ class SilentUPS expands CNNUPS;
 function PostBeginPlay()
 {
 	local int i;
+	local int a;
 
 	super.PostBeginPlay();
 
@@ -14,7 +15,6 @@ function PostBeginPlay()
 
 }
 
-DefaultProperties
+defaultproperties
 {
-
 }

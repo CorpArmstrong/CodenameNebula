@@ -17,7 +17,6 @@ local CNNUPS p;
 	super.ActivatedON();
 }
 
-DefaultProperties
+defaultproperties
 {
-
 }

@@ -3,7 +3,6 @@
 //-----------------------------------------------------------
 class UnknownParanormalShitCarcass expands DobermanCarcass;
 
-DefaultProperties
+defaultproperties
 {
-
 }

@@ -125,5 +125,5 @@ function Timer() {
 
 defaultproperties
 {
-CamTag='SCam1';
+     CamTag='
 }

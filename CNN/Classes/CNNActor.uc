@@ -3,7 +3,6 @@
 //-----------------------------------------------------------
 class CNNActor expands Actor;
 
-DefaultProperties
+defaultproperties
 {
-
 }

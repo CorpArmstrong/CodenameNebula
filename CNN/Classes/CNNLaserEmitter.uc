@@ -98,8 +98,8 @@ function BeginPlay()
 	proxy.Skin = SkinTex;
 }
 
-DefaultProperties
+defaultproperties
 {
-laserSpotTex=Texture'DeusExDeco.Skins.AlarmLightTex8';
-SkinTex=Texture'DeusExDeco.Skins.Button1Tex24';
+     laserSpotTex=Texture'DeusExDeco.Skins.AlarmLightTex8'
+     SkinTex=Texture'DeusExDeco.Skins.Button1Tex24'
 }

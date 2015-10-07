@@ -290,13 +290,12 @@ function Destroyed()
 
 defaultproperties
 {
-     decorationDamage=1;
-     pawnDamage=1024.0
-     bConstantDamage=True
-     damageInterval=0.1
-     DamageType=Burned
-
      bIsOn=True
+     decorationDamage=1.000000
+     pawnDamage=1024.000000
+     bConstantDamage=True
+     damageInterval=0.100000
+     DamageType=Burned
      confusionDuration=10.000000
      HitPoints=50
      minDamageThreshold=50

@@ -228,22 +228,12 @@ function Destroyed()
 	Super.Destroyed();
 }
 
-DefaultProperties
+defaultproperties
 {
-     HitSound1=None
-     HitSound2=None
-     Die=None
-
-	CarcassType=None
-
-	CollisionHeight=50;
-
-	bPlayDying=false;
-    DrawType=DT_Sprite;
-    //DrawType=DT_Mesh;
-    bInvincible=true;
-    bCollideActors=true;
-    bHidden=true;
-
-	InitialInventory(0)=(Inventory=Class'CNN.CNNWeaponUPSMelee')
+     bPlayDying=False
+     CarcassType=None
+     bInvincible=True
+     bHidden=True
+     DrawType=DT_Sprite
+     CollisionHeight=50.000000
 }

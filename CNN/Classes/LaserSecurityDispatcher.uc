@@ -63,14 +63,11 @@ function ToggleOff()
     DeusExPlayer(GetPlayerPawn()).ClientMessage("function ToggleOff()");
 }
 
-
-DefaultProperties
+defaultproperties
 {
-    bLazersMoveInsideNow=false;
-	bIsOn=False;
-    delay=20
-    targetTag(0)="LaserEmittersMoverFR"
-    targetTag(1)="LaserEmittersMoverFL"
-    targetTag(2)="LaserEmittersMoverBR"
-    targetTag(3)="LaserEmittersMoverBL"
+     Delay=20.000000
+     targetTag(0)=LaserEmittersMoverFR
+     targetTag(1)=LaserEmittersMoverFL
+     targetTag(2)=LaserEmittersMoverBR
+     targetTag(3)=LaserEmittersMoverBL
 }

@@ -26,7 +26,6 @@ local ScriptedPawn A;
 	super.ActivatedON();
 }
 
-DefaultProperties
+defaultproperties
 {
-
 }

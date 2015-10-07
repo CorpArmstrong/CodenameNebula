@@ -292,17 +292,9 @@ local Actor A;
 			A.Trigger( self, self.Instigator );
 }
 
-
-DefaultProperties
+defaultproperties
 {
-	bShowDebugInfo=false;
-	bShowTime=true;
-	bShowName=false;
-	bShowTag=false;
-
-	TouchProximityType=TPT_TouchByTag;
-	CheckCollisionEvery=CC_dot1sec;
-	NextCheckAfter=0;
-
-	Texture=Texture'CNN.S_CNNTrig';
+     bShowTime=True
+     TouchProximityType=TPT_TouchByTag
+     Texture=Texture'CNN.S_CNNTrig'
 }
