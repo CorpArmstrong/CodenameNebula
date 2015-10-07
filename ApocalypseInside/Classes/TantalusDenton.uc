@@ -208,6 +208,7 @@ function Bool StartDataLinkTransmission(
 
 		if ( dataLinkPlay == None )
 		{
+			
 			datalinkPlay = Spawn(class'AiDataLinkPlay');
 			bDataLinkPlaySpawned = True;
 		}
@@ -267,6 +268,7 @@ function InitializeSubSystems()
 	// install the augmentation system if not found
 	if (AugmentationSystem == None)
 	{
+		AugmentationSystem.Destroy();
 		AugmentationSystem = Spawn(class'AiAugmentationManager', Self);
 		AugmentationSystem.CreateAugmentations(Self);
 		AugmentationSystem.AddDefaultAugmentations();        
@@ -390,4 +392,6 @@ defaultproperties
     FamiliarName="Tantalus Denton"
     UnfamiliarName="Tantalus Denton"
     Tag="TantalusTag"
+	Energy=150.00
+    EnergyMax=200.00
 }

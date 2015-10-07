@@ -24,7 +24,7 @@ defaultproperties
      augClasses(5)=Class'DeusEx.AugShield'
      augClasses(6)=Class'DeusEx.AugEnviro'
      augClasses(7)=Class'DeusEx.AugEMP'
-     augClasses(8)=Class'DeusEx.AugCombat'
+     augClasses(8)=Class'DeusEx.Stealth'
      augClasses(9)=Class'DeusEx.AugHealing'
      augClasses(10)=Class'DeusEx.AugStealth'
      augClasses(11)=Class'DeusEx.AugIFF'
@@ -38,7 +38,7 @@ defaultproperties
      augClasses(19)=Class'DeusEx.AugHeartLung'
      augClasses(20)=Class'DeusEx.AugPower'
      augClasses(21)=Class'ApocalypseInside.AugIcarus'
-     defaultAugs(0)=Class'DeusEx.AugLight'
+     defaultAugs(0)=Class'DeusEx.AugHeartLung'
      defaultAugs(1)=Class'DeusEx.AugIFF'
      defaultAugs(2)=Class'DeusEx.AugDatalink'
      AugLocationFull="You can't add any more augmentations to that location!"
