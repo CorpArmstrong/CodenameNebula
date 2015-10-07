@@ -9,7 +9,7 @@ var float mpEnergyDrain;
 state Active
 {
 Begin:
-	//Player.SetPhysics(PHYS_Spider);    // ?
+	Player.SetPhysics(PHYS_Spider);
 	//IAmWarren();
 	//Super.Fly();
 	//displayMode = DM_ThirdPerson;
@@ -18,7 +18,7 @@ Begin:
 function Deactivate()
 {
 		super.Deactivate();
-		//Player.SetPhysics(PHYS_Falling); // ??
+		Player.SetPhysics(PHYS_Falling);
 }
 
 simulated function PreBeginPlay()

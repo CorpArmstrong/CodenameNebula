@@ -4,6 +4,7 @@
 class TantalusDenton extends JCDentonMale;
 
 var travel BioEnergyController bioc;
+//var travel AiAugmentationManager AugmentationSystem;
 
 //var AiDataLinkPlay aidataLinkPlay;		
 
@@ -257,6 +258,10 @@ function Bool StartDataLinkTransmission(
 
 function InitializeSubSystems()
 {
+	//Super.InitializeSubSystems();
+	AugmentationSystem.Destroy();
+	SkillSystem.Destroy();
+	
 	// Spawn the BarkManager
 	if (BarkManager == None)
 		BarkManager = Spawn(class'BarkManager', Self);
@@ -268,7 +273,6 @@ function InitializeSubSystems()
 	// install the augmentation system if not found
 	if (AugmentationSystem == None)
 	{
-		AugmentationSystem.Destroy();
 		AugmentationSystem = Spawn(class'AiAugmentationManager', Self);
 		AugmentationSystem.CreateAugmentations(Self);
 		AugmentationSystem.AddDefaultAugmentations();        

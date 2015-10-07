@@ -4914,3 +4914,7 @@ Music/Ogg/Mystery.ogg.sfl
 Music/Ogg/Humankind_Battle.ogg.sfl
 System/DeusEx.exe.lnk
 *.wcl
+System/AiMultiplayer.u
+AiMultiplayer/
+AiMultiplayer.7z
+Maps/DXMP_AiParis.dx
