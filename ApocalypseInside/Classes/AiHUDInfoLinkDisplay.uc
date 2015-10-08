@@ -11,19 +11,19 @@ class AiHUDInfoLinkDisplay expands HUDInfoLinkDisplay
 // ----------------------------------------------------------------------
 // SetSpeaker()
 //
-// Sets the speaker's name in the window and also the portrait 
+// Sets the speaker's name in the window and also the portrait
 // displayed in the window
 // ----------------------------------------------------------------------
 
 function SetSpeaker(String bindName, String displayName)
 {
 	local String portraitStringName;
-	
+
 	winName.SetText(displayName);
 
 	// Default portrait name based on bind naem
 
-	portraitStringName = "AiInfoPortraits." $ Left(bindName, 16);
+	portraitStringName = "AiInfoPortraits." $ Left(bindName, 18);//16
 
 
 
