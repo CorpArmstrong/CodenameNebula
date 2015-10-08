@@ -23,7 +23,7 @@ function SetSpeaker(String bindName, String displayName)
 
 	// Default portrait name based on bind naem
 
-	portraitStringName = "AiInfoPortraits." $ Left(bindName, 18);//16
+	portraitStringName = "AiInfoPortraits." $ Left(bindName, 19);//16
 
 
 

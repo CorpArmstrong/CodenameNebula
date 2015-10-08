@@ -5,31 +5,32 @@ class AiDataLinkPlay expands DataLinkPlay
 	transient;
 
 // Array of Bind -> Display names. Yes, horrible hack. Oh well.
-var S_InfoLinkNames infoLinkNames[18]; //17
+var S_InfoLinkNames infoLinkNames[19]; //17
 
 // ----------------------------------------------------------------------
 // GetDisplayName()
 //this is just for Janus. Hopefully this is temporary
 // ----------------------------------------------------------------------
-			   /*
 function String GetDisplayName(String bindName)
 {
 	local int nameIndex;
 	local string displayName;
 
-	displayName = "";
+	//displayName = "";
 
 	for(nameIndex=0; nameIndex<arrayCount(infoLinkNames); nameIndex++)
 	{
 		if (infoLinkNames[nameIndex].BindName == bindName)
 		{
 			displayName = infoLinkNames[nameIndex].DisplayName;
+			DeusExPlayer(GetPlayerPawn()).ClientMessage("Infolink index: " $
+				nameIndex $ ", Person: " $ displayName);
 			break;
 		}
 	}
 	return displayName;
 }
-		   */
+
 defaultproperties
 {
      startSound=Sound'DeusExSounds.UserInterface.DataLinkStart'
