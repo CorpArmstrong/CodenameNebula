@@ -3,9 +3,7 @@
 //-----------------------------------------------------------
 class CNNDoorSignalLight expands CageLight; // make CNNActor descendant
 
-#exec Texture Import File=Textures\NotCageLightW.pcx Name=NCL_White Mips=On Flags=2
-#exec Texture Import File=Textures\NotCageLightR.pcx Name=NCL_Red Mips=On Flags=2
-#exec Texture Import File=Textures\NotCageLightG.pcx Name=NCL_Green Mips=On Flags=2
+
 
 function BeginPlay()
 {
@@ -15,22 +13,27 @@ function BeginPlay()
 function Trigger(Actor Other, Pawn Instigator)
 {
 	Skin=Texture'NCL_Green';
+	LightType=LT_Steady;
 	//Super.Trigger(Other, Instigator);
 }
 
 function UnTrigger(Actor Other, Pawn Instigator)
 {
 	Skin=Texture'NCL_Red';
+	LightType=LT_None;
 	//Super.UnTrigger(Other, Instigator);
 }
 
 DefaultProperties
 {
-	Skin=Texture'NCL_Red';
+	Mesh=LodMesh'CNN.CLight'
+	Skin=Texture'CNN.NCL_Red';
 	ScaleGlow=2.0;
 	bUnlit=True;
-	LightType=LT_None;
 	DrawScale=0.5;
+	LightType=LT_None;
+	LightHue=81;
+	LightSaturation=64;
 
 	bCollideActors=false;
 	bCollideWorld=false;
