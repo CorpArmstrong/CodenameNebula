@@ -1,7 +1,7 @@
 //-----------------------------------------------------------
 //
 //-----------------------------------------------------------
-class AllModels expands Object;
+class AllCnnResources expands Object;
 
 //
 // CageLight
@@ -24,6 +24,11 @@ class AllModels expands Object;
 //#exec TEXTURE IMPORT NAME=CageLightTex5 FILE=Models\CageLight4.pcx GROUP="Skins" FLAGS=2
 //#exec TEXTURE IMPORT NAME=CageLightTex6 FILE=Models\CageLight5.pcx GROUP="Skins" FLAGS=2
 #exec MESHMAP SETTEXTURE MESHMAP=CLight NUM=0 TEXTURE=NCL_White
+
+//
+// CNN Triggers
+//
+#exec Texture Import File=Textures\S_CNNTrig.pcx Name=S_CNNTrig Mips=Off Flags=2
 
 DefaultProperties
 {

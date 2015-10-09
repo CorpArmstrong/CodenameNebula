@@ -3,8 +3,8 @@
 //-----------------------------------------------------------
 class CNNSimpleTrigger expands Triggers;
 
-#exec Texture Import File=Textures\S_CNNTrig.pcx Name=S_CNNTrig Mips=Off Flags=2
-
+var (Trigger) bool bEnabled;
+var (Trigger) bool bOnlyOnce;
 var (Trigger) bool bShowDebugInfo;
 var (DebugInfo) bool bShowTime;
 var (DebugInfo) bool bShowName;
@@ -223,13 +223,23 @@ function Tick( float fDT )
 {
 	super.tick(fDT);
 
-	if ( CheckCollisionEvery != CCE_NeverCheck )
+	if ( CheckCollisionEvery != CCE_NeverCheck && bEnabled )
 		TouchProcessing(fDT);
+	else
+		// Maybe will be better without this line.
+		// When trigger will be ENABLED,
+		// by special trigger, bObjectInside will be processed
+		// specialy for that "wake up".
+		// But now this functionality is not used
+		// and that special trigger is not written.
+		bObjectInside=false;
 }
 
 
 function TouchIN() // analog Touch
 {
+	if(!bEnabled)
+		return;
 	DebugInfo("TouchIN()");
 	ActivatedON();
 }
@@ -237,6 +247,8 @@ function TouchIN() // analog Touch
 
 function TouchOUT() // analog UnTouch
 {
+	if(!bEnabled)
+		return;
 	DebugInfo("TouchOUT()");
 	ActivatedOFF();
 }
@@ -244,6 +256,8 @@ function TouchOUT() // analog UnTouch
 
 function Trigger( Actor Other, Pawn EventInstigator )
 {
+	if(!bEnabled)
+		return;
 	DebugInfo("Trigger()");
 	ActivatedON();
 	super.Trigger( Other, EventInstigator );
@@ -252,6 +266,8 @@ function Trigger( Actor Other, Pawn EventInstigator )
 
 function UnTrigger( Actor Other, Pawn EventInstigator )
 {
+	if(!bEnabled)
+		return;
 	DebugInfo("UnTrigger()");
 	ActivatedOFF();
 	super.UnTrigger( Other, EventInstigator );
@@ -264,12 +280,19 @@ local Actor A;
 
 	// [...] <- your actions
 
+
+
 	// or super.ActivatedON()
+
+	// InitialyActive - analog
+	if (bOnlyOnce)
+		bEnabled = false;
+
 
 	// you can use activating somethig
 	if( Event != '' )
 		foreach AllActors( class 'Actor', A, Event )
-			A.Trigger( self, self.Instigator );
+			A.Trigger( self, GetPlayerPawn() ); // without PlayerPawn some functionality maybe will lost
 }
 
 
@@ -284,17 +307,19 @@ local Actor A;
 	// you can UnTrig your general event - when activating is OFF
 	if( Event != '' && UntrigWhenActOFF )
 		foreach AllActors( class 'Actor', A, Event )
-			A.UnTrigger( self, self.Instigator );
+			A.UnTrigger( self, GetPlayerPawn() ); // without PlayerPawn some functionality maybe will lost
 
 	// and you can use this event for activating somethig
 	if( EventActOFF != '' )
 		foreach AllActors( class 'Actor', A, Event )
-			A.Trigger( self, self.Instigator );
+			A.Trigger( self, GetPlayerPawn() ); // without PlayerPawn some functionality maybe will lost
 }
 
 defaultproperties
 {
-     bShowTime=True
-     TouchProximityType=TPT_TouchByTag
-     Texture=Texture'CNN.S_CNNTrig'
+	bEnabled=true; // InitialyActive - analog
+	bOnlyOnce=false;
+	bShowTime=True;
+	TouchProximityType=TPT_TouchByTag;
+	Texture=Texture'CNN.S_CNNTrig';
 }
