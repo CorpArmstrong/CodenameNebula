@@ -4,6 +4,7 @@ class ImportConversations expands Object
 abstract;
 
 // Import conversations
+#exec CONVERSATION IMPORT FILE="Conversations\Chapter02.Con"
 #exec CONVERSATION IMPORT FILE="Conversations\Chapter03.Con"
 #exec CONVERSATION IMPORT FILE="Conversations\Chapter04.Con"
 #exec CONVERSATION IMPORT FILE="Conversations\Chapter06.Con"

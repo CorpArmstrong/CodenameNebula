@@ -6,7 +6,7 @@ class TantalusDenton extends JCDentonMale;
 var travel BioEnergyController bioc;
 //var travel AiAugmentationManager AugmentationSystem;
 
-//var AiDataLinkPlay aidataLinkPlay;		
+//var AiDataLinkPlay aidataLinkPlay;
 
 //var String playerBias;
 
@@ -25,9 +25,9 @@ event TravelPostAccept() {
 	local flagbase flags;
 	Super.TravelPostAccept();
 
-	
+
 	flags = flagbase;
-	
+
    	switch(PlayerSkin)
 	{
 		case 0:
@@ -166,22 +166,22 @@ function UpdatePlayerSkin()
 
 //invokes new hud initially for infolinks. found how to do it on http://www.offtopicproductions.com/tacks/CustomInfolinkPortraits/GameReaction%20Forums%20-%20Custom%20InfoLink%20Portraits.htm
 
-function Possess() 
-{ 
+function Possess()
+{
 
-local DeusExRootWindow root; 
+local DeusExRootWindow root;
 
-Super.Possess(); 
+Super.Possess();
 
-root = DeusExRootWindow(rootWindow); 
+root = DeusExRootWindow(rootWindow);
 
-root.hud.Destroy(); 
+root.hud.Destroy();
 root.hud = DeusexHUD(root.NewChild(Class'ApocalypseInsideHUD'));
 
-root.hud.UpdateSettings(Self); 
-root.hud.SetWindowAlignments(HALIGN_Full,VALIGN_Full, 0, 0); 
+root.hud.UpdateSettings(Self);
+root.hud.SetWindowAlignments(HALIGN_Full,VALIGN_Full, 0, 0);
 
-} 
+}
 
 // ----------------------------------------------------------------------
 // StartDataLinkTransmission()
@@ -190,7 +190,7 @@ root.hud.SetWindowAlignments(HALIGN_Full,VALIGN_Full, 0, 0);
 // ----------------------------------------------------------------------
 
 function Bool StartDataLinkTransmission(
-	String datalinkName, 
+	String datalinkName,
 	Optional DataLinkTrigger datalinkTrigger)
 {
 	local Conversation activeDataLink;
@@ -204,17 +204,17 @@ function Bool StartDataLinkTransmission(
 
 	if ( activeDataLink != None )
 	{
-		// Search to see if there's an active DataLinkPlay object 
+		// Search to see if there's an active DataLinkPlay object
 		// before creating one
 
 		if ( dataLinkPlay == None )
 		{
-			
+
 			datalinkPlay = Spawn(class'AiDataLinkPlay');
 			bDataLinkPlaySpawned = True;
 		}
 
-		// Call SetConversation(), which returns 
+		// Call SetConversation(), which returns
 		if (datalinkPlay.SetConversation(activeDataLink))
 		{
 			datalinkPlay.SetTrigger(datalinkTrigger);
@@ -231,7 +231,7 @@ function Bool StartDataLinkTransmission(
 					datalinkPlay.Destroy();
 					datalinkPlay = None;
 				}
-				
+
 				return False;
 			}
 		}
@@ -259,9 +259,9 @@ function Bool StartDataLinkTransmission(
 function InitializeSubSystems()
 {
 	//Super.InitializeSubSystems();
-	AugmentationSystem.Destroy();
-	SkillSystem.Destroy();
-	
+	//AugmentationSystem.Destroy();
+	//SkillSystem.Destroy();
+
 	// Spawn the BarkManager
 	if (BarkManager == None)
 		BarkManager = Spawn(class'BarkManager', Self);
@@ -275,8 +275,8 @@ function InitializeSubSystems()
 	{
 		AugmentationSystem = Spawn(class'AiAugmentationManager', Self);
 		AugmentationSystem.CreateAugmentations(Self);
-		AugmentationSystem.AddDefaultAugmentations();        
-        AugmentationSystem.SetOwner(Self);       
+		AugmentationSystem.AddDefaultAugmentations();
+        AugmentationSystem.SetOwner(Self);
 	}
 	else
 	{
