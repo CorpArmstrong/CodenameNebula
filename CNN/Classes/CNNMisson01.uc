@@ -19,6 +19,13 @@ function FirstFrame() {
 
 }
 
+function InitStateMachine() {
+
+    super.InitStateMachine();
+    FirstFrame();
+
+}
+
 function InitLaserSystem()
 {
     laserDipatcher = Spawn(class'LaserSecurityDispatcher');
