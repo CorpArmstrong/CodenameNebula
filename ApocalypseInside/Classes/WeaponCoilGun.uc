@@ -64,7 +64,7 @@ defaultproperties
      AltFireSound=Sound'DeusExSounds.Weapons.ProdReloadEnd'
      CockingSound=Sound'DeusExSounds.Weapons.ProdSelect'
      SelectSound=Sound'DeusExSounds.Weapons.PlasmaRifleReload'
-     InventoryGroup=3
+     InventoryGroup=53
      ItemName="Coil Gun"
      PlayerViewOffset=(X=11.00,Y=-4.00,Z=-13.00)
     PlayerViewMesh=LodMesh'DeusExItems.Shotgun'

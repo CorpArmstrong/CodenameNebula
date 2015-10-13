@@ -62,7 +62,7 @@ defaultproperties
      AltFireSound=Sound'DeusExSounds.Weapons.NanoSwordSelect'
      CockingSound=Sound'DeusExSounds.Weapons.NanoSwordSelect'
      SelectSound=Sound'DeusExSounds.Weapons.HideAGunSelect'
-     InventoryGroup=3
+     InventoryGroup=52
      ItemName="Microwave Gun"
      PlayerViewOffset=(X=24.000000,Y=-18.000000,Z=-10.000000)
      PlayerViewMesh=LodMesh'DeusExItems.PlasmaRifle'
