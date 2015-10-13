@@ -88,7 +88,7 @@ defaultproperties
 
     SelectSound=Sound'DeusExSounds.Weapons.PistolSelect'
 
-    InventoryGroup=2
+    InventoryGroup=50
 
     ItemName="Pistol"
 

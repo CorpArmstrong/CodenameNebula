@@ -62,7 +62,7 @@ defaultproperties
      AltFireSound=Sound'DeusExSounds.Weapons.NanoVirusGrenadeSelect'
      CockingSound=Sound'DeusExSounds.Weapons.NanoVirusGrenadeSelect'
      SelectSound=Sound'DeusExSounds.Weapons.HideAGunSelect'
-     InventoryGroup=3
+     InventoryGroup=51
      ItemName="Snowblind EMP Disruptor"
     PlayerViewOffset=(X=21.00,Y=-12.00,Z=-19.00)
     PlayerViewMesh=LodMesh'DeusExItems.MultitoolPOV'
