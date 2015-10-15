@@ -311,7 +311,7 @@ local Actor A;
 
 	// and you can use this event for activating somethig
 	if( EventActOFF != '' )
-		foreach AllActors( class 'Actor', A, Event )
+		foreach AllActors( class 'Actor', A, EventActOFF )
 			A.Trigger( self, GetPlayerPawn() ); // without PlayerPawn some functionality maybe will lost
 }
 
