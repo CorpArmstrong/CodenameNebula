@@ -4,6 +4,18 @@
 class AllCnnResources expands Object;
 
 //
+// GrateWindow.uc
+//
+#forceexec MESH IMPORT MESH=gratewindow ANIVFILE=Models\gratewindow_a.3d DATAFILE=Models\gratewindow_d.3d ZEROTEX=1
+
+#forceexec MESH SEQUENCE MESH=gratewindow      SEQ=All              STARTFRAME=0   NUMFRAMES=1
+#forceexec MESH SEQUENCE MESH=gratewindow      SEQ=Still            STARTFRAME=0   NUMFRAMES=1
+
+#forceexec MESHMAP SCALE MESHMAP=gratewindow X=0.00390625 Y=0.00390625 Z=0.00390625
+#forceexec TEXTURE IMPORT NAME=gratewindowTex0  FILE=Models\gratewindowTex0.pcx GROUP=Skins
+#forceexec MESHMAP SETTEXTURE MESHMAP=gratewindow NUM=0  TEXTURE=gratewindowTex0
+
+//
 // CageLight
 //
 #exec MESH IMPORT MESH=CLight ANIVFILE=Models\CLight_a.3d DATAFILE=Models\CLight_d.3d ZEROTEX=1
@@ -17,12 +29,6 @@ class AllCnnResources expands Object;
 #exec Texture Import Name=NCL_Red   File=Textures\NotCageLightR.pcx GROUP="Skins" Flags=2
 #exec Texture Import Name=NCL_Green File=Textures\NotCageLightG.pcx GROUP="Skins" Flags=2
 
-//#exec TEXTURE IMPORT NAME=CageLightTex1 FILE=Models\CageLight.pcx GROUP="Skins" FLAGS=2
-//#exec TEXTURE IMPORT NAME=CageLightTex2 FILE=Models\CageLight1.pcx GROUP="Skins" FLAGS=2
-//#exec TEXTURE IMPORT NAME=CageLightTex3 FILE=Models\CageLight2.pcx GROUP="Skins" FLAGS=2
-//#exec TEXTURE IMPORT NAME=CageLightTex4 FILE=Models\CageLight3.pcx GROUP="Skins" FLAGS=2
-//#exec TEXTURE IMPORT NAME=CageLightTex5 FILE=Models\CageLight4.pcx GROUP="Skins" FLAGS=2
-//#exec TEXTURE IMPORT NAME=CageLightTex6 FILE=Models\CageLight5.pcx GROUP="Skins" FLAGS=2
 #exec MESHMAP SETTEXTURE MESHMAP=CLight NUM=0 TEXTURE=NCL_White
 
 //
