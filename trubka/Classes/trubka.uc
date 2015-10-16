@@ -9,7 +9,7 @@ class trubka extends Decoration;
 #exec mesh sequence mesh=trubka seq=All startframe=0 numframes=1
 
 #exec meshmap new meshmap=trubka mesh=trubka
-#exec meshmap scale meshmap=trubka x=0.02771 y=0.02771 z=0.05542
+#exec meshmap scale meshmap=trubka x=0.2771 y=0.2771 z=0.5542
 
 defaultproperties
 {
