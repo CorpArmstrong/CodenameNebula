@@ -6,7 +6,7 @@
 // ============================================================================
 
 
-class ScreenMutator extends Mutator;
+class ScreenMutator extends AiMutator;
 
 
 // ============================================================================
@@ -85,11 +85,11 @@ function ModifyPlayer(Pawn PawnPlayer) {
   }
 
 
-  /*
+
 // ============================================================================
 // MutatorTeamMessage
 // ============================================================================
-
+// FIXED: CorpArmstrong
 function bool MutatorTeamMessage(Actor ActorSender, Pawn PawnReceiver, PlayerReplicationInfo Info, coerce string TextMessage, name NameType, optional bool FlagBeep) {
 
   local ScreenClient ThisClient;
@@ -101,7 +101,6 @@ function bool MutatorTeamMessage(Actor ActorSender, Pawn PawnReceiver, PlayerRep
 
   return Super.MutatorTeamMessage(ActorSender, PawnReceiver, Info, TextMessage, NameType, FlagBeep);
   }
-	*/ // FIXME: CorpArmstrong
 
 // ============================================================================
 // PostRender
@@ -161,9 +160,10 @@ simulated function PostRender(canvas Canvas) {
     FlagDisplayCached = false;
     }
 
-	/*
-  if (NextHUDMutator != None)
-    NextHUDMutator.PostRender(Canvas);*/ // FIXME: CorpArmstrong
+
+	if (CNextHUDMutator != None) {
+		CNextHUDMutator.PostRender(Canvas);	// FIXED: CorpArmstrong
+    }
   }
 
 
@@ -288,11 +288,10 @@ simulated function DrawTextCentered(canvas Canvas, out int CoordTopText, coerce 
 
 simulated function DisplayInit() {
 
-/*
-  if (bHUDMutator)
+  if (bHUDMutator)    // FIXED: CorpArmstrong
     return;
 
-  RegisterHUDMutator();*/ //FIXME CorpArmstrong
+  RegisterHUDMutator(); // FIXED: CorpArmstrong
   TimeLast = Level.TimeSeconds;
   }
 
