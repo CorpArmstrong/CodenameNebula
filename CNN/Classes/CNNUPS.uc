@@ -9,7 +9,7 @@ var () float PawnDamageRadius;
 var () float PawnDamage;
 var () name  PawnDamageType;
 
-var () float DecorDestroyRadius; // movers + decorations
+var () float DecorDamageRadius;  // movers + decorations
 var () float DecorDamage;        // for decorations, movers will be blow it up if they breakable
 var () name  DecorDamageType;    // for decorations, movers will be blow it up if they breakable
 
@@ -200,12 +200,15 @@ function Tick(float deltaTime)
 				sPawn.TakeDamage(PawnDamage, self, sPawn.Location, vect(0,0,0), PawnDamageType);
 
 	//damage to decorations
-
+    if ( DecorDamage > 0 )
+    	foreach AllActors(class'DeusExDecoration', decor)
+			if (VSize(decor.Location - self.Location) <= DecorDamageRadius)
+				decor.TakeDamage(DecorDamage, self, decor.Location, vect(0,0,0), DecorDamageType);
 
 	//destroying movers
 	if ( bBlowUp_DxMovers )
 		foreach AllActors(class'DeusExMover', mover)
-			if (VSize(mover.Location - self.Location) <= DecorDestroyRadius)
+			if (VSize(mover.Location - self.Location) <= DecorDamageRadius)
 				if ( mover.bBreakable )
 					//mover.TakeDamage(DamageToDecors, self, mover.Location, vect(0,0,0), 'Exploded');
 					mover.BlowItUp(self);
@@ -278,7 +281,7 @@ defaultproperties
 	PawnDamage=1000
 	PawnDamageType=Exploded
 
-	DecorDestroyRadius=256
+	DecorDamageRadius=256
 	DecorDamage=1000
 	DecorDamageType=Exploded
 	bBlowUp_DxMovers=True
