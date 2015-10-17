@@ -5,6 +5,21 @@ class CNNUPS extends CNNDog;
 
 // var int ORBIT_RADIUS = 15;
 
+var () float PawnDamageRadius;
+var () float PawnDamage;
+var () name  PawnDamageType;
+
+var () float DecorDestroyRadius; // movers + decorations
+var () float DecorDamage;        // for decorations, movers will be blow it up if they breakable
+var () name  DecorDamageType;    // for decorations, movers will be blow it up if they breakable
+
+var () bool  bBlowUp_DxMovers;  // if they breakable
+
+var () float EventRadius;
+var () name EventName;
+
+
+
 var JJElecEmitter em[15];
 var CNNSphereFragment spheres[6];
 var LAM grenades[4];
@@ -111,14 +126,18 @@ function PlayDogBark()
 
 function Tick(float deltaTime)
 {
- local int i;
- local vector tmpVect;
- local int tmpInt;
- local rotator tmpRotator;
+	local int i;
+	local vector tmpVect;
+	local int tmpInt;
+	local rotator tmpRotator;
 
- local vector coordsSmallBall, coordsCentralBall;
+	local vector coordsSmallBall, coordsCentralBall;
 
-      super.Tick(deltaTime);
+	local Pawn sPawn;
+	local DeusExDecoration decor;
+	local DeusExMover mover;
+
+	super.Tick(deltaTime);
 
           /*
           get a local vector
@@ -172,6 +191,31 @@ function Tick(float deltaTime)
           tmpVect *= -1;
           em[14].SetRotation(rotator(tmpVect));
           //----------------------------------------
+
+
+	//damage to Pawns
+	if ( PawnDamage > 0 )
+		foreach AllActors(class'Pawn', sPawn)
+			if (VSize(sPawn.Location - self.Location) <= PawnDamageRadius)
+				sPawn.TakeDamage(PawnDamage, self, sPawn.Location, vect(0,0,0), PawnDamageType);
+
+	//damage to decorations
+
+
+	//destroying movers
+	if ( bBlowUp_DxMovers )
+		foreach AllActors(class'DeusExMover', mover)
+			if (VSize(mover.Location - self.Location) <= DecorDestroyRadius)
+				if ( mover.bBreakable )
+					//mover.TakeDamage(DamageToDecors, self, mover.Location, vect(0,0,0), 'Exploded');
+					mover.BlowItUp(self);
+
+	// call event when trigger in radius
+
+
+
+
+
 }
 
 function SelfDestructionGrenades()
@@ -230,10 +274,22 @@ function Destroyed()
 
 defaultproperties
 {
-     bPlayDying=False
-     CarcassType=None
-     bInvincible=True
-     bHidden=True
-     DrawType=DT_Sprite
-     CollisionHeight=50.000000
+	PawnDamageRadius=100
+	PawnDamage=1000
+	PawnDamageType=Exploded
+
+	DecorDestroyRadius=256
+	DecorDamage=1000
+	DecorDamageType=Exploded
+	bBlowUp_DxMovers=True
+
+	EventRadius=256
+	EventName=None
+
+    bPlayDying=False
+    CarcassType=None
+    bInvincible=True
+    bHidden=True
+    DrawType=DT_Sprite
+    CollisionHeight=50.000000
 }
