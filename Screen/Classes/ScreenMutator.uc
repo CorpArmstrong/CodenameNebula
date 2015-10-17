@@ -85,6 +85,7 @@ function ModifyPlayer(Pawn PawnPlayer) {
   }
 
 
+  /*
 // ============================================================================
 // MutatorTeamMessage
 // ============================================================================
@@ -100,7 +101,7 @@ function bool MutatorTeamMessage(Actor ActorSender, Pawn PawnReceiver, PlayerRep
 
   return Super.MutatorTeamMessage(ActorSender, PawnReceiver, Info, TextMessage, NameType, FlagBeep);
   }
-
+	*/ // FIXME: CorpArmstrong
 
 // ============================================================================
 // PostRender
@@ -160,8 +161,9 @@ simulated function PostRender(canvas Canvas) {
     FlagDisplayCached = false;
     }
 
+	/*
   if (NextHUDMutator != None)
-    NextHUDMutator.PostRender(Canvas);
+    NextHUDMutator.PostRender(Canvas);*/ // FIXME: CorpArmstrong
   }
 
 
@@ -286,10 +288,11 @@ simulated function DrawTextCentered(canvas Canvas, out int CoordTopText, coerce 
 
 simulated function DisplayInit() {
 
+/*
   if (bHUDMutator)
     return;
 
-  RegisterHUDMutator();
+  RegisterHUDMutator();*/ //FIXME CorpArmstrong
   TimeLast = Level.TimeSeconds;
   }
 
