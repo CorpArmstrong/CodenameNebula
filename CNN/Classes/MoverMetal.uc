@@ -14,5 +14,5 @@ DefaultProperties
 	FragmentScale=1.000000
 	FragmentTexture=Texture'Airfield.Metal.747_metal'
 
-	NumFragments=4
+	NumFragments=8
 }
