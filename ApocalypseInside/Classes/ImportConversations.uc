@@ -7,6 +7,7 @@ abstract;
 #exec CONVERSATION IMPORT FILE="Conversations\Chapter02.Con"
 #exec CONVERSATION IMPORT FILE="Conversations\Chapter03.Con"
 #exec CONVERSATION IMPORT FILE="Conversations\Chapter04.Con"
+#exec CONVERSATION IMPORT FILE="Conversations\Chapter05.Con"
 #exec CONVERSATION IMPORT FILE="Conversations\Chapter06.Con"
 #exec CONVERSATION IMPORT FILE="Conversations\DL_Chapter04.Con"
 #exec CONVERSATION IMPORT FILE="Conversations\DL_Chapter03.Con"
