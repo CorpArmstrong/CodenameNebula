@@ -8,15 +8,18 @@ class CNNUPS extends CNNDog;
 var () float PawnDamageRadius;
 var () float PawnDamage;
 var () name  PawnDamageType;
+var () bool  bDamagePawns;       // if they are not invincible
 
-var () float DecorDestroyRadius; // movers + decorations
-var () float DecorDamage;        // for decorations, movers will be blow it up if they breakable
-var () name  DecorDamageType;    // for decorations, movers will be blow it up if they breakable
+var () float DecorDamageRadius;
+var () float DecorDamage;
+var () name  DecorDamageType;
+var () bool  bDamageDxDecoration;// if they breakable
 
-var () bool  bBlowUp_DxMovers;  // if they breakable
+var () float CnnMoverBlowUpRadius;
+var () bool  bBlowUp_CnnMovers;   // if they breakable
 
-var () float EventRadius;
-var () name EventName;
+
+
 
 
 
@@ -135,7 +138,7 @@ function Tick(float deltaTime)
 
 	local Pawn sPawn;
 	local DeusExDecoration decor;
-	local DeusExMover mover;
+	local CNNMover mover;
 
 	super.Tick(deltaTime);
 
@@ -194,28 +197,27 @@ function Tick(float deltaTime)
 
 
 	//damage to Pawns
-	if ( PawnDamage > 0 )
+	if ( bDamagePawns )
 		foreach AllActors(class'Pawn', sPawn)
 			if (VSize(sPawn.Location - self.Location) <= PawnDamageRadius)
 				sPawn.TakeDamage(PawnDamage, self, sPawn.Location, vect(0,0,0), PawnDamageType);
 
 	//damage to decorations
-
+    if ( bDamageDxDecoration )
+    	foreach AllActors(class'DeusExDecoration', decor)
+			if (VSize(decor.Location - self.Location) <= DecorDamageRadius)
+				decor.TakeDamage(DecorDamage, self, decor.Location, vect(0,0,0), DecorDamageType);
 
 	//destroying movers
-	if ( bBlowUp_DxMovers )
-		foreach AllActors(class'DeusExMover', mover)
-			if (VSize(mover.Location - self.Location) <= DecorDestroyRadius)
+	if ( bBlowUp_CnnMovers )
+		foreach AllActors(class'CNNMover', mover)
+			if (VSize(mover.Location - self.Location) <= CnnMoverBlowUpRadius)
 				if ( mover.bBreakable )
 					//mover.TakeDamage(DamageToDecors, self, mover.Location, vect(0,0,0), 'Exploded');
 					mover.BlowItUp(self);
 
 	// call event when trigger in radius
-
-
-
-
-
+	// will be realized like a collision with CNNSimpleTrigger
 }
 
 function SelfDestructionGrenades()
@@ -274,17 +276,19 @@ function Destroyed()
 
 defaultproperties
 {
-	PawnDamageRadius=100
+	PawnDamageRadius=150
 	PawnDamage=1000
 	PawnDamageType=Exploded
+	bDamagePawns=True
 
-	DecorDestroyRadius=256
+	DecorDamageRadius=320
 	DecorDamage=1000
 	DecorDamageType=Exploded
-	bBlowUp_DxMovers=True
+	bDamageDxDecoration=False // do not use please
 
-	EventRadius=256
-	EventName=None
+	CnnMoverBlowUpRadius=320
+	bBlowUp_CnnMovers=True
+
 
     bPlayDying=False
     CarcassType=None
