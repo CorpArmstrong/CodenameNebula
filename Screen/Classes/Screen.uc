@@ -128,6 +128,7 @@ const FlagDebug = false;
 simulated function PreBeginPlay() {
 
   local GameInfo ThisGame;
+  //local AiGameInfo ThisGame;
 
   Super.PreBeginPlay();
 
@@ -146,8 +147,16 @@ simulated function PreBeginPlay() {
     foreach AllActors(class 'GameInfo', ThisGame)
       break;
     if (ThisGame != None) {
-      ThisGame.BaseMutator.AddMutator(MutatorScreen);
-      ThisGame.RegisterMessageMutator(MutatorScreen);
+
+      /* @CorpArmstrong
+	   * These lines doesn't work, 'cause DeusEx GameInfo
+       * have Mutator of wrong type.
+       * Must be AiMutator but has Mutator.
+	   *
+	   * ThisGame.BaseMutator.AddMutator(MutatorScreen);
+       * ThisGame.RegisterMessageMutator(MutatorScreen);
+       */
+
       }
     }
   }
