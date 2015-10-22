@@ -5,6 +5,12 @@ class ApocalypseInsideMenuMain expands MenuMain;
 // Initialize the Window
 // ----------------------------------------------------------------------
 
+/*var MenuUIMenuButtonWindow winButtons[8];   // Up to ten buttons
+
+// Array of button text
+var localized string ButtonNames[8];      */
+
+
 event InitWindow()
 {
 	Super.InitWindow();
@@ -93,8 +99,8 @@ defaultproperties
     ButtonNames(1)="Save Game"
     ButtonNames(2)="Load Game"
     ButtonNames(3)="Settings"
-    ButtonNames(4)="Training"
-    ButtonNames(5)="Play Intro"
+    ButtonNames(4)="Codename Nebula" //was Training
+    ButtonNames(5)="Mise En Abyme"  //was play intro
     ButtonNames(6)="Credits"
     ButtonNames(7)="Back to Game"
     ButtonNames(8)="Multiplayer"
@@ -107,12 +113,12 @@ defaultproperties
     buttonDefaults(2)=(Y=85,Action=1,Invoke=Class'MenuScreenLoadGame',Key=""),
     buttonDefaults(3)=(Y=121,Action=0,Invoke=Class'MenuSettings',Key=""),
     buttonDefaults(4)=(Y=157,Action=4,Invoke=None,Key=""),
-    buttonDefaults(5)=(Y=193,Action=5,Invoke=None,Key=""),
+    buttonDefaults(5)=(Y=193,Action=5,Invoke=Class'ComputerScreenLogin',Key=""),
     buttonDefaults(6)=(Y=229,Action=1,Invoke=Class'CreditsWindow',Key=""),
     buttonDefaults(7)=(Y=265,Action=2,Invoke=None,Key=""),
     buttonDefaults(8)=(Y=301,Action=1,Invoke=Class'menumpmain',Key=""),
     buttonDefaults(9)=(Y=359,Action=6,Invoke=None,Key=""),
-    Title="Welcome to DX: Apocalypse Inside"
+    Title="Welcome to Apocalypse Inside"
     ClientWidth=258
     ClientHeight=400
     verticalOffset=2

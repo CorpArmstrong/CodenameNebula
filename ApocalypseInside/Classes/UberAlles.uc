@@ -16,8 +16,8 @@ function Carcass SpawnCarcass()
 
 	return None;
 }
-
-function Explode()
+ /*
+function Explode(optional vector HitLocation)
 {
 	local SphereEffect sphere;
 	local ScorchMark s;
@@ -65,7 +65,7 @@ function Explode()
 	}
 
 	HurtRadius(explosionDamage, explosionRadius, 'Exploded', explosionDamage*100, Location);
-}
+}                              */
 
 function SetSkin (DeusExPlayer Player)
 {
@@ -153,7 +153,7 @@ defaultproperties
     CollisionRadius=20.00
 
     CollisionHeight=47.50
-	
+
 	BindName="UberAlles"
 
     FamiliarName="Uber Alles"
