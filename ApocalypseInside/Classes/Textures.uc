@@ -1,4 +1,4 @@
-class Textures expands TantalusDenton;
+class Textures expands Object abstract;
 
 // Character Textures
 
@@ -18,8 +18,4 @@ class Textures expands TantalusDenton;
 
 defaultproperties
 {
-     MultiSkins(0)=Texture'ApocalypseInside.Skins.TantalusFace'
-     MultiSkins(3)=None
-     FamiliarName="Tantalus Denton"
-     UnfamiliarName="Tantalus Denton"
 }

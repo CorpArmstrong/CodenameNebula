@@ -302,6 +302,12 @@ function InitializeSubSystems()
    }
 }
 
+//   Let HDTP know that Tantalus is not JC denton.
+
+function bool Facelift(bool bOn)
+	{
+	}
+
 // ----------------------------------------------------------------------
 // CreateThemeManager()
 // ----------------------------------------------------------------------
