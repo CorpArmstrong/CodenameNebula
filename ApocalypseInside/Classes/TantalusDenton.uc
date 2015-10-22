@@ -122,7 +122,7 @@ function ShowIntro(optional bool bStartNewGame)
 	AugmentationSystem.DeactivateAll();
 
 	// Reset the player
-	Level.Game.SendPlayer(Self, "moon_mine");
+	Level.Game.SendPlayer(Self, "moon_mineV1");
 }
 
 // ----------------------------------------------------------------------

@@ -50,8 +50,8 @@ var bool FlagDisplayCached;
 
 simulated function Spawned() {
 
-  FontDisplayNormal = Font 'ScreenFonts.Tahoma10';
-  FontDisplayBold   = Font 'ScreenFonts.TahomaB10';
+  FontDisplayNormal = Font 'DeusExUI.FontLocation'; //'ScreenFonts.Tahoma10';
+  FontDisplayBold   = Font 'DeusExUI.FontLocation'; //'ScreenFonts.TahomaB10';
 
   ColorDisplayWhite.R = 224;
   ColorDisplayWhite.G = 224;
