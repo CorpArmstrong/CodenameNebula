@@ -22,12 +22,13 @@ function CalcTrace(float deltaTime)
 	{
 		foreach TraceTexture(class'Actor', target, texName, texGroup, texFlags, HitLocation, HitNormal, EndTrace, StartTrace)
 		{
-//			if ((target.DrawType == DT_None) || target.bHidden)        // JJ change here
+//			if ((target.DrawType == DT_None) || target.bHidden)         // JJ change here
 			if ((target.DrawType == DT_None) || target.IsA('Triggers')) // JJ change here
 			{
 				// do nothing - keep on tracing
 			}
-			else if ((target == Level) || target.IsA('Mover'))
+//			else if ((target == Level) || target.IsA('Mover'))   // JJ change here
+			else if (target == Level)                            // JJ change here
 			{
 				break;
 			}

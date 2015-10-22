@@ -146,6 +146,7 @@ function Tick(float deltaTime)
 function Timer()
 {
 local CNNUPS ups;
+local DeusExMover DxMover;
 
 	if (!bIsOn)
 	{
@@ -155,6 +156,13 @@ local CNNUPS ups;
 
 	if (emitter.HitActor != None)
 	{
+		if ( emitter.HitActor.IsA('DeusExMover') )
+		{
+			DxMover = DeusExMover(emitter.HitActor);
+			if (DxMover.bBreakable)
+				DxMover.BlowItUp(none);
+		}
+
 		if ( emitter.HitActor.IsA('Decoration') )
 		{
            emitter.HitActor.TakeDamage(decorationDamage, None, emitter.HitActor.Location, vect(0,0,0), damageType );
