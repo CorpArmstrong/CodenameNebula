@@ -1,12 +1,12 @@
 //=============================================================================
 	// UWindowList - a generic linked list class
 	//=============================================================================
-	class UWindowList extends Screen.UWindowBase;
+	class CUWindowList extends Screen.UWindowBase;
 
-	var UWindowList	Next;
-	var UWindowList	Last;		// Only valid for sentinel
-	var UWindowList	Prev;
-	var UWindowList	Sentinel;
+	var CUWindowList	Next;
+	var CUWindowList	Last;		// Only valid for sentinel
+	var CUWindowList	Prev;
+	var CUWindowList	Sentinel;
 	var int			InternalCount;
 	var bool		bItemOrderChanged;
 
@@ -14,15 +14,15 @@
 
 	var int			CompareCount;
 	var bool		bSortSuspended;
-	var UWindowList CurrentSortItem;
+	var CUWindowList CurrentSortItem;
 
 	// Binary tree variables for sentinel
 	var bool		bTreeSort;
 
 	// Binary tree variables for each element
-	var UWindowList BranchLeft;
-	var UWindowList BranchRight;
-	var UWindowList ParentNode;
+	var CUWindowList BranchLeft;
+	var CUWindowList BranchRight;
+	var CUWindowList ParentNode;
 
 	/* Tree Sorting:
 
@@ -34,15 +34,15 @@
 
 	/********** These things can be called on any element **********/
 
-	function UWindowList CreateItem(Class<UWindowList> C)
+	function CUWindowList CreateItem(Class<CUWindowList> C)
 	{
-		local UWindowList NewElement;
+		local CUWindowList NewElement;
 
 		NewElement = New C;
 		return NewElement;
 	}
 
-	function GraftLeft(UWindowList NewLeft)
+	function GraftLeft(CUWindowList NewLeft)
 	{
 		assert(Sentinel.bTreeSort);
 
@@ -51,7 +51,7 @@
 			NewLeft.ParentNode = Self;
 	}
 
-	function GraftRight(UWindowList NewRight)
+	function GraftRight(CUWindowList NewRight)
 	{
 		assert(Sentinel.bTreeSort);
 
@@ -61,9 +61,9 @@
 	}
 
 	// Return rightmost child of subtree
-	function UWindowList RightMost()
+	function CUWindowList RightMost()
 	{
-		local UWindowList L;
+		local CUWindowList L;
 
 		assert(Sentinel.bTreeSort);
 
@@ -78,9 +78,9 @@
 	}
 
 	// Return leftmost child of subtree
-	function UWindowList LeftMost()
+	function CUWindowList LeftMost()
 	{
-		local UWindowList L;
+		local CUWindowList L;
 
 		assert(Sentinel.bTreeSort);
 
@@ -96,7 +96,7 @@
 
 	function Remove()
 	{
-		local UWindowList T;
+		local CUWindowList T;
 
 		if(Next != None)
 			Next.Prev = Prev;
@@ -151,16 +151,16 @@
 		}
 	}
 
-	function int Compare(UWindowList T, UWindowList B)
+	function int Compare(CUWindowList T, CUWindowList B)
 	{
 		// declare actual sort method in subclass
 		return 0;
 	}
 
 	// Inserts a new element before us.  DO NOT CALL on the sentinel.
-	function UWindowList InsertBefore(Class<UWindowList> C)
+	function CUWindowList InsertBefore(Class<CUWindowList> C)
 	{
-		local UWindowList NewElement;
+		local CUWindowList NewElement;
 
 		NewElement = CreateItem(C);
 		InsertItemBefore(NewElement);
@@ -168,9 +168,9 @@
 		return NewElement;
 	}
 
-	function UWindowList InsertAfter(Class<UWindowList> C)
+	function CUWindowList InsertAfter(Class<CUWindowList> C)
 	{
-		local UWindowList NewElement;
+		local CUWindowList NewElement;
 
 		NewElement = CreateItem(C);
 		InsertItemAfter(NewElement);
@@ -180,7 +180,7 @@
 
 
 	// Inserts an element before us.  DO NOT CALL on the sentinel.
-	function InsertItemBefore(UWindowList NewElement)
+	function InsertItemBefore(CUWindowList NewElement)
 	{
 		assert(Sentinel != Self);
 
@@ -203,9 +203,9 @@
 		Sentinel.bItemOrderChanged = True;
 	}
 
-	function InsertItemAfter(UWindowList NewElement, optional bool bCheckShowItem)
+	function InsertItemAfter(CUWindowList NewElement, optional bool bCheckShowItem)
 	{
-		local UWindowList N;
+		local CUWindowList N;
 
 		N = Next;
 		if(bCheckShowItem)
@@ -221,7 +221,7 @@
 
 	function ContinueSort()
 	{
-		local UWindowList N;
+		local CUWindowList N;
 
 		CompareCount = 0;
 		bSortSuspended = False;
@@ -247,13 +247,13 @@
 			ContinueSort();
 	}
 
-	function UWindowList Sort()
+	function CUWindowList Sort()
 	{
-		local UWindowList S;
-		local UWindowList CurrentItem;
-		local UWindowList Previous;
-		local UWindowList Best;
-		local UWindowList BestPrev;
+		local CUWindowList S;
+		local CUWindowList CurrentItem;
+		local CUWindowList Previous;
+		local CUWindowList Best;
+		local CUWindowList BestPrev;
 
 		if(bTreeSort)
 		{
@@ -333,7 +333,7 @@
 
 	function DestroyList()
 	{
-		local UWindowList L, Temp;
+		local CUWindowList L, Temp;
 		L = Next;
 
 		InternalCount = 0;
@@ -363,7 +363,7 @@
 	function int CountShown()
 	{
 		local int C;
-		local UWindowList I;
+		local CUWindowList I;
 
 		for(I = Next;I != None; I = I.Next)
 			if(I.ShowThisItem())
@@ -372,9 +372,9 @@
 		return C;
 	}
 
-	function UWindowList CopyExistingListItem(Class<UWindowList> ItemClass, UWindowList SourceItem)
+	function CUWindowList CopyExistingListItem(Class<CUWindowList> ItemClass, CUWindowList SourceItem)
 	{
-		local UWindowList I;
+		local CUWindowList I;
 
 		I = Append(ItemClass);
 		Sentinel.bItemOrderChanged = True;
@@ -394,9 +394,9 @@
 		return InternalCount;
 	}
 
-	function MoveItemSorted(UWindowList Item)
+	function MoveItemSorted(CUWindowList Item)
 	{
-		local UWindowList L;
+		local CUWindowList L;
 
 		if(bTreeSort)
 		{
@@ -435,7 +435,7 @@
 
 	function Validate()
 	{
-		local UWindowList I, Previous;
+		local CUWindowList I, Previous;
 		local int Count;
 
 		if(Sentinel != Self)
@@ -474,9 +474,9 @@
 	}
 
 	// For sentinel only
-	function UWindowList Append(Class<UWindowList> C)
+	function CUWindowList Append(Class<CUWindowList> C)
 	{
-		local UWindowList NewElement;
+		local CUWindowList NewElement;
 
 		NewElement = CreateItem(C);
 		AppendItem(NewElement);
@@ -484,9 +484,9 @@
 		return NewElement;
 	}
 
-	function AppendItem(UWindowList NewElement)
+	function AppendItem(CUWindowList NewElement)
 	{
-		local UWindowList Node, OldNode, Temp;
+		local CUWindowList Node, OldNode, Temp;
 		local int Test;
 
 		if(bTreeSort)
@@ -563,7 +563,7 @@
 			DoAppendItem(NewElement);
 	}
 
-	function DoAppendItem(UWindowList NewElement)
+	function DoAppendItem(CUWindowList NewElement)
 	{
 		NewElement.Next = None;
 		Last.Next = NewElement;
@@ -579,9 +579,9 @@
 
 
 	// For sentinel only
-	function UWindowList Insert(Class<UWindowList> C)
+	function CUWindowList Insert(Class<CUWindowList> C)
 	{
-		local UWindowList NewElement;
+		local CUWindowList NewElement;
 
 		NewElement = CreateItem(C);
 		InsertItem(NewElement);
@@ -589,7 +589,7 @@
 		return NewElement;
 	}
 
-	function InsertItem(UWindowList NewElement)
+	function InsertItem(CUWindowList NewElement)
 	{
 		NewElement.Next = Next;
 		if(Next != None)
@@ -607,9 +607,9 @@
 	}
 
 	// For sentinel only
-	function UWindowList FindEntry(int Index)
+	function CUWindowList FindEntry(int Index)
 	{
-		local UWindowList l;
+		local CUWindowList l;
 		local int i;
 
 		l = Next;
@@ -621,7 +621,7 @@
 		return l;
 	}
 
-	function AppendListCopy(UWindowList L)
+	function AppendListCopy(CUWindowList L)
 	{
 		if(L == None)
 			return;

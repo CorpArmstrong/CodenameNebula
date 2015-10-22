@@ -12,7 +12,7 @@
 
 	function Setup()
 	{
-		/// Called when the menu item is created
+		/// Called when the menu item iCUWindowList
 	}
 
 	function Execute()

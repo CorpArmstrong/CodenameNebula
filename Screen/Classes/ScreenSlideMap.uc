@@ -238,9 +238,11 @@ function SetInfo(int IndexPlayer, Pawn PawnPlayer) {
   ZonePlayer    [IndexPlayer] = PawnPlayer.Region.Zone;
   HealthPlayer  [IndexPlayer] = PawnPlayer.Health;
 
+  /* FIXME: CorpArmstrong, uncomment this later.
   FlagPlayerVisible[IndexPlayer] =
     int(PawnPlayer.FindInventoryType(class 'UT_Invisibility') == None &&
         PawnPlayer.FindInventoryType(class 'UT_Stealth')      == None);
+        */
   }
 
 
@@ -646,7 +648,7 @@ simulated function int Component(vector Location, EnumCoordSelection Selection) 
 defaultproperties
 {
     FontPlayers=Font'ScreenFonts.Tahoma10'
-    FontPlayersColor=(R=192,G=192,B=192,A=0),
+    FontPlayersColor=(R=192,G=192,B=192,A=0)//,
     PlayerIcons=Texture'ScriptedScreen.PlayerIcons'
     PlayerIconsWidth=3
     PlayerIconsHeight=3
@@ -683,5 +685,5 @@ defaultproperties
     ClientPaddingRight=0
     ClientPaddingBottom=0
     bAlwaysRelevant=True
-    Texture=Texture'ActorSlideMap'
+    //FIXME: CorpArmstrong, uncomment this later. Texture=Texture'ActorSlideMap'
 }

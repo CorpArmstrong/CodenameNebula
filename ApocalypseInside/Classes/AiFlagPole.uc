@@ -67,10 +67,11 @@ function SetSkin()
 
 function bool Facelift(bool bOn)
 {
+/*               FIXME: CorpArmstrong, uncomment this later.
 	if(!Super.Facelift(bOn))
 		return false;
+*/
 
-	
 	if(Mesh == None || !bOn)
 	{
 		MultiSkins[1] = None;
