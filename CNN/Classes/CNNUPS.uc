@@ -21,7 +21,7 @@ var () bool  bBlowUp_CnnMovers;   // if they breakable
 
 
 
-
+var Pawn pPawn;
 
 var JJElecEmitter em[15];
 var CNNSphereFragment spheres[6];
@@ -136,7 +136,7 @@ function Tick(float deltaTime)
 
 	local vector coordsSmallBall, coordsCentralBall;
 
-	local Pawn sPawn;
+	local ScriptedPawn sPawn;
 	local DeusExDecoration decor;
 	local CNNMover mover;
 
@@ -198,9 +198,20 @@ function Tick(float deltaTime)
 
 	//damage to Pawns
 	if ( bDamagePawns )
-		foreach AllActors(class'Pawn', sPawn)
-			if (VSize(sPawn.Location - self.Location) <= PawnDamageRadius)
-				sPawn.TakeDamage(PawnDamage, self, sPawn.Location, vect(0,0,0), PawnDamageType);
+	{
+		foreach AllActors(class'ScriptedPawn', sPawn)
+			if ( !sPawn.bInvincible && sPawn.Tag != self.Tag )
+				if (VSize(sPawn.Location - self.Location) <= PawnDamageRadius)
+					sPawn.TakeDamage(PawnDamage, self, sPawn.Location, vect(0,0,0), PawnDamageType);
+
+       	if( pPawn == none )
+			pPawn = GetPlayerPawn();
+
+		if( pPawn != none )
+			if (VSize(pPawn.Location - self.Location) <= PawnDamageRadius)
+				pPawn.TakeDamage(PawnDamage, self, pPawn.Location, vect(0,0,0), PawnDamageType);
+	}
+
 
 	//damage to decorations
     if ( bDamageDxDecoration )

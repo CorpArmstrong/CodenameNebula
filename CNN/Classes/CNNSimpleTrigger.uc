@@ -274,7 +274,7 @@ function UnTrigger( Actor Other, Pawn EventInstigator )
 }
 
 
-function ActivatedON() // when trigger become activated
+event ActivatedON() // when trigger become activated
 {
 local Actor A;
 
@@ -284,19 +284,20 @@ local Actor A;
 
 	// or super.ActivatedON()
 
-	// InitialyActive - analog
-	if (bOnlyOnce)
-		bEnabled = false;
-
-
 	// you can use activating somethig
 	if( Event != '' )
 		foreach AllActors( class 'Actor', A, Event )
 			A.Trigger( self, GetPlayerPawn() ); // without PlayerPawn some functionality maybe will lost
+
+	// InitialyActive - analog
+	if (bOnlyOnce)
+		bEnabled = false;
+	else
+		bEnabled = true; // that capitan's line need for CnnDispatcher
 }
 
 
-function ActivatedOFF() // when trigger is deactivated
+event ActivatedOFF() // when trigger is deactivated
 {
 local Actor A;
 
