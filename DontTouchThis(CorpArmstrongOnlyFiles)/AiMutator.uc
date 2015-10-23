@@ -207,7 +207,7 @@ function bool MutatorBroadcastLocalizedMessage( Actor Sender, Pawn Receiver, out
 }
 
 // FIXME: CorpArmstrong
-// There is no NUDMutator field in DeusEx's PlayerPawn!
+// There is no HUDMutator field in DeusEx's PlayerPawn!
 // You probably should subclass PlayerPawn ?
 
 // Registers the current mutator on the client to receive PostRender calls.
