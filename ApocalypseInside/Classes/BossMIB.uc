@@ -16,7 +16,7 @@ function Carcass SpawnCarcass()
 
 	return None;
 }
-
+/*            FIXME: CorpArmstrong, uncomment this later.
 function Explode(optional vector HitLocation)
 {
 	local SphereEffect sphere;
@@ -66,7 +66,7 @@ function Explode(optional vector HitLocation)
 
 	HurtRadius(explosionDamage, explosionRadius, 'Exploded', explosionDamage*100, Location);
 }
-
+*/
 
 defaultproperties
 {

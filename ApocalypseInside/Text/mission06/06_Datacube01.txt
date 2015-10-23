@@ -1,8 +1,13 @@
+<JC>Notes</JC>
 <P>If you read this datacube then you must be me (who else has access to a container full of Clinton's emails and MJ12 selfies? lol.)
 <P>I am
 <P>DocumentationAdmin
 <P>and I
 <P>ih8myjob
 <P>
+<JC>Taday's events</JC>
+<P>Time: 12pm-1pm</P>
+<P>Basketball with Don @ the graveyard.
+<P>
 <DC=255,0,0>
-<P>SYSTEM MESSAGE: THIS DATACUBE WAS DAMAGED BY PHYSICAL COLLISION! PLEASE BACK UP YOUR DATA AND REPLACE THE STORAGE CARD!
+<JC>SYSTEM MESSAGE: SMART SCAN SHOWED THIS DATACUBE IS GOING TO FAIL! PLEASE BACK UP YOUR DATA AND REPLACE THE DATACUBE!</JC>
