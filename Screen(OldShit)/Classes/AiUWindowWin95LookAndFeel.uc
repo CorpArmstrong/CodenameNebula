@@ -28,6 +28,8 @@ class AiUWindowWin95LookAndFeel expands AiUWindowLookAndFeel;
 #exec TEXTURE IMPORT NAME=MenuBR FILE=Textures\MenuBR.bmp GROUP="Icons" MIPS=OFF
 #exec TEXTURE IMPORT NAME=MenuHighlight FILE=Textures\MenuHighlight.bmp GROUP="Icons" MIPS=OFF
 
+#exec TEXTURE IMPORT NAME=BlackTexture FILE=Textures\BlackTexture.bmp GROUP="Icons" MIPS=OFF
+
 var() Region	SBUpUp;
 var() Region	SBUpDown;
 var() Region	SBUpDisabled;
