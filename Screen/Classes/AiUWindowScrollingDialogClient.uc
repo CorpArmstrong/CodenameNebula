@@ -1,16 +1,16 @@
-class UWindowScrollingDialogClient extends UWindowPageWindow;
+class AiUWindowScrollingDialogClient extends AiUWindowPageWindow;
 
 var bool bShowHorizSB;
 var bool bShowVertSB;
 
-var UWindowDialogClientWindow	ClientArea;
-var UWindowDialogClientWindow	FixedArea;
-var class<UWindowDialogClientWindow> ClientClass;
-var class<UWindowDialogClientWindow> FixedAreaClass;
+var AiUWindowDialogClientWindow	ClientArea;
+var AiUWindowDialogClientWindow	FixedArea;
+var class<AiUWindowDialogClientWindow> ClientClass;
+var class<AiUWindowDialogClientWindow> FixedAreaClass;
 
-var UWindowVScrollBar VertSB;
-var UWindowHScrollBar HorizSB;
-var UWindowBitmap	  BRBitmap;
+var AiUWindowVScrollBar VertSB;
+var AiUWindowHScrollBar HorizSB;
+var AiUWindowBitmap	  BRBitmap;
 
 function Created()
 {
@@ -18,23 +18,23 @@ function Created()
 
 	if(FixedAreaClass != None)
 	{
-		FixedArea = UWindowDialogClientWindow(CreateWindow(FixedAreaClass, 0, 0, 100, 100, OwnerWindow));
+		FixedArea = AiUWindowDialogClientWindow(CreateWindow(FixedAreaClass, 0, 0, 100, 100, OwnerWindow));
 		FixedArea.bAlwaysOnTop = True;
 	}
 	else
 		FixedArea = None;
 
-	ClientArea = UWindowDialogClientWindow(CreateWindow(ClientClass, 0, 0, WinWidth, WinHeight, OwnerWindow));
+	ClientArea = AiUWindowDialogClientWindow(CreateWindow(ClientClass, 0, 0, WinWidth, WinHeight, OwnerWindow));
 
-	VertSB = UWindowVScrollbar(CreateWindow(class'UWindowVScrollbar', WinWidth-12, 0, 12, WinHeight));
+	VertSB = AiUWindowVScrollbar(CreateWindow(class'AiUWindowVScrollbar', WinWidth-12, 0, 12, WinHeight));
 	VertSB.bAlwaysOnTop = True;
 	VertSB.HideWindow();
 
-	HorizSB = UWindowHScrollbar(CreateWindow(class'UWindowHScrollbar', 0, WinHeight-12, WinWidth, 12));
+	HorizSB = AiUWindowHScrollbar(CreateWindow(class'AiUWindowHScrollbar', 0, WinHeight-12, WinWidth, 12));
 	HorizSB.bAlwaysOnTop = True;
 	HorizSB.HideWindow();
 
-	BRBitmap = UWindowBitmap(CreateWindow(class'UWindowBitmap', WinWidth-12, WinHeight-12, 12, 12));
+	BRBitmap = AiUWindowBitmap(CreateWindow(class'AiUWindowBitmap', WinWidth-12, WinHeight-12, 12, 12));
 	BRBitmap.bAlwaysOnTop = True;
 	BRBitmap.HideWindow();
 	BRBitmap.bStretch = True;
@@ -146,7 +146,7 @@ function BeforePaint(Canvas C, float X, float Y)
 
 function GetDesiredDimensions(out float W, out float H)
 {
-	Super(UWindowWindow).GetDesiredDimensions(W, H);
+	Super(AiUWindowWindow).GetDesiredDimensions(W, H);
 }
 
 function Paint(Canvas C, float X, float Y)
@@ -155,5 +155,5 @@ function Paint(Canvas C, float X, float Y)
 
 defaultproperties
 {
-     ClientClass=Class'UWindow.UWindowDialogClientWindow'
+     ClientClass=class'AiUWindow.UWindowDialogClientWindow'
 }

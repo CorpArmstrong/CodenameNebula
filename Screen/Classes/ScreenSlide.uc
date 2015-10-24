@@ -101,7 +101,7 @@ var() ScreenSlide SlideOverlay;
 // Variables
 // ============================================================================
 
-var bool FlagSeen;  // used exclusively in Screen.AddSlide
+var bool FlagSeen;  // used exclusively in AiAddSlide
 
 
 // ============================================================================
@@ -144,7 +144,7 @@ simulated function string Replace(coerce string TextOriginal, coerce string Text
   local int IndexChar;
   local int IndexCharLast;
   local string TextResult;
-  
+
   IndexChar = 0;
   TextResult = TextOriginal;
 
@@ -153,12 +153,12 @@ simulated function string Replace(coerce string TextOriginal, coerce string Text
     IndexChar = InStr(Mid(TextResult, IndexChar), TextSearch);
 
     if (IndexChar < 0) break;
-    
+
     IndexChar += IndexCharLast;
     TextResult = Left(TextResult, IndexChar) $ TextReplace $ Mid(TextResult, IndexChar + Len(TextSearch));
     IndexChar += Len(TextReplace);
     }
-  
+
   return TextResult;
   }
 
@@ -172,11 +172,11 @@ simulated function string Replace(coerce string TextOriginal, coerce string Text
 simulated function Color FadeColor(Color ColorFade, float Fade) {
 
   local Color ColorResult;
-  
+
   ColorResult.R = BackgroundColor.R + (ColorFade.R - BackgroundColor.R) * Fade;
   ColorResult.G = BackgroundColor.G + (ColorFade.G - BackgroundColor.G) * Fade;
   ColorResult.B = BackgroundColor.B + (ColorFade.B - BackgroundColor.B) * Fade;
-  
+
   return ColorResult;
   }
 
@@ -204,5 +204,7 @@ defaultproperties
     EffectEntrySpeed=10.00
     EffectExitSpeed=10.00
     bNoDelete=True
-    Texture=Texture'ActorSlide'
+    //FIXME Textures: CorpArmstrong
+    //Texture=Texture'ActorSlide'
+    Texture=Texture'Engine.S_Trigger'
 }

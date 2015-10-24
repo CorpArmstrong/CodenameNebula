@@ -6,19 +6,19 @@
 // ============================================================================
 
 
-class ScreenUIPageNetwork extends UWindowPageWindow;
+class ScreenUIPageNetwork extends AiUWindowPageWindow;
 
 
 // ============================================================================
 // Controls
 // ============================================================================
 
-var UWindowLabelControl LabelTitle;
-var UWindowLabelControl LabelDescription1;
-var UWindowLabelControl LabelDescription2;
-var UWindowLabelControl LabelDescription3;
-var UWindowLabelControl LabelDescription4;
-var UWindowComboControl ComboNetwork;
+var AiUWindowLabelControl LabelTitle;
+var AiUWindowLabelControl LabelDescription1;
+var AiUWindowLabelControl LabelDescription2;
+var AiUWindowLabelControl LabelDescription3;
+var AiUWindowLabelControl LabelDescription4;
+var AiUWindowComboControl ComboNetwork;
 
 
 // ============================================================================
@@ -27,11 +27,11 @@ var UWindowComboControl ComboNetwork;
 
 function Created() { 
 
-  LabelTitle = UWindowLabelControl(CreateControl(class 'UWindowLabelControl', 20, 17, WinWidth - 40, 1));
+  LabelTitle = AiUWindowLabelControl(CreateControl(class 'AiUWindowLabelControl', 20, 17, WinWidth - 40, 1));
   LabelTitle.SetText("Network Access");
   LabelTitle.SetFont(F_Bold);
 
-  ComboNetwork = UWindowComboControl(CreateControl(class 'UWindowComboControl', 20, 43, WinWidth - 40, 1));
+  ComboNetwork = AiUWindowComboControl(CreateControl(class 'AiUWindowComboControl', 20, 43, WinWidth - 40, 1));
   ComboNetwork.SetText("Live Content Downloads");
   ComboNetwork.AddItem("Full Access");
   ComboNetwork.AddItem("Restricted Access");
@@ -39,10 +39,10 @@ function Created() {
   ComboNetwork.SetEditable(false);
   ComboNetwork.SetSelectedIndex(int(class 'Screen'.default.Network));
 
-  LabelDescription1 = UWindowLabelControl(CreateControl(class 'UWindowLabelControl', 20,  74, WinWidth - 40, 1));
-  LabelDescription2 = UWindowLabelControl(CreateControl(class 'UWindowLabelControl', 20,  86, WinWidth - 40, 1));
-  LabelDescription3 = UWindowLabelControl(CreateControl(class 'UWindowLabelControl', 20,  98, WinWidth - 40, 1));
-  LabelDescription4 = UWindowLabelControl(CreateControl(class 'UWindowLabelControl', 20, 110, WinWidth - 40, 1));
+  LabelDescription1 = AiUWindowLabelControl(CreateControl(class 'AiUWindowLabelControl', 20,  74, WinWidth - 40, 1));
+  LabelDescription2 = AiUWindowLabelControl(CreateControl(class 'AiUWindowLabelControl', 20,  86, WinWidth - 40, 1));
+  LabelDescription3 = AiUWindowLabelControl(CreateControl(class 'AiUWindowLabelControl', 20,  98, WinWidth - 40, 1));
+  LabelDescription4 = AiUWindowLabelControl(CreateControl(class 'AiUWindowLabelControl', 20, 110, WinWidth - 40, 1));
 
   SetDescription();
   }
@@ -88,7 +88,7 @@ function SetDescription() {
 // Notify
 // ============================================================================
 
-function Notify(UWindowDialogControl Control, byte ControlEvent) {
+function Notify(AiUWindowDialogControl Control, byte ControlEvent) {
 
   switch (Control) {
     case ComboNetwork:

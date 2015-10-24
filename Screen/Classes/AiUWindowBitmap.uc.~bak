@@ -1,4 +1,4 @@
-class UWindowBitmap extends UWindowWindow;
+class AiUWindowBitmap extends UWindowWindow;
 
 var Texture T;
 var Region	R;

@@ -6,17 +6,17 @@
 // ============================================================================
 
 
-class ScreenUIClientWindow extends UWindowDialogClientWindow;
+class ScreenUIClientWindow extends AiUWindowDialogClientWindow;
 
 
 // ============================================================================
 // Controls
 // ============================================================================
 
-var UWindowPageControl Pages;
-var UWindowSmallCloseButton ButtonClose;
-var UWindowTabControlItem PageNetwork;
-var UWindowTabControlItem PageAbout;
+var AiUWindowPageControl Pages;
+var AiUWindowSmallCloseButton ButtonClose;
+var AiUWindowTabControlItem PageNetwork;
+var AiUWindowTabControlItem PageAbout;
 
 
 // ============================================================================
@@ -27,7 +27,7 @@ function Created() {
   
   WinWidth += 4;
   
-  Pages = UWindowPageControl(CreateWindow(class 'UWindowPageControl', 0, 0, WinWidth, WinHeight - 24));
+  Pages = AiUWindowPageControl(CreateWindow(class 'AiUWindowPageControl', 0, 0, WinWidth, WinHeight - 24));
   Pages.SetMultiLine(true);
   
   PageNetwork = Pages.AddPage("Network", class 'ScreenUIScrollClientNetwork');
@@ -38,7 +38,7 @@ function Created() {
     PageAbout.bFlash = true;
     }
 
-  ButtonClose = UWindowSmallCloseButton(CreateControl(class 'UWindowSmallCloseButton', WinWidth - 53, WinHeight - 21, 48, 16));
+  ButtonClose = AiUWindowSmallCloseButton(CreateControl(class 'AiUWindowSmallCloseButton', WinWidth - 53, WinHeight - 21, 48, 16));
 
   Super.Created();
   }

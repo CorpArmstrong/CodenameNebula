@@ -3,7 +3,7 @@
 // Copyright 2001 by Mychaeel <mychaeel@planetunreal.com>
 //
 // Implements a ScreenSlide that can be used to display arbitary formatted
-// text and other items on a Screen.
+// text and other items on a Ai
 // ============================================================================
 
 

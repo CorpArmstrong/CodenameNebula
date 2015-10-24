@@ -1,7 +1,7 @@
 //=============================================================================
-	// UWindowList - a generic linked list class
+	// AiUWindowList - a generic linked list class
 	//=============================================================================
-	class CUWindowList extends Screen.UWindowBase;
+	class CUWindowList extends AiUWindowBase;
 
 	var CUWindowList	Next;
 	var CUWindowList	Last;		// Only valid for sentinel

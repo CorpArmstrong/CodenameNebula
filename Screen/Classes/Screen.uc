@@ -14,7 +14,7 @@ class Screen extends ClientScriptedTexture config(Screen);
 // Compiler Directives
 // ============================================================================
 
-#exec texture import file=Textures\ActorScreen.bmp mips=off flags=2
+#exec texture import file=Textures\ActorAibmp mips=off flags=2
 
 
 // ============================================================================
@@ -772,9 +772,10 @@ simulated function VersionCheck() {
 
   FlagVersionAck = (VersionServer > 0);
 
+  /*  CorpArmstrong
   if (VersionServer > Version)
-    MutatorScreen.DisplayVersion(Version, VersionServer);
-
+    MutatorAiDisplayVersion(Version, VersionServer);
+	*/
   VersionLatest = Max(VersionLatest, VersionServer);
   SaveConfig();
   }
@@ -825,5 +826,7 @@ defaultproperties
     Width=256
     Height=256
     bAlwaysTick=True
-    Texture=Texture'ActorScreen'
+    //FIXME Textures: CorpArmstrong
+    //Texture=Texture'ActorScreen'
+    Texture=Texture'Engine.S_Trigger'
 }

@@ -3,12 +3,12 @@
 	// eg:
 	// Object=(Name=MyModPkg.MyModMenuItem,Class=Class,MetaClass=UMenu.UMenuModMenuItem,Description="&My Mod,This text goes on the status bar")
 
-	class UMenuModMenuItem expands UWindowList;
+	class AiUMenuModMenuItem expands AiUWindowList;
 
 	var localized string MenuCaption;
 	var localized string MenuHelp;
 
-	var UWindowPulldownMenuItem MenuItem;	// Used internally
+	var AiUWindowPulldownMenuItem MenuItem;	// Used internally
 
 	function Setup()
 	{

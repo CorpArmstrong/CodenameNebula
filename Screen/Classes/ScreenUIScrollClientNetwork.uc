@@ -6,7 +6,7 @@
 // ============================================================================
 
 
-class ScreenUIScrollClientNetwork extends UWindowScrollingDialogClient;
+class ScreenUIScrollClientNetwork extends AiUWindowScrollingDialogClient;
 
 
 // ============================================================================

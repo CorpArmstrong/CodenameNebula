@@ -121,9 +121,11 @@ simulated function Draw(ScriptedTexture TextureCanvas, int Left, int Top, float 
   if (MutatorScreen == None)
     foreach AllActors(class 'ScreenMutator', MutatorScreen)
       break;
-  
+
+  /*  CorpArmstrong
   if (FlagCached)
-    MutatorScreen.DisplayCached();
+    MutatorAiDisplayCached();
+    */
 
   Super.Draw(TextureCanvas, Left, Top, Fade);
   }
@@ -152,7 +154,7 @@ simulated function Reload() {
   Link.AddressHost = AddressHost;
   Link.AddressPort = AddressPort;
   Link.AddressPath = AddressPath;
-  
+
   Link.Start();
   }
 
@@ -169,7 +171,7 @@ simulated function CacheLoad() {
   local string TextEscaped;
   local int IndexChar;
   local int IndexSlot;
-  
+
   for (IndexSlot = 0; IndexSlot < ArrayCount(CacheText); IndexSlot++) {
     TextChunk = CacheText[IndexSlot];
     if (Left (TextChunk, 1) == "\"") TextChunk = Mid (TextChunk, 1);
@@ -178,12 +180,12 @@ simulated function CacheLoad() {
 
     TextEscaped = TextEscaped $ TextChunk;
     }
-  
+
   while (true) {
     IndexChar = InStrFrom(IndexChar, TextEscaped, "\\");
     if (IndexChar < 0)
       break;
-    
+
     switch (Mid(TextEscaped, IndexChar + 1, 1)) {
       case "n":  TextEscaped = Left(TextEscaped, IndexChar) $ Chr(10) $ Mid(TextEscaped, IndexChar + 2); break;
       case "r":  TextEscaped = Left(TextEscaped, IndexChar) $ Chr(13) $ Mid(TextEscaped, IndexChar + 2); break;

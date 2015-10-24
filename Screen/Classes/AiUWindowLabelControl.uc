@@ -1,4 +1,4 @@
-class UWindowLabelControl extends UWindowDialogControl;
+class AiUWindowLabelControl extends AiUWindowDialogControl;
 
 function Created()
 {

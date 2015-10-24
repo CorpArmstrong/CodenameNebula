@@ -50,8 +50,9 @@ var bool FlagDisplayCached;
 
 simulated function Spawned() {
 
-  FontDisplayNormal = Font 'DeusExUI.FontLocation'; //'ScreenFonts.Tahoma10';
-  FontDisplayBold   = Font 'DeusExUI.FontLocation'; //'ScreenFonts.TahomaB10';
+//FIXME Textures: CorpArmstrong
+  //FontDisplayNormal = Font'DXFonts.Texture0';//'ScreenFonts.Tahoma10';//Font 'DeusExUI.FontLocation'; //'ScreenFonts.Tahoma10';
+  //FontDisplayBold   = Font'DXFonts.Texture1';//'ScreenFonts.TahomaB10';//Font 'DeusExUI.FontLocation'; //'ScreenFonts.TahomaB10';
 
   ColorDisplayWhite.R = 224;
   ColorDisplayWhite.G = 224;

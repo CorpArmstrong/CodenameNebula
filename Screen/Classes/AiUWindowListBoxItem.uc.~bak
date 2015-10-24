@@ -1,0 +1,8 @@
+class AiUWindowListBoxItem expands Screen.UWindowList;
+
+var bool bSelected;
+var string HelpText;
+
+defaultproperties
+{
+}

@@ -6,7 +6,7 @@
 // ============================================================================
 
 
-class ScreenUIMenuItem extends UMenuModMenuItem;
+class ScreenUIMenuItem extends AiUMenuModMenuItem;
 
 
 // ============================================================================

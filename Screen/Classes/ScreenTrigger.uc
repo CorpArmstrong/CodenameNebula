@@ -30,11 +30,12 @@ var() ScreenSlide SlideSwitch;
 function Trigger(Actor Other, Pawn EventInstigator) {
 
   local Screen ThisScreen;
-
+														/* CorpArmstrong
   foreach AllActors(class 'Screen', ThisScreen, Event) {
-    ThisScreen.SwitchTriggered.SlideSwitch = SlideSwitch;
-    ThisScreen.SwitchTriggered.Update++;
+    ThisAiSwitchTriggered.SlideSwitch = SlideSwitch;
+    ThisAiSwitchTriggered.Update++;
     }
+    */
   }
 
 

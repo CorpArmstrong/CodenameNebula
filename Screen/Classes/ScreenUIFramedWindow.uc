@@ -6,7 +6,7 @@
 // ============================================================================
 
 
-class ScreenUIFramedWindow extends UWindowFramedWindow;
+class ScreenUIFramedWindow extends AiUWindowFramedWindow;
 
 
 // ============================================================================

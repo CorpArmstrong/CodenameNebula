@@ -18,7 +18,7 @@ class ScreenSlideMap extends ScreenSlide;
 #exec texture import file=Textures\ActorSlideMap.bmp mips=off flags=2
 
 #exec obj load file=Textures\ScreenFonts.utx    package=ScreenFonts
-#exec obj load file=Textures\ScriptedScreen.utx package=ScriptedScreen
+#exec obj load file=Textures\ScriptedAiutx package=ScriptedScreen
 
 
 // ============================================================================
@@ -649,7 +649,7 @@ defaultproperties
 {
     FontPlayers=Font'ScreenFonts.Tahoma10'
     FontPlayersColor=(R=192,G=192,B=192,A=0)//,
-    PlayerIcons=Texture'ScriptedScreen.PlayerIcons'
+    PlayerIcons=Texture'ScriptedAiPlayerIcons'
     PlayerIconsWidth=3
     PlayerIconsHeight=3
     PlayerDisplay="%p (%h)"
