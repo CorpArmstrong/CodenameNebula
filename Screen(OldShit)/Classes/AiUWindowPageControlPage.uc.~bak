@@ -1,0 +1,17 @@
+class AiUWindowPageControlPage extends AiWindowTabControlItem;
+
+var AiWindowPageWindow	Page;
+
+function RightClickTab()
+{
+	Page.RightClickTab();
+}
+
+function AiWindowPageControlPage NextPage()
+{
+	return AiWindowPageControlPage(Next);
+}
+
+defaultproperties
+{
+}
