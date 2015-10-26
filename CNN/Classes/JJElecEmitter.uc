@@ -3,6 +3,7 @@
 //-----------------------------------------------------------
 class JJElecEmitter extends ElectricityEmitter;
 
+var () float maxDistanse;
 var () float changePosTime;
 var () float accumTime;
 var rotator rot;
@@ -60,7 +61,7 @@ function CalcTrace(float deltaTime)
 
 
 		StartTrace = Location;
-		EndTrace = Location + 5000 * vector(Rotation + rot);
+		EndTrace = Location + maxDistanse * vector(Rotation + rot);
 		HitActor = None;
 
 		foreach TraceTexture(class'Actor', target, texName, texGroup, texFlags, HitLocation, HitNormal, EndTrace, StartTrace)
@@ -88,6 +89,10 @@ function CalcTrace(float deltaTime)
 			HitActor.TakeDamage(damageAmount, Instigator, HitLocation, vect(0,0,0), 'Shocked');
 			lastDamageTime = 0;
 		}
+		//else
+		//{
+		//	HitLocation = Location + maxDistanse * vector(Rotation + rot);
+		//}    // was commented for fix some bugs
 
 		if (LaserIterator(RenderInterface) != None)
 			LaserIterator(RenderInterface).AddBeam(0, Location, Rotation + rot, VSize(Location - HitLocation));
@@ -96,6 +101,7 @@ function CalcTrace(float deltaTime)
 
 defaultproperties
 {
+     maxDistanse=5000.0
      changePosTime=1.000000
      randomAngle=12000.000000
      DamageAmount=1
