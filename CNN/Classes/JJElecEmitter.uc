@@ -25,6 +25,7 @@ function CalcTrace(float deltaTime)
 	local actor target;
 	local int texFlags;
 	local name texName, texGroup;
+	local ScriptedPawn sP;
 
 	if (!bHiddenBeam)
 	{
@@ -86,8 +87,20 @@ function CalcTrace(float deltaTime)
 		// shock whatever gets in the beam
 		if ((HitActor != None) && (lastDamageTime >= damageTime))
 		{
-			HitActor.TakeDamage(damageAmount, Instigator, HitLocation, vect(0,0,0), 'Shocked');
-			lastDamageTime = 0;
+			sP = ScriptedPawn(HitActor);
+			if ( sP != none )
+			{
+				if ( !sP.bInvincible )
+				{
+					sP.TakeDamage(damageAmount, Instigator, HitLocation, vect(0,0,0), 'Shocked');
+					lastDamageTime = 0;
+				}
+			}
+			else
+			{
+				HitActor.TakeDamage(damageAmount, Instigator, HitLocation, vect(0,0,0), 'Shocked');
+				lastDamageTime = 0;
+			}
 		}
 		//else
 		//{
