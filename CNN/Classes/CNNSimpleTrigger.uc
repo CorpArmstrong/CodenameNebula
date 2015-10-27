@@ -4,7 +4,7 @@
 class CNNSimpleTrigger expands Triggers;
 
 var (Trigger) bool bEnabled;
-var (Trigger) bool bOnlyOnce;
+var (Trigger) bool bOnlyOnce; // is incompartible with ActOffEvent
 var (Trigger) bool bShowDebugInfo;
 var (DebugInfo) bool bShowTime;
 var (DebugInfo) bool bShowName;
