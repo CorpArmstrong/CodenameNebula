@@ -19,13 +19,24 @@ function ActivatedON()
 	gotostate('Dispatch');
 }
 
+function TouchIN()
+{
+	// Touches is dont works with dispatcher
+}
+
+function TouchOUT()
+{
+	// nothing
+}
+
 //
 // Dispatch events.
 //
 state Dispatch
 {
 Begin:
-	disable('ActivatedON');
+	//disable('ActivatedON');
+	disable('Trigger');
 	for( i=0; i<ArrayCount(OutEvents); i++ )
 	{
 		if( OutEvents[i] != '' )
@@ -37,7 +48,8 @@ Begin:
 		else
 			Sleep( OutDelays[i] );
 	}
-	enable('ActivatedON');
+	//enable('ActivatedON');
+	enable('Trigger');
 	super.ActivatedON(); // calls events, and restore bEnabled if it's needs
 }
 
