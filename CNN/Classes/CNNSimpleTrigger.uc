@@ -274,7 +274,7 @@ function UnTrigger( Actor Other, Pawn EventInstigator )
 }
 
 
-event ActivatedON() // when trigger become activated
+function ActivatedON() // when trigger become activated
 {
 local Actor A;
 
@@ -297,7 +297,7 @@ local Actor A;
 }
 
 
-event ActivatedOFF() // when trigger is deactivated
+function ActivatedOFF() // when trigger is deactivated
 {
 local Actor A;
 
