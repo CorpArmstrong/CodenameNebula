@@ -6,15 +6,18 @@
 // ============================================================================
 
 
-class ScreenMutator extends AMutator;//AiMutator;
+class ScreenMutator extends AMutator;
 
 
 // ============================================================================
 // Compiler Directives
 // ============================================================================
 
-#exec obj load file=Textures\ScreenFonts.utx package=ScreenFonts
+// DEPRECATED!
+//#exec obj load file=Textures\ScreenFonts.utx package=ScreenFonts
 
+#exec Font Import File=Textures\Tahoma10.pcx Name=Tahoma10
+#exec Font Import File=Textures\TahomaB10.pcx Name=TahomaB10
 
 // ============================================================================
 // Constants
@@ -50,8 +53,8 @@ var bool FlagDisplayCached;
 
 simulated function Spawned() {
 
-  FontDisplayNormal = Font 'DeusExUI.FontLocation'; //'ScreenFonts.Tahoma10';
-  FontDisplayBold   = Font 'DeusExUI.FontLocation'; //'ScreenFonts.TahomaB10';
+  FontDisplayNormal = Font'Tahoma10';
+  FontDisplayBold   = Font'TahomaB10';
 
   ColorDisplayWhite.R = 224;
   ColorDisplayWhite.G = 224;
@@ -89,7 +92,6 @@ function ModifyPlayer(Pawn PawnPlayer) {
 // ============================================================================
 // MutatorTeamMessage
 // ============================================================================
-// FIXED: CorpArmstrong
 function bool MutatorTeamMessage(Actor ActorSender, Pawn PawnReceiver, PlayerReplicationInfo Info, coerce string TextMessage, name NameType, optional bool FlagBeep) {
 
   local ScreenClient ThisClient;

@@ -31,12 +31,14 @@ local bool findedSome;
 			{
 				trig.bInitiallyActive = ToggleTriggers[i].bEnabled;
 				findedSome=true;
+				DebugInfo(trig.Tag@"=="@trig.bInitiallyActive);
 			}
 
 			foreach AllActors( class 'CNNSimpleTrigger', cnnTrig, ToggleTriggers[i].TriggerTag )
 			{
 				cnnTrig.bEnabled = ToggleTriggers[i].bEnabled;
 				findedSome=true;
+				DebugInfo(cnnTrig.Tag@"=="@cnnTrig.bEnabled);
 			}
 
 			if ( !findedSome )

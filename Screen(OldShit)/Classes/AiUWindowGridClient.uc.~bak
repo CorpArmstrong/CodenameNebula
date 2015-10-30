@@ -1,0 +1,11 @@
+//=============================================================================
+// AiWindowGridClient - The client area on a grid.
+//=============================================================================
+class AiUWindowGridClient extends AiWindowWindow;
+
+function Created() {
+}
+
+defaultproperties
+{
+}

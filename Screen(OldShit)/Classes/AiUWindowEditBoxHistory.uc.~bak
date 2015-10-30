@@ -1,0 +1,7 @@
+class AiUWindowEditBoxHistory expands AiWindowList;
+
+var string HistoryText;
+
+defaultproperties
+{
+}

@@ -1,0 +1,9 @@
+class AiUWindowDynamicTextRow expands AiWindowList;
+
+var string Text;
+var AiWindowDynamicTextRow WrapParent;
+var bool bRowDirty;
+
+defaultproperties
+{
+}

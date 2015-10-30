@@ -5,26 +5,36 @@ class CNNUPS extends CNNDog;
 
 // var int ORBIT_RADIUS = 15;
 
-var () float PawnDamageRadius;
-var () float PawnDamage;
-var () name  PawnDamageType;
-var () bool  bDamagePawns;       // if they are not invincible
+var (UpsDamage) float PawnDamageRadius;
+var (UpsDamage) float PawnDamage;
+var (UpsDamage) name  PawnDamageType;
+var (UpsDamage) bool  bDamagePawns;            // if they are not invincible
 
-var () float DecorDamageRadius;
-var () float DecorDamage;
-var () name  DecorDamageType;
-var () bool  bDamageDxDecoration;// if they breakable
+var (UpsDamage) float DecorDamageRadius;
+var (UpsDamage) float DecorDamage;
+var (UpsDamage) name  DecorDamageType;
+var (UpsDamage) bool  bDamageDxDecoration;     // if they breakable
 
-var () float CnnMoverBlowUpRadius;
-var () bool  bBlowUp_CnnMovers;   // if they breakable
+var (UpsDamage) float CnnMoverBlowUpRadius;
+var (UpsDamage) bool  bBlowUp_CnnMovers;       // if they breakable
+
+var (UpsVisualEffects) bool  bPulsation;
+var (UpsVisualEffects) bool  bRotating;
+
+var (UpsVisualEffects) float PulsationTime;
+var (UpsVisualEffects) float PulsationRange;
+
+var (UpsVisualEffects) int RotationSpeed;     // one turn around self per thisnumber of seconds
 
 
 
 
 var Pawn pPawn;
 
-var JJElecEmitter em[15];
-var CNNSphereFragment spheres[6];
+//var JJElecEmitter em[15];
+var JJElecEmitter em[18];
+//var CNNSphereFragment spheres[6];
+var CNNSphereFragment spheres[9];
 var LAM grenades[4];
 
 function PostBeginPlay()
@@ -35,7 +45,8 @@ function PostBeginPlay()
 
     //self.DrawType = DT_None;
 
-    for ( i = 0; i < 12+3; i ++ )
+    // electric emmiters
+	for ( i = 0; i < 12+6; i ++ )
     {
         em[i] = Spawn(class'JJElecEmitter', self);
         em[i].SetLocation(self.Location + vect(0,0,25));
@@ -51,7 +62,8 @@ function PostBeginPlay()
         }
     }
 
-    for ( i = 0; i < 3; i ++ )
+    // blue cores-spheres
+	for ( i = 0; i < 3; i ++ )
     {
         spheres[i] = Spawn(class'CNNSphereFragment', self);
         spheres[i].SetLocation(self.Location + vect(0,0,25));
@@ -60,7 +72,9 @@ function PostBeginPlay()
         spheres[i].DrawScale = 0.2f * (i+1);
     }
 
-    for ( i = 3; i < 6; i ++ )
+    // small balls
+//	for ( i = 3; i < 6; i ++ )
+	for ( i = 3; i < 9; i ++ )
     {
         spheres[i] = Spawn(class'CNNSphereFragment', self);
         spheres[i].DrawScale = 0.05f;
@@ -83,7 +97,25 @@ function PostBeginPlay()
   //spheres[5].Style = STY_Normal;
   //spheres[5].bUnlit = true;
     spheres[5].MultiSkins[0] = Texture'Effects.Virus_SFX'; //Texture'Effects.LaserBeam1';
+/**/
+    spheres[6].SetLocation(self.Location + vect(0,0,25) + vect(-23,0,0));
+    spheres[6].AttachTag = self.Tag;
+  //spheres[6].Style = STY_Normal;
+  //spheres[6].bUnlit = true;
+    spheres[6].MultiSkins[0] = Texture'Effects.Virus_SFX'; //Texture'Effects.LaserBeam1';
 
+    spheres[7].SetLocation(self.Location + vect(0,0,25) + vect(0,-23,0));
+    spheres[7].AttachTag = self.Tag;
+  //spheres[7].Style = STY_Normal;
+  //spheres[7].bUnlit = true;
+    spheres[7].MultiSkins[0] = Texture'Effects.Virus_SFX'; //Texture'Effects.LaserBeam1';
+
+    spheres[8].SetLocation(self.Location + vect(0,0,25) + vect(0,0,-23));
+    spheres[8].AttachTag = self.Tag;
+  //spheres[8].Style = STY_Normal;
+  //spheres[8].bUnlit = true;
+    spheres[8].MultiSkins[0] = Texture'Effects.Virus_SFX'; //Texture'Effects.LaserBeam1';
+/**/
 
       spheres[0].Style = STY_Normal;
       spheres[0].bUnlit = true;
@@ -113,6 +145,10 @@ function PostBeginPlay()
     em[13].proxy.Skin=Texture'Effects.Virus_SFX';
     em[14].proxy.Skin=Texture'Effects.Virus_SFX';
 
+    em[15].proxy.Skin=Texture'Effects.Virus_SFX';
+    em[16].proxy.Skin=Texture'Effects.Virus_SFX';
+    em[17].proxy.Skin=Texture'Effects.Virus_SFX';
+
     SelfDestructionGrenades();
 }
 
@@ -134,6 +170,9 @@ function Tick(float deltaTime)
 	local int tmpInt;
 	local rotator tmpRotator;
 
+	local float spherePulseValue;
+	local float sphereRadius;
+
 	local vector coordsSmallBall, coordsCentralBall;
 
 	local ScriptedPawn sPawn;
@@ -142,7 +181,52 @@ function Tick(float deltaTime)
 
 	super.Tick(deltaTime);
 
+
+	if (bRotating)
+	{
+		for(i = 0; i < 12; i++)
+		{
+			//if (em[i].AttachTag != '')
+			//	em[i].AttachTag = '';
+
+			tmpRotator.Pitch = 0;
+			tmpRotator.Yaw = RotationSpeed;
+			tmpRotator.Roll = 0;
+
+			tmpRotator *= deltaTime;
+
+			em[i].SetRotation(em[i].Rotation+tmpRotator);
+		}
+	}
+
+	if (bPulsation)
+	{
+		// current puls period
+		// output 0.0 - 1.0
+		spherePulseValue = (level.TimeSeconds % PulsationTime) / PulsationTime;
+
+		// current puls value
+		// input  0.0 - 0.5 - 1.0
+		// output 0.0 - 1.0 - 0.0
+		if ( spherePulseValue > 0.5 )
+			spherePulseValue = 1 - spherePulseValue;
+		spherePulseValue *= 2;
+
+		for (i = 0; i < 3; i ++)
+		{
+			sphereRadius = 0.2f*(i+1);
+
+			spheres[i].DrawScale = sphereRadius +
+				( sphereRadius * (PulsationRange-1) * spherePulseValue );
+		}
+
+	}
+
+
+
           /*
+
+          ## rotating small red balls
           get a local vector
           rotate local vector
           set local vector
@@ -194,6 +278,47 @@ function Tick(float deltaTime)
           tmpVect *= -1;
           em[14].SetRotation(rotator(tmpVect));
           //----------------------------------------
+          // 1
+          coordsSmallBall = spheres[6].Location;
+          coordsSmallBall -= coordsCentralBall;
+
+          // 2, 3
+          tmpRotator = rot(9000,0,0);
+          tmpVect = coordsSmallBall << (tmpRotator*deltaTime);
+          spheres[6].SetLocation(tmpVect + coordsCentralBall);
+
+          em[15].SetLocation(spheres[6].Location);
+          tmpVect *= -1;
+          em[15].SetRotation(rotator(tmpVect));
+          //----------------------------------------
+          // 1
+          coordsSmallBall = spheres[7].Location;
+          coordsSmallBall -= coordsCentralBall;
+
+          // 2, 3
+          tmpRotator = rot(0,9000,0);
+          tmpVect = coordsSmallBall << (tmpRotator*deltaTime);
+          spheres[7].SetLocation(tmpVect + coordsCentralBall);
+
+          em[16].SetLocation(spheres[7].Location);
+          tmpVect *= -1;
+          em[16].SetRotation(rotator(tmpVect));
+          //----------------------------------------
+          // 1
+          coordsSmallBall = spheres[8].Location;
+          coordsSmallBall -= coordsCentralBall;
+
+          // 2, 3
+          tmpRotator = rot(0,0,9000);
+          tmpVect = coordsSmallBall << (tmpRotator*deltaTime);
+          spheres[8].SetLocation(tmpVect + coordsCentralBall);
+
+          em[17].SetLocation(spheres[8].Location);
+          tmpVect *= -1;
+          em[17].SetRotation(rotator(tmpVect));
+          //----------------------------------------
+/**/
+
 
 
 	//damage to Pawns
@@ -276,10 +401,10 @@ function Destroyed()
 {
     local int i;
 
-    for ( i = 0; i < 15; i ++ )
+    for ( i = 0; i < 18; i ++ )
        em[i].Destroy();
 
-    for ( i = 0; i < 6; i ++ )
+    for ( i = 0; i < 9; i ++ )
        spheres[i].Destroy();
 
 	Super.Destroyed();
@@ -299,6 +424,17 @@ defaultproperties
 
 	CnnMoverBlowUpRadius=320
 	bBlowUp_CnnMovers=True
+
+	bPulsation=true
+	bRotating=false
+
+	PulsationTime=2          // number of second is one cycle
+	PulsationRange=1.25      // scale from 1 to number and number to 1
+
+	//PulsationTime=0.25
+	//PulsationRange=2
+
+	RotationSpeed=20000.0
 
 
     bPlayDying=False

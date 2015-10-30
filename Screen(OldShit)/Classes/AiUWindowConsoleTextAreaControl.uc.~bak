@@ -1,0 +1,6 @@
+class AiUWindowConsoleTextAreaControl extends AiWindowDynamicTextArea;
+
+defaultproperties
+{
+     MaxLines=500
+}
