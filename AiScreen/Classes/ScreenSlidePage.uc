@@ -1102,5 +1102,6 @@ defaultproperties
     FontNormalColor=(R=192,G=192,B=192,A=0),
     FontHeadingColor=(R=192,G=192,B=192,A=0),
     bAlwaysRelevant=True
-    Texture=Texture'ActorSlidePage'
+    //Texture=Texture'ActorSlidePage'
+    Texture=Texture'Engine.S_Trigger'
 }
