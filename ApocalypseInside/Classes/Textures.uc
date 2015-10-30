@@ -16,7 +16,7 @@ class Textures expands Object abstract;
 #exec TEXTURE IMPORT FILE=Textures\skilliconFrench.pcx NAME=skilliconFrench GROUP=SkillIcons MIPS=Off
 #exec TEXTURE IMPORT FILE=Textures\skilliconPiloting.pcx NAME=skilliconPiloting GROUP=SkillIcons MIPS=Off
 #exec TEXTURE IMPORT FILE=Textures\mea1.pcx NAME=mea1 GROUP=DecoTex 
-#exec TEXTURE IMPORT FILE=Textures\mea2.pcx NAME=mea1 GROUP=DecoTex 
+#exec TEXTURE IMPORT FILE=Textures\mea2.pcx NAME=mea2 GROUP=DecoTex 
 #exec TEXTURE IMPORT FILE=Textures\mea3.pcx NAME=mea3 GROUP=DecoTex 
 
 defaultproperties

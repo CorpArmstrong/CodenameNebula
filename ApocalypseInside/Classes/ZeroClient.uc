@@ -11,6 +11,6 @@ function bool Facelift(bool bOn)
 
 defaultproperties
 {
-	ItemName="Cloud Computer Zero Client"
+	ItemName="MEA Desktop Zero Client"
     MultiSkins(0)=Texture'ApocalypseInside.mea3'
 }

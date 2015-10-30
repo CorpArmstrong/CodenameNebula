@@ -6,7 +6,7 @@
 // ============================================================================
 
 
-class ScreenMutator extends AiMutator;
+class ScreenMutator extends AMutator;//AiMutator;
 
 
 // ============================================================================
@@ -161,8 +161,8 @@ simulated function PostRender(canvas Canvas) {
     }
 
 
-	if (CNextHUDMutator != None) {
-		CNextHUDMutator.PostRender(Canvas);	// FIXED: CorpArmstrong
+	if (NextHUDMutator != None) {
+		NextHUDMutator.PostRender(Canvas);	// FIXED: CorpArmstrong
     }
   }
 
