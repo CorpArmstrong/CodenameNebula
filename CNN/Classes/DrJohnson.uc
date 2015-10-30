@@ -29,4 +29,13 @@ defaultproperties
      BarkBindName="DrJohnsonBark"
      FamiliarName="Dr. Johnson"
      UnfamiliarName="Dr. Johnson"
+     bFearAlarm=false
+     bFearCarcass=false
+     bFearDistress=false
+     bFearHacking=false
+     bFearIndirectInjury=false
+     bFearInjury=false
+     bFearProjectiles=false
+     bFearShot=false
+     bFearWeapon=false
 }
