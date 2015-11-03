@@ -1,4 +1,4 @@
-class Textures expands TantalusDenton;
+class Textures expands Object abstract;
 
 // Character Textures
 
@@ -15,11 +15,10 @@ class Textures expands TantalusDenton;
 #exec TEXTURE IMPORT FILE=Textures\TantalusMenu5.pcx NAME=TantalusMenu5 GROUP=UI MIPS=Off
 #exec TEXTURE IMPORT FILE=Textures\skilliconFrench.pcx NAME=skilliconFrench GROUP=SkillIcons MIPS=Off
 #exec TEXTURE IMPORT FILE=Textures\skilliconPiloting.pcx NAME=skilliconPiloting GROUP=SkillIcons MIPS=Off
+#exec TEXTURE IMPORT FILE=Textures\mea1.pcx NAME=mea1 GROUP=DecoTex 
+#exec TEXTURE IMPORT FILE=Textures\mea2.pcx NAME=mea2 GROUP=DecoTex 
+#exec TEXTURE IMPORT FILE=Textures\mea3.pcx NAME=mea3 GROUP=DecoTex 
 
 defaultproperties
 {
-     MultiSkins(0)=Texture'ApocalypseInside.Skins.TantalusFace'
-     MultiSkins(3)=None
-     FamiliarName="Tantalus Denton"
-     UnfamiliarName="Tantalus Denton"
 }
