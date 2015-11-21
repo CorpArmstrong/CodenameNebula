@@ -164,7 +164,7 @@ simulated function PostRender(canvas Canvas) {
 
 
 	if (NextHUDMutator != None) {
-		NextHUDMutator.PostRender(Canvas);	// FIXED: CorpArmstrong
+		NextHUDMutator.PostRender(Canvas);
     }
   }
 
@@ -290,10 +290,10 @@ simulated function DrawTextCentered(canvas Canvas, out int CoordTopText, coerce 
 
 simulated function DisplayInit() {
 
-  if (bHUDMutator)    // FIXED: CorpArmstrong
+  if (bHUDMutator)
     return;
 
-  RegisterHUDMutator(); // FIXED: CorpArmstrong
+  RegisterHUDMutator();
   TimeLast = Level.TimeSeconds;
   }
 
