@@ -9,5 +9,5 @@ defaultproperties
      DrawType=DT_Mesh
      Style=STY_Translucent
      Mesh=LodMesh'DeusExDeco.Moon'
-     MultiSkins(0)=FireTexture'Effects.UserInterface.DrunkFX'
+     MultiSkins(0)=Texture'Effects.UserInterface.DrunkFX'
 }
