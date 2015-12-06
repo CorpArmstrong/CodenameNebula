@@ -1,5 +1,5 @@
 Begin PolyList
-   Begin Polygon Item=OUTSIDE Flags=-1073741824 Link=0
+   Begin Polygon Item=OUTSIDE Texture=HK_strwal_03 Flags=-1073741824 Link=0
       Origin   -00063.999981,+00063.999977,-00050.000000
       Normal   +00000.000000,+00000.000000,-00001.000000
       TextureU +00000.000000,-00001.000000,+00000.000000
