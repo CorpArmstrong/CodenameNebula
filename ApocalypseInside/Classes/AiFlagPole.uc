@@ -67,6 +67,7 @@ function SetSkin()
 
 function bool Facelift(bool bOn)
 {
+	//emptied to stop HDTP from taking over
 }
 
 // ----------------------------------------------------------------------
