@@ -112,8 +112,8 @@ defaultproperties
     buttonDefaults(1)=(Y=49,Action=1,Invoke=Class'MenuScreenSaveGame',Key=""),
     buttonDefaults(2)=(Y=85,Action=1,Invoke=Class'MenuScreenLoadGame',Key=""),
     buttonDefaults(3)=(Y=121,Action=0,Invoke=Class'MenuSettings',Key=""),
-    buttonDefaults(4)=(Y=157,Action=4,Invoke=None,Key=""),
-    buttonDefaults(5)=(Y=193,Action=5,Invoke=Class'ComputerScreenLogin',Key=""),
+    buttonDefaults(4)=(Y=157,Action=1,Invoke=None,Key=""),
+    buttonDefaults(5)=(Y=193,Action=1,Invoke=Class'ComputerScreenLogin',Key=""),
     buttonDefaults(6)=(Y=229,Action=1,Invoke=Class'CreditsWindow',Key=""),
     buttonDefaults(7)=(Y=265,Action=2,Invoke=None,Key=""),
     buttonDefaults(8)=(Y=301,Action=1,Invoke=Class'menumpmain',Key=""),
@@ -122,8 +122,8 @@ defaultproperties
     ClientWidth=258
     ClientHeight=400
     verticalOffset=2
-    clientTextures(0)=Texture'DeusExUI.UserInterface.MenuMainBackground_1'
-    clientTextures(1)=Texture'DeusExUI.UserInterface.MenuMainBackground_2'
-    clientTextures(2)=Texture'DeusExUI.UserInterface.MenuMainBackground_3'
+    clientTextures(0)=Texture'DeusExUI.MenuMainBackground_1_unscaled'
+    clientTextures(1)=Texture'DeusExUI.MenuMainBackground_2_unscaled'
+    clientTextures(2)=Texture'DeusExUI.MenuMainBackground_3_unscaled'
     textureCols=2
 }

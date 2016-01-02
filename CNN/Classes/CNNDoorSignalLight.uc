@@ -3,7 +3,9 @@
 //-----------------------------------------------------------
 class CNNDoorSignalLight expands CageLight; // make CNNActor descendant
 
-
+function bool Facelift(bool bOn){
+	//nothing
+}
 
 function BeginPlay()
 {
