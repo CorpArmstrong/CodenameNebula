@@ -4527,7 +4527,6 @@ New Vision/Textures/Supertanker.utx
 New Vision/Textures/UNATCO.utx
 New Vision/Textures/V_Com_Center.utx
 New Vision/Textures/area51textures.utx
-System/DXOgg.u
 System/FrozenHell.u
 System/FrozenHellAudiomission00.u
 System/FrozenHellAudiomission01.u
@@ -4849,7 +4848,6 @@ DXApocalypseInside/
 System/nihilumText.u
 System/otpUIfix.u
 System/sstm.ini
-Textures/X3.utx
 Textures/jcdentontex1.pcx
 Textures/joker.pcx
 Textures/kiss.pcx
@@ -4857,7 +4855,6 @@ Textures/makeup.pcx
 Textures/manson.pcx
 Textures/meacomputer.pcx
 Textures/meacomputer2.pcx
-aitex.utx
 s3tcmake/CoreTexStucco.utx
 Cache0000.tmp
 Cache0001.tmp
