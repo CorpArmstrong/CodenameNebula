@@ -5,6 +5,7 @@ class DestroyTrigger expands CNNTrigger;
 
 var () name ScriptedPawnTag;
 var () name AnyActorTag;
+var () name DestroyByClassName;
 
 function Trigger(Actor Other, Pawn Instigator)
 {
@@ -30,8 +31,30 @@ function Trigger(Actor Other, Pawn Instigator)
 	}
 
     if ( AnyActorTag != '' )
+    {
+		self.MsgBox("AnyActorTag != ''");
+
 		foreach AllActors( class 'Actor', A, AnyActorTag )
+		{
+			self.MsgBox("one finded");
 			A.Destroy();
+		}
+
+	}
+
+    if ( DestroyByClassName != '' )
+    {
+		self.MsgBox("DestroyByClassName != ''");
+
+		foreach AllActors( class 'Actor', A )
+		{
+			if (A.IsA(DestroyByClassName))
+			{
+				A.Destroy();
+			}
+		}
+	}
+
 // =================================
 	Super.Trigger(Other, Instigator);
 }
