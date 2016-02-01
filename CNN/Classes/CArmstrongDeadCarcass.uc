@@ -5,6 +5,7 @@ class CArmstrongDeadCarcass expands DeusExCarcass;
 
 defaultproperties
 {
+	 ItemName="Dead Soldier"
      Mesh2=LodMesh'DeusExCharacters.GM_Jumpsuit_CarcassB'
      Mesh3=LodMesh'DeusExCharacters.GM_Jumpsuit_CarcassC'
      Texture=Texture'DeusExItems.Skins.PinkMaskTex'
