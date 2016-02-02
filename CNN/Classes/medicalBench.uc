@@ -13,6 +13,29 @@ class medicalBench extends Seat;
 #exec meshmap new meshmap=medicalBench mesh=medicalBench
 #exec meshmap scale meshmap=medicalBench x=0.11719 y=0.11719 z=0.11719
 
+// TODO: unique event for each carcass type(MedicalBenchTrigger) + BareHandsTrigger
+//var() name BodyClasses[8];
+//var() name BodyEvents[8];
+
+function Frob(Actor Frobber, Inventory frobWith)
+{
+	local DeusExPlayer p;
+
+	p = DeusExPlayer(GetPlayerPawn());
+
+	if (p != none)
+	{
+//		p.clientMessage( "Frob()" );
+		if ((p.inHand != None) && p.inHand.IsA('POVCorpse'))
+			p.DropItem();
+		else
+			p.PutInHand(None);
+
+	}
+
+	super.Frob(Frobber, frobWith);
+}
+
 defaultproperties
 {
   DrawType=DT_Mesh
