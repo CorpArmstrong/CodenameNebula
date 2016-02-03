@@ -8,8 +8,8 @@ class CnnDispatcher expands CNNSimpleTrigger;
 // 2) can react on collision
 // 3) maybe include a some bugs :)
 
-var (Dispatcher) name  OutEvents[8]; // Events to generate.
-var (Dispatcher) float OutDelays[8]; // Relative delays before generating events.
+var (Dispatcher) name  OutEvents[16]; // Events to generate.
+var (Dispatcher) float OutDelays[16]; // Relative delays before generating events.
 var int i;
 
 function ActivatedON()
