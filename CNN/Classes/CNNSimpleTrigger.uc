@@ -49,9 +49,9 @@ var (Events) bool UntrigWhenActOFF;
 //var (Events) bool UntrigWhenTouchOUT;  // TODO
 //var (Events) bool UntrigWhenTriggerUn; // TODO
 
-function PostBeginPlay()
+function BeginPlay()
 {
-	super.PostBeginPlay();
+	super.BeginPlay();
 
 	switch (CheckCollisionEvery)
 	{

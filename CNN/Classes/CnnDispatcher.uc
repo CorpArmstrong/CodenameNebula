@@ -5,7 +5,7 @@ class CnnDispatcher expands CNNSimpleTrigger;
 
 // features:
 // 1) call Trigger() by the PlayerPawn
-// 2) can react on collision
+// 2) can't react on collision
 // 3) maybe include a some bugs :)
 
 var (Dispatcher) name  OutEvents[16]; // Events to generate.
