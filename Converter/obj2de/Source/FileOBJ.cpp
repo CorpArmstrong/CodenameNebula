@@ -7,6 +7,8 @@
 #include <sstream>
 #include <vector>
 
+#include <cmath>
+
 using namespace std;
 
 
@@ -44,6 +46,31 @@ int s2i ( const string& s )
 	return tmp_val;	
 }
 
+float VectorLength( const cFileOBJ::Vertex3d& v )
+{
+	float len = sqrt( v.X*v.X + v.Y*v.Y + v.Z*v.Z );
+
+	return len;
+}
+
+cFileOBJ::Vertex3d calcTriangleNormal(cFileOBJ::Vertex3d P1, cFileOBJ::Vertex3d P2, cFileOBJ::Vertex3d P3)
+{
+	cFileOBJ::Vertex3d a (P2.X - P1.X, P2.Y - P1.Y, P2.Z - P1.Z);
+	cFileOBJ::Vertex3d b (P3.X - P1.X, P3.Y - P1.Y, P3.Z - P1.Z);
+
+	// (a_y*b_z - a_z*b_y), (a_z*b_x - a_x*b_z), (a_x*b_y - a_y*b_x)
+
+	cFileOBJ::Vertex3d n ( (a.Y*b.Z - a.Z*b.Y), (a.Z*b.X - a.X*b.Z), (a.X*b.Y - a.Y*b.X));
+
+	float n_len = VectorLength(n);
+
+	n.X /= n_len;
+	n.Y /= n_len;
+	n.Z /= n_len;
+	
+	return n;
+}
+
 
 cFileOBJ::cFileOBJ( const char* FileName )
 {
@@ -75,12 +102,12 @@ cFileOBJ::cFileOBJ( const char* FileName )
 			{
 				// todo few frames support
 				if (words.size() == 4)
-					//vertices1.push_back(Vertex3d( s2f(words[1]), 
-					//                              -s2f(words[3]),
-					//                              s2f(words[2]) ));
 					vertices1.push_back(Vertex3d( s2f(words[1]), 
 					                              s2f(words[2]),
 					                              s2f(words[3]) ));
+					//vertices1.push_back(Vertex3d( s2f(words[1]), 
+					//                              s2f(words[2]),
+					//                              s2f(words[3]) ));
 			}
 			// TEXTURE VERTICES (UV)
 			else if ( words[0] == "vt" )
@@ -191,6 +218,59 @@ cFileOBJ::cFileOBJ( const char* FileName )
 		
 
 	}
+
+	printf("\n");
+	
+	// verify normals on faces
+	// and flip polygon by normal if it needs	
+	for ( int i = 0; i < faces.size(); i ++ )
+	{
+		// calc normal by 3 points of triangle
+		Vertex3d calculated_normal = calcTriangleNormal(vertices1[faces[i].V1-1], vertices1[faces[i].V2-1], vertices1[faces[i].V3-1]);
+
+		// calc normal by 3 near vertex'es normals
+		Vertex3d average( (normals[faces[i].N1-1].X + normals[faces[i].N2-1].X + normals[faces[i].N3-1].X) / 3,
+						  (normals[faces[i].N1-1].Y + normals[faces[i].N2-1].Y + normals[faces[i].N3-1].Y) / 3,
+						  (normals[faces[i].N1-1].Z + normals[faces[i].N2-1].Z + normals[faces[i].N3-1].Z) / 3 );
+
+		float average_len = VectorLength(average);
+
+		average.X /= average_len;
+		average.Y /= average_len;
+		average.Z /= average_len;
+
+		Vertex3d difference1( calculated_normal.X - average.X,
+							  calculated_normal.Y - average.Y,
+							  calculated_normal.Z - average.Z );
+
+		float difference1_len = VectorLength(difference1);
+
+		Vertex3d difference2( -calculated_normal.X - average.X,
+							  -calculated_normal.Y - average.Y,
+							  -calculated_normal.Z - average.Z );
+
+		float difference2_len = VectorLength(difference2);
+
+
+		if ( difference1_len > difference2_len )
+			printf("\n + %f %f ", difference1_len, difference2_len );
+		else if ( difference1_len < difference2_len )
+			//printf("- ");
+			printf("\n - %f %f ", difference1_len, difference2_len );
+		else
+			//printf("0 ");
+			printf("\n 0 %f %f ", difference1_len, difference2_len );
+
+
+	}
+
+	//int val_capacity = 20;
+	//
+	//for ( int i = 0; i < val_capacity; i++ )
+	//{
+	//	
+	//}
+
 
 	cout <<endl <<"vertices: " <<vertices1.size() 
 		 <<endl <<"UV coords: "<<textureUVs.size()
