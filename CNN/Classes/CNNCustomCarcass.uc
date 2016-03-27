@@ -22,7 +22,7 @@ state Burning
 			return;
 
 		if (DamageType == 'HalonGas')
-			ExtinguishFire();
+			//ExtinguishFire();
 
             /*
 		// if we are already burning, we can't take any more damage

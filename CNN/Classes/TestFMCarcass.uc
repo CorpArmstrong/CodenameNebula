@@ -33,7 +33,7 @@ function Timer()
     if(!flags.GetBool('LaserSecurityWorks'))
     {
        isBurning = false;
-       ExtinguishFire();
+       //ExtinguishFire();
        SetTimer(0.1, false);
     }
     else
