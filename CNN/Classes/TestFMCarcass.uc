@@ -19,10 +19,30 @@ function TakeDamage(int Damage, Pawn EventInstigator, vector HitLocation, vector
     	{
 			StillBurn();
 			isBurning = true;
-    	    SetTimer(Flammability-5, true);
+    	    SetTimer(Flammability-5, false);
     	}
 	}
+
+	if (DamageType == 'HalonGas')
+	{
+		if (isBurning)
+		{
+			ExtinguishFire();
+			isBurning = false;
+		}
+	}
 }
+
+
+function ExtinguishFire()
+{
+	local Fire f;
+
+		foreach BasedActors(class'Fire', f)
+			f.Destroy();
+}
+
+
 
 // continually burn
 function Timer()
@@ -33,12 +53,15 @@ function Timer()
     if(!flags.GetBool('LaserSecurityWorks'))
     {
        isBurning = false;
-       //ExtinguishFire();
-       SetTimer(0.1, false);
+
     }
     else
     {
-       StillBurn();
+       if(isBurning==true)
+       {
+		   StillBurn();
+	       SetTimer(Flammability-5, false);
+	   }
     }
 }
 
