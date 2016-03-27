@@ -210,11 +210,18 @@ cFileOBJ::cFileOBJ( const char* FileName )
 
 					faces.push_back(face);
 				}
+				else
+				{
+					throw cxFileOBJ("Mesh use not triangulated edges! Use only triangulated meshes!");
+				}
 			}
 		}
 		
 
 	}
+
+	if (textureUVs.size() == 0)
+		throw cxFileOBJ("File not includes texture coordinates!");
 
 	printf("\n");
 	

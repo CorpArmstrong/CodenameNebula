@@ -95,12 +95,18 @@ int main( int argc, char* argv[] )
         if( gModel.GetNumPolygons() > 0 )
             gModel.Write( gProjectDirectory, gBaseName );
     }
+	catch( const cxFileOBJ& e )
+	{
+		printf( "\nError Accured: %s: %s\n", argv[ CurArg ], e.what() );
+	}
     catch( const cxFile3DS& e ) {
         printf( "%s: %s\n", argv[ CurArg ], e.what() );
     }
     catch( ... ) {
         printf( "%s: got unknown exception\n", argv[ CurArg ] );
     }
+
+	getchar();
 
     return 0;
 }
