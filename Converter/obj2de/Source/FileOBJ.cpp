@@ -223,6 +223,12 @@ cFileOBJ::cFileOBJ( const char* FileName )
 	if (textureUVs.size() == 0)
 		throw cxFileOBJ("File not includes texture coordinates!");
 
+	if (normals.size() == 0)
+		throw cxFileOBJ("File not includes normals!");
+
+	if (vertices1.size() == 0)
+		throw cxFileOBJ("File not includes vertices!");
+
 	printf("\n");
 	
 	// verify normals on faces
@@ -258,7 +264,7 @@ cFileOBJ::cFileOBJ( const char* FileName )
 
 		if ( difference1_len > difference2_len )
 		{
-			printf("\n incorrect face normal %f %f ", difference1_len, difference2_len );
+			printf("\n incorrect face normal %f %f", difference1_len, difference2_len );
 
 			int bufVertex, bufNormal, bufUV;
 
@@ -274,7 +280,7 @@ cFileOBJ::cFileOBJ( const char* FileName )
 			faces[i].N3 = bufNormal;
 			faces[i].UV3 = bufUV;
 			
-			printf("\n face was flipped.");
+			printf(" face was flipped.");
 		}
 		else if ( difference1_len < difference2_len )
 			//printf("- ");
@@ -285,13 +291,6 @@ cFileOBJ::cFileOBJ( const char* FileName )
 
 
 	}
-
-	//int val_capacity = 20;
-	//
-	//for ( int i = 0; i < val_capacity; i++ )
-	//{
-	//	
-	//}
 
 
 	cout <<endl <<"vertices: " <<vertices1.size() 
