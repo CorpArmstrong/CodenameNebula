@@ -105,9 +105,6 @@ cFileOBJ::cFileOBJ( const char* FileName )
 					vertices1.push_back(Vertex3d( s2f(words[1]), 
 					                              s2f(words[2]),
 					                              s2f(words[3]) ));
-					//vertices1.push_back(Vertex3d( s2f(words[1]), 
-					//                              s2f(words[2]),
-					//                              s2f(words[3]) ));
 			}
 			// TEXTURE VERTICES (UV)
 			else if ( words[0] == "vt" )
@@ -253,10 +250,28 @@ cFileOBJ::cFileOBJ( const char* FileName )
 
 
 		if ( difference1_len > difference2_len )
-			printf("\n + %f %f ", difference1_len, difference2_len );
+		{
+			printf("\n incorrect face normal %f %f ", difference1_len, difference2_len );
+
+			int bufVertex, bufNormal, bufUV;
+
+			bufVertex = faces[i].V2;
+			bufNormal = faces[i].N2;
+			bufUV = faces[i].UV2;
+
+			faces[i].V2 = faces[i].V3;
+			faces[i].N2 = faces[i].N3;
+			faces[i].UV2 = faces[i].UV3;
+
+			faces[i].V3 = bufVertex;
+			faces[i].N3 = bufNormal;
+			faces[i].UV3 = bufUV;
+			
+			printf("\n face was flipped.");
+		}
 		else if ( difference1_len < difference2_len )
 			//printf("- ");
-			printf("\n - %f %f ", difference1_len, difference2_len );
+			printf("\n correct normal %f %f ", difference1_len, difference2_len );
 		else
 			//printf("0 ");
 			printf("\n 0 %f %f ", difference1_len, difference2_len );
