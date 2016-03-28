@@ -10,6 +10,25 @@ var bool isBurning;
 var Fire f;
 var int i;
 var vector loc;
+var() float MinScaleGlow;
+var() float GlowFadeDownSpeed;
+
+function Tick(float deltaSeconds)
+{
+	if (isBurning)
+	{
+		if (ScaleGlow > MinScaleGlow)
+		{
+			ScaleGlow = ScaleGlow - GlowFadeDownSpeed*deltaSeconds;
+		}
+		else
+		{
+			ScaleGlow = MinScaleGlow;
+		}
+	}
+
+	super.Tick(deltaSeconds);
+}
 
 function TakeDamage(int Damage, Pawn EventInstigator, vector HitLocation, vector Momentum, name DamageType)
 {
@@ -98,6 +117,8 @@ function StillBurn()
 
 DefaultProperties
 {
+     MinScaleGlow=0.07
+	 GlowFadeDownSpeed=0.1
      Flammability=30.000000
      isBurning=false
 }
