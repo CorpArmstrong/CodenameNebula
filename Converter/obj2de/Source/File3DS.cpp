@@ -268,13 +268,13 @@ void cFile3DS::ParseFaceMaterial( FILE* fp )
         if( !stricmp( MaterialName.c_str(), "WEAPON" ) ) 
             Type = 8;
 
-        else if( !stricmp( MaterialName.c_str(), "TWOSIDED" ) ) 
+        else if( !stricmp( MaterialName.c_str(), "TWOSIDED" ) ) // twosided with holes at extra black places (maybe Translucet + Twosided)
             Type = 3;
 
-        else if( !stricmp( MaterialName.c_str(), "TRANSLUCENT" ) ) 
+        else if( !stricmp( MaterialName.c_str(), "TRANSLUCENT" ) ) // normal translucent
             Type = 2;
 
-        else if( !stricmp( MaterialName.c_str(), "TWOSIDEDNORM" ) ) 
+        else if( !stricmp( MaterialName.c_str(), "TWOSIDEDNORM" ) ) // normal twosided
             Type = 1;
 
         else if( !stricmp( MaterialName.c_str(), "UNLIT" ) ) 

@@ -83,6 +83,7 @@ cFileOBJ::cFileOBJ( const char* FileName )
 	cVertexList vertices1;
 
 	int current_texture_num = 0;
+	int current_attribute_type = 0;
 
 	while( inputFile )
 	{
@@ -128,9 +129,45 @@ cFileOBJ::cFileOBJ( const char* FileName )
 	
 				if ( words.size() == 2 )
 				{
-					string preDotName = words[1];
+					if ( words[1].find_last_of(".") != string::npos )
+					{
+						string afterDotName = words[1];
+						afterDotName.erase(0, afterDotName.find_last_of(".")+1);
+
+						current_attribute_type = 0; // no attributes
+						
+						if(afterDotName!="")
+						{
+							if( afterDotName.find("Tw") != string::npos )
+								current_attribute_type = current_attribute_type | 1;
+
+							if( afterDotName.find("Tr") != string::npos )
+								current_attribute_type = current_attribute_type | 2;
+							
+							if( afterDotName.find("Md") != string::npos )
+								current_attribute_type = current_attribute_type | 4;
+							
+							if( afterDotName.find("Wp") != string::npos )
+								current_attribute_type = current_attribute_type | 8;
+
+							if( afterDotName.find("Un") != string::npos )
+								current_attribute_type = current_attribute_type | 16;
+
+							if( afterDotName.find("Fl") != string::npos )
+								current_attribute_type = current_attribute_type | 32;
+
+							if( afterDotName.find("En") != string::npos )
+								current_attribute_type = current_attribute_type | 64;
+						}
+					}
+					else
+					{
+						current_attribute_type = 0; // no attributes
+					}
+
 					
 					// we use pre dot name fragmet like a name of texture
+					string preDotName = words[1];
 					preDotName.erase( preDotName.find_last_of("."), preDotName.size() );
 					
 					// find this  name in array
@@ -157,6 +194,10 @@ cFileOBJ::cFileOBJ( const char* FileName )
 						current_texture_num = finded_texture_num;
 					// all polygon who stay after that "usemtl" will get his texture number in array
 				}
+				else
+				{
+					throw cxFileOBJ("Name of material error.");
+				}
 			}
 			// FACES 
 			else if ( words[0] == "f" )
@@ -167,7 +208,7 @@ cFileOBJ::cFileOBJ( const char* FileName )
 					ObjFace face;
 
 					face.TextureNum = current_texture_num;
-					face.Type = 0;
+					face.Type = current_attribute_type;
 
 					// 1st point group
 					{
