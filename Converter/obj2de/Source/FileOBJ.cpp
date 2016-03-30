@@ -138,7 +138,7 @@ cFileOBJ::cFileOBJ( const char* FileName )
 						
 						if(afterDotName!="")
 						{
-							if( afterDotName.find("Tw") != string::npos )
+							if( afterDotName.find("Ts") != string::npos )
 								current_attribute_type = current_attribute_type | 1;
 
 							if( afterDotName.find("Tr") != string::npos )
@@ -272,7 +272,7 @@ cFileOBJ::cFileOBJ( const char* FileName )
 
 	printf("\n");
 	
-	// verify normals on faces
+	// VERIFY NORMALS ON FACES
 	// and flip polygon by normal if it needs	
 	for ( int i = 0; i < faces.size(); i ++ )
 	{
@@ -332,6 +332,44 @@ cFileOBJ::cFileOBJ( const char* FileName )
 
 
 	}
+
+	// CENTERING
+
+	
+	Vertex3d Min(0,0,0);
+	Vertex3d Max(0,0,0);
+	//bounding box finding
+	for( int i = 0; i < vertices1.size(); i ++ )
+	{
+		if (vertices1[i].X < Min.X)
+			Min.X = vertices1[i].X;
+		if (vertices1[i].Y < Min.Y)
+			Min.Y = vertices1[i].Y;
+		if (vertices1[i].Z < Min.Z)
+			Min.Z = vertices1[i].Z;
+		
+		if (vertices1[i].X > Max.X)
+			Max.X = vertices1[i].X;
+		if (vertices1[i].Y > Max.Y)
+			Max.Y = vertices1[i].Y;
+		if (vertices1[i].Z > Max.Z)
+			Max.Z = vertices1[i].Z;
+	}
+
+	// real model center
+	Vertex3d Center( (Max.X - Min.X) / 2 + Min.X, 
+					 (Max.Y - Min.Y) / 2 + Min.Y, 
+					 (Max.Z - Min.Z) / 2 + Min.Z );
+
+	// shift center of model to center of coordinates.
+	for( int i = 0; i < vertices1.size(); i ++ )
+	{
+		vertices1[i].X -= Center.X;
+		vertices1[i].Y -= Center.Y;
+		vertices1[i].Z -= Center.Z;
+	}
+
+
 
 
 	cout <<endl <<"vertices: " <<vertices1.size() 

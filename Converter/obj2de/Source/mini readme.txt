@@ -14,7 +14,7 @@
 если точки нет в названии матерриала то все атрибуты выключены.
 вот список флагов аттрибутов
 
-Tw - two sided
+Ts - two sided
 Tr - translucent
 Md - modulated
 Wp - weapon
