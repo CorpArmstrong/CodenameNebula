@@ -71,8 +71,11 @@ public:
 	vector<string>      textures;
 
 	//--- METHODS ------------------------------------------------------------
-	explicit cFileOBJ( const char* FileName );
+	explicit cFileOBJ( const char* FileName, bool flipYZ );
 	virtual ~cFileOBJ();
+
+	void cFileOBJ::verifyNormals();
+	void cFileOBJ::centering();
 
 	int GetNumFrames() const;
 	int GetNumPolygons() const;

@@ -5,7 +5,7 @@ const char RegistryPath[] = "Software\\DeusEx1MeshConverter\\obj2de";
 
 
 //===========================================================================
-static void    AddOBJFileToModel( const char* FileName, cUnrealModel* Model );
+static void    AddOBJFileToModel( const char* FileName, cUnrealModel* Model, bool flipYZ );
 static void    Add3DSFileToModel( const char* FileName, cUnrealModel* Model );
 static string  GetBaseName( int argc, char* argv[], int* CurArg );
 static void    GetProjectDirectory();
@@ -23,6 +23,7 @@ cUnrealModel    gModel;
 int main( int argc, char* argv[] )
 {
     bool ShowCopyright = true;
+	bool FlipYZ = false;
 
     // Parse options
     int CurArg;
@@ -35,6 +36,9 @@ int main( int argc, char* argv[] )
 
             } else if (!stricmp( argv[ CurArg ], "-c" ) ) {
                 ShowCopyright = false;
+
+			} else if (!stricmp( argv[ CurArg ], "-flipYZ" ) ) {
+				FlipYZ = true;
 
             } else {
                 Usage();
@@ -66,29 +70,34 @@ int main( int argc, char* argv[] )
         Usage();
 
     try {
-        // Process 3DS files
-        for( ; CurArg < argc; ++CurArg ) {
+		// Process OBJ files
+        for( ; CurArg < argc; ++CurArg ) 
+		{
+			if( *argv[ CurArg ] != '-' )
+			{
+				WIN32_FIND_DATA FindData;
+				HANDLE FindH = ::FindFirstFile( argv[ CurArg ], &FindData );
 
-            WIN32_FIND_DATA FindData;
-            HANDLE FindH = ::FindFirstFile( argv[ CurArg ], &FindData );
+				if( FindH != INVALID_HANDLE_VALUE ) 
+				{
+					//Add3DSFileToModel( FindData.cFileName, &gModel );
+					AddOBJFileToModel( FindData.cFileName, &gModel, FlipYZ );
 
-            if( FindH != INVALID_HANDLE_VALUE ) {
+					while( ::FindNextFile( FindH, &FindData ) ) 
+					{
+						//Add3DSFileToModel( FindData.cFileName, &gModel );
+						AddOBJFileToModel( FindData.cFileName, &gModel, FlipYZ );
+					}
 
-                //Add3DSFileToModel( FindData.cFileName, &gModel );
-				AddOBJFileToModel( FindData.cFileName, &gModel );
-                while( ::FindNextFile( FindH, &FindData ) ) {
-                    //Add3DSFileToModel( FindData.cFileName, &gModel );
-					AddOBJFileToModel( FindData.cFileName, &gModel );
-                }
+					if( ::GetLastError() != ERROR_NO_MORE_FILES )
+						throw cxFile3DS( "error accessing file" );
 
-                if( ::GetLastError() != ERROR_NO_MORE_FILES )
-                    throw cxFile3DS( "error accessing file" );
+					::FindClose( FindH );
 
-                ::FindClose( FindH );
-
-            } else { 
-                throw cxFile3DS( "can't find file" );
-            }
+				} else { 
+					throw cxFile3DS( "can't find file" );
+				}
+			}
         }
 
         // Create Unreal files
@@ -112,9 +121,9 @@ int main( int argc, char* argv[] )
 }
 
 //===========================================================================
-static void AddOBJFileToModel( const char* FileName, cUnrealModel* Model )
+static void AddOBJFileToModel( const char* FileName, cUnrealModel* Model, bool flipYZ )
 {
-	cFileOBJ            CurFile( FileName );
+	cFileOBJ            CurFile( FileName, flipYZ );
 	string              SeqName = FileName;
 
 	SeqName.erase( SeqName.find_last_of("."), SeqName.size() );
@@ -185,9 +194,9 @@ static void Add3DSFileToModel( const char* FileName, cUnrealModel* Model )
             Model->AddVertex( CurVertex->X, CurVertex->Y, CurVertex->Z );
 
             if( !FoundBadCoord ) {
-                if( CurVertex->X <= -128.0 || 128.0 <= CurVertex->X ||
-                    CurVertex->Y <= -128.0 || 128.0 <= CurVertex->Y ||
-                    CurVertex->Z <= -128.0 || 128.0 <= CurVertex->Z ) {
+                if( CurVertex->X <= -127.0 || 127.0 <= CurVertex->X ||
+                    CurVertex->Y <= -127.0 || 127.0 <= CurVertex->Y ||
+                    CurVertex->Z <= -127.0 || 127.0 <= CurVertex->Z ) {
                     printf( "warning: %s: bad coordinate %f,%f,%f\n",
                             FileName,
                             CurVertex->X, CurVertex->Y, CurVertex->Z );

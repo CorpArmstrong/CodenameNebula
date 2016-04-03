@@ -72,7 +72,7 @@ cFileOBJ::Vertex3d calcTriangleNormal(cFileOBJ::Vertex3d P1, cFileOBJ::Vertex3d 
 }
 
 
-cFileOBJ::cFileOBJ( const char* FileName )
+cFileOBJ::cFileOBJ( const char* FileName, bool flipYZ )
 {
 	
 	ifstream inputFile;
@@ -103,9 +103,14 @@ cFileOBJ::cFileOBJ( const char* FileName )
 			{
 				// todo few frames support
 				if (words.size() == 4)
-					vertices1.push_back(Vertex3d( s2f(words[1]), 
-					                              s2f(words[2]),
-					                              s2f(words[3]) ));
+					if ( !flipYZ )
+						vertices1.push_back(Vertex3d( s2f(words[1]), 
+													  s2f(words[2]), 
+													  s2f(words[3]) ));
+					else 
+						vertices1.push_back(Vertex3d( s2f(words[1]), 
+													  s2f(words[3]), 
+													  s2f(words[2]) ));
 			}
 			// TEXTURE VERTICES (UV)
 			else if ( words[0] == "vt" )
@@ -118,9 +123,14 @@ cFileOBJ::cFileOBJ( const char* FileName )
 			else if ( words[0] == "vn" )
 			{
 				if (words.size() == 4)
-					normals.push_back(Vertex3d( s2f(words[1]), 
-					                            s2f(words[2]),
-					                            s2f(words[3]) ));
+					if ( !flipYZ )
+						normals.push_back(Vertex3d( s2f(words[1]), 
+													s2f(words[2]),
+													s2f(words[3]) ));
+					else
+						normals.push_back(Vertex3d( s2f(words[1]), 
+													s2f(words[3]),
+													s2f(words[2]) ));
 			}
 			// MATERIAL NAME (TEXTURE NAME AND FLAGS)
 			else if ( words[0] == "usemtl" )
@@ -129,9 +139,14 @@ cFileOBJ::cFileOBJ( const char* FileName )
 	
 				if ( words.size() == 2 )
 				{
-					if ( words[1].find_last_of(".") != string::npos )
+					string preDotName;
+					string afterDotName;
+				
+					if ( words[1].find(".") != string::npos )
 					{
-						string afterDotName = words[1];
+						preDotName = afterDotName = words[1];
+						
+						preDotName.erase( preDotName.find("."), preDotName.size() );
 						afterDotName.erase(0, afterDotName.find_last_of(".")+1);
 
 						current_attribute_type = 0; // no attributes
@@ -163,13 +178,13 @@ cFileOBJ::cFileOBJ( const char* FileName )
 					else
 					{
 						current_attribute_type = 0; // no attributes
+						preDotName = words[1];
+						afterDotName = "";
 					}
 
 					
 					// we use pre dot name fragmet like a name of texture
-					string preDotName = words[1];
-					preDotName.erase( preDotName.find_last_of("."), preDotName.size() );
-					
+
 					// find this  name in array
 					bool finded = false;
 					int finded_texture_num = 0;
@@ -271,18 +286,43 @@ cFileOBJ::cFileOBJ( const char* FileName )
 		throw cxFileOBJ("File not includes vertices!");
 
 	printf("\n");
+
+	frames.push_back(vertices1);
 	
+	
+	verifyNormals();
+	centering();
+
+
+	cout <<endl <<"vertices: " <<vertices1.size() 
+		 <<endl <<"UV coords: "<<textureUVs.size()
+		 <<endl <<"vertex normals: "<<normals.size()
+		 <<endl <<"texture materials: "<<textures.size()
+		 <<endl <<"faces: "<<faces.size()
+		 <<endl;
+
+	inputFile.close();
+
+
+}
+
+cFileOBJ::~cFileOBJ(void)
+{
+}
+
+void cFileOBJ::verifyNormals()
+{
 	// VERIFY NORMALS ON FACES
 	// and flip polygon by normal if it needs	
 	for ( int i = 0; i < faces.size(); i ++ )
 	{
 		// calc normal by 3 points of triangle
-		Vertex3d calculated_normal = calcTriangleNormal(vertices1[faces[i].V1-1], vertices1[faces[i].V2-1], vertices1[faces[i].V3-1]);
+		Vertex3d calculated_normal = calcTriangleNormal(frames[0][faces[i].V1-1], frames[0][faces[i].V2-1], frames[0][faces[i].V3-1]);
 
 		// calc normal by 3 near vertex'es normals
 		Vertex3d average( (normals[faces[i].N1-1].X + normals[faces[i].N2-1].X + normals[faces[i].N3-1].X) / 3,
-						  (normals[faces[i].N1-1].Y + normals[faces[i].N2-1].Y + normals[faces[i].N3-1].Y) / 3,
-						  (normals[faces[i].N1-1].Z + normals[faces[i].N2-1].Z + normals[faces[i].N3-1].Z) / 3 );
+			(normals[faces[i].N1-1].Y + normals[faces[i].N2-1].Y + normals[faces[i].N3-1].Y) / 3,
+			(normals[faces[i].N1-1].Z + normals[faces[i].N2-1].Z + normals[faces[i].N3-1].Z) / 3 );
 
 		float average_len = VectorLength(average);
 
@@ -291,14 +331,14 @@ cFileOBJ::cFileOBJ( const char* FileName )
 		average.Z /= average_len;
 
 		Vertex3d difference1( calculated_normal.X - average.X,
-							  calculated_normal.Y - average.Y,
-							  calculated_normal.Z - average.Z );
+			calculated_normal.Y - average.Y,
+			calculated_normal.Z - average.Z );
 
 		float difference1_len = VectorLength(difference1);
 
 		Vertex3d difference2( -calculated_normal.X - average.X,
-							  -calculated_normal.Y - average.Y,
-							  -calculated_normal.Z - average.Z );
+			-calculated_normal.Y - average.Y,
+			-calculated_normal.Z - average.Z );
 
 		float difference2_len = VectorLength(difference2);
 
@@ -320,7 +360,7 @@ cFileOBJ::cFileOBJ( const char* FileName )
 			faces[i].V3 = bufVertex;
 			faces[i].N3 = bufNormal;
 			faces[i].UV3 = bufUV;
-			
+
 			printf(" face was flipped.");
 		}
 		else if ( difference1_len < difference2_len )
@@ -329,70 +369,46 @@ cFileOBJ::cFileOBJ( const char* FileName )
 		else
 			//printf("0 ");
 			printf("\n 0 %f %f ", difference1_len, difference2_len );
-
-
 	}
+}
 
+void cFileOBJ::centering()
+{
 	// CENTERING
-
-	
 	Vertex3d Min(0,0,0);
 	Vertex3d Max(0,0,0);
 	//bounding box finding
-	for( int i = 0; i < vertices1.size(); i ++ )
+	for( int i = 0; i < frames[0].size(); i ++ )
 	{
-		if (vertices1[i].X < Min.X)
-			Min.X = vertices1[i].X;
-		if (vertices1[i].Y < Min.Y)
-			Min.Y = vertices1[i].Y;
-		if (vertices1[i].Z < Min.Z)
-			Min.Z = vertices1[i].Z;
-		
-		if (vertices1[i].X > Max.X)
-			Max.X = vertices1[i].X;
-		if (vertices1[i].Y > Max.Y)
-			Max.Y = vertices1[i].Y;
-		if (vertices1[i].Z > Max.Z)
-			Max.Z = vertices1[i].Z;
+		if (frames[0][i].X < Min.X)
+			Min.X = frames[0][i].X;
+		if (frames[0][i].Y < Min.Y)
+			Min.Y = frames[0][i].Y;
+		if (frames[0][i].Z < Min.Z)
+			Min.Z = frames[0][i].Z;
+
+		if (frames[0][i].X > Max.X)
+			Max.X = frames[0][i].X;
+		if (frames[0][i].Y > Max.Y)
+			Max.Y = frames[0][i].Y;
+		if (frames[0][i].Z > Max.Z)
+			Max.Z = frames[0][i].Z;
 	}
 
 	// real model center
 	Vertex3d Center( (Max.X - Min.X) / 2 + Min.X, 
-					 (Max.Y - Min.Y) / 2 + Min.Y, 
-					 (Max.Z - Min.Z) / 2 + Min.Z );
+		(Max.Y - Min.Y) / 2 + Min.Y, 
+		(Max.Z - Min.Z) / 2 + Min.Z );
 
 	// shift center of model to center of coordinates.
-	for( int i = 0; i < vertices1.size(); i ++ )
-	{
-		vertices1[i].X -= Center.X;
-		vertices1[i].Y -= Center.Y;
-		vertices1[i].Z -= Center.Z;
-	}
-
-
-
-
-	cout <<endl <<"vertices: " <<vertices1.size() 
-		 <<endl <<"UV coords: "<<textureUVs.size()
-		 <<endl <<"vertex normals: "<<normals.size()
-		 <<endl <<"texture materials: "<<textures.size()
-		 <<endl <<"faces: "<<faces.size()
-		 <<endl;
-
-	frames.push_back(vertices1);
-
-	inputFile.close();
-
-
-
-
-
+	for( int frameNum = 0; frameNum < frames.size(); frameNum++)
+		for( int i = 0; i < frames[frameNum].size(); i ++ )
+		{
+			frames[frameNum][i].X -= Center.X;
+			frames[frameNum][i].Y -= Center.Y;
+			frames[frameNum][i].Z -= Center.Z;
+		}
 }
-
-cFileOBJ::~cFileOBJ(void)
-{
-}
-
 
 int cFileOBJ::GetNumFrames() const
 {
