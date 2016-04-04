@@ -5,7 +5,7 @@ const char RegistryPath[] = "Software\\DeusEx1MeshConverter\\obj2de";
 
 
 //===========================================================================
-static void    AddOBJFileToModel( const char* FileName, cUnrealModel* Model, bool flipYZ );
+static void    AddOBJFileToModel( const char* FileName, cUnrealModel* Model, bool flipYZ, bool centering );
 static void    Add3DSFileToModel( const char* FileName, cUnrealModel* Model );
 static string  GetBaseName( int argc, char* argv[], int* CurArg );
 static void    GetProjectDirectory();
@@ -24,12 +24,13 @@ int main( int argc, char* argv[] )
 {
     bool ShowCopyright = true;
 	bool FlipYZ = false;
+	bool Centering = true;
 
     // Parse options
     int CurArg;
     for( CurArg = 1; CurArg < argc; ++CurArg ) {
-        if( *argv[ CurArg ] == '-' ) {
-
+        if( *argv[ CurArg ] == '-' ) 
+		{
             if( !stricmp( argv[ CurArg ], "-setproj" ) ) {
                 SetProjectDirectory();
                 exit( 0 );
@@ -40,10 +41,14 @@ int main( int argc, char* argv[] )
 			} else if (!stricmp( argv[ CurArg ], "-flipYZ" ) ) {
 				FlipYZ = true;
 
+			} else if (!stricmp( argv[ CurArg ], "-nocentering" ) ) {
+				Centering = false;
+
             } else {
                 Usage();
             }
-        } else {
+		}
+		else {
             break;  // done with options
         }
     }
@@ -81,12 +86,14 @@ int main( int argc, char* argv[] )
 				if( FindH != INVALID_HANDLE_VALUE ) 
 				{
 					//Add3DSFileToModel( FindData.cFileName, &gModel );
-					AddOBJFileToModel( FindData.cFileName, &gModel, FlipYZ );
+					AddOBJFileToModel( FindData.cFileName, &gModel, 
+						               FlipYZ, Centering );
 
 					while( ::FindNextFile( FindH, &FindData ) ) 
 					{
 						//Add3DSFileToModel( FindData.cFileName, &gModel );
-						AddOBJFileToModel( FindData.cFileName, &gModel, FlipYZ );
+						AddOBJFileToModel( FindData.cFileName, &gModel, 
+							               FlipYZ, Centering );
 					}
 
 					if( ::GetLastError() != ERROR_NO_MORE_FILES )
@@ -121,10 +128,12 @@ int main( int argc, char* argv[] )
 }
 
 //===========================================================================
-static void AddOBJFileToModel( const char* FileName, cUnrealModel* Model, bool flipYZ )
+static void AddOBJFileToModel( const char* FileName, cUnrealModel* Model, bool flipYZ, bool centering  )
 {
 	cFileOBJ            CurFile( FileName, flipYZ );
 	string              SeqName = FileName;
+
+	if (centering) CurFile.centering();
 
 	SeqName.erase( SeqName.find_last_of("."), SeqName.size() );
 	Model->NewSequence( SeqName.c_str(), CurFile.GetNumFrames() );
@@ -138,10 +147,6 @@ static void AddOBJFileToModel( const char* FileName, cUnrealModel* Model, bool f
 			Model->AddVertex( CurFile.frames[i][point_num].X, 
 			                  CurFile.frames[i][point_num].Y,
 				              CurFile.frames[i][point_num].Z );
-
-			//printf( "\nX = %f Y = %f Z = %f", CurFile.frames[i][point_num].X,
-			//                                  CurFile.frames[i][point_num].Y,
-			//                                  CurFile.frames[i][point_num].Z );
 		}
 	}
 
@@ -158,13 +163,6 @@ static void AddOBJFileToModel( const char* FileName, cUnrealModel* Model, bool f
 											   CurFile.textureUVs[ CurFile.faces[i].UV3-1 ].U, 
 											   CurFile.textureUVs[ CurFile.faces[i].UV3-1 ].V,
 											   CurFile.faces[i].TextureNum ) );
-
-			//Model->AddPolygon( cUnrealPolygon( F.V0, F.V1, F.V2,
-			//	F.Type, 
-			//	F.V0U, F.V0V,
-			//	F.V1U, F.V1V,
-			//	F.V2U, F.V2V,
-			//	F.TextureNum ) );
 		}
 
 		Model->AddTexture( 0, "Ship1.pcx" );
@@ -328,7 +326,30 @@ static void SetProjectDirectory()
 static void Usage()
 {
     puts( "usage: obj2de -setproj" );
-    puts( "       obj2de ClassName file1.obj file2.obj ..." );
-    puts( "       obj2de ClassName.obj" );
+    puts( "       obj2de [params] ClassName file1.obj file2.obj ..." );
+    puts( "       obj2de [params] ClassName.obj" );
+	puts( "" );
+	puts( "params:   -flipYZ         Exchange Y and Z coordinates in model." );
+	puts( "                          Because in old UnrealEngine1, Z coordinate is a height of vertices," );
+	puts( "                          but other programs such as Blender and Max use Y as height." );
+	puts( "" );
+	//puts( "          -scaleTo=XXXm   Model will be proportionally scaled to specified dimension" );
+	//puts( "                          by height. Dimension XXX must be setted in meters." );
+	//puts( "                          Just write" );
+	//puts( "                            -scaleTo=0.25m" );
+	//puts( "                          and your model will be 25cm in game by height." );
+	//puts( "" );
+	//puts( "          -scaleTo=XXXu   Model will be proportionally scaled to specified dimension" );
+	//puts( "                          by height. Dimension XXX must be setted in Unreal Units!" );
+	//puts( "                          Just write" );
+	//puts( "                            -scaleTo=15u" );
+	//puts( "                          and your model will be 15 units in game by height." );
+	//puts( "" );
+	puts( "          -nocentering    Disable automatic centering by first frame." );
+	puts( "                          In other ways model will be centered in center of coordinates." );
+	//puts( "" );
+	//puts( "          -nocollision    Disable automatic collision setting in *.uc file." );
+	//puts( "                          Converter calcs collision as cylinder who touches" );
+	//puts( "                          to most far points of model. With center at coordinates center." );
     exit( 0 );
 }

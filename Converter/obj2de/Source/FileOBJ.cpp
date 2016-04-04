@@ -291,7 +291,6 @@ cFileOBJ::cFileOBJ( const char* FileName, bool flipYZ )
 	
 	
 	verifyNormals();
-	centering();
 
 
 	cout <<endl <<"vertices: " <<vertices1.size() 
