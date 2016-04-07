@@ -109,7 +109,7 @@ int main( int argc, char* argv[] )
 
         // Create Unreal files
         if( gModel.GetNumPolygons() > 0 )
-            gModel.Write( gProjectDirectory, gBaseName );
+            gModel.Write( gProjectDirectory, gBaseName, 10, true );
     }
 	catch( const cxFileOBJ& e )
 	{

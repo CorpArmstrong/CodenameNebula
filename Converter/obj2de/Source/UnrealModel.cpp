@@ -6,7 +6,17 @@
 // May 25, 2001: Modified for the Deus Ex format -- Steve Tack
 
 #include "3ds2de.h"
+#include <cmath>
 using namespace std;
+
+
+float VectorLength( const float& x, const float& y )
+{
+	float len = sqrt( x*x + y*y );
+
+	return len;
+}
+
 
 //===========================================================================
 cUnrealPolygon::cUnrealPolygon( int V0, int V1, int V2 ) 
@@ -90,6 +100,17 @@ int cUnrealModel::GetNumPolygons() const
 }
 
 //===========================================================================
+int cUnrealModel::GetNumFrames() const // how many frames we have
+{
+	int NumberOfFrames = 0;
+
+	for(int i = 0; i < mSequences.size(); i ++)
+		NumberOfFrames += mSequences[i].Length;
+	
+	return NumberOfFrames;
+}
+
+//===========================================================================
 void cUnrealModel::NewSequence( const string& Name, int Len ) 
 {
     Seq   NewSeq;
@@ -99,8 +120,53 @@ void cUnrealModel::NewSequence( const string& Name, int Len )
 }
 
 //===========================================================================
-void cUnrealModel::Write( const string& ProjDir, const string& BaseName ) 
+void cUnrealModel::Write( const string& ProjDir, const string& BaseName, float scaleTo, bool setCollision ) 
 {
+	// CALCULATING CYLINDER of collision
+
+	// collision of body looks like a cylinder 
+	// who touches to most far points of model.
+	// centering all models if very recommended.
+	float MinHeight = 0, MaxHeight = 0; // real top & bottom of cylinder
+	float MaxCenterDistance = 0; // radius of cylinder
+
+	// automatic collision calc's by first frame only.
+	int pointsOnFrame = mVertices.size() / GetNumFrames();
+	for(int i = 0; i < pointsOnFrame; i ++ )
+	{
+		if ( mVertices[i].y < MinHeight ) MinHeight = mVertices[i].y;
+		if ( mVertices[i].y > MaxHeight ) MaxHeight = mVertices[i].y;
+
+		if ( VectorLength(mVertices[i].x, mVertices[i].y) > MaxCenterDistance ) 
+			MaxCenterDistance = VectorLength(mVertices[i].x, mVertices[i].y);
+	}
+
+	float RealHeight = (MaxHeight - MinHeight) * 0.00390625;
+	float CollisionHeight = max(abs(MaxHeight),abs(MinHeight)) * 0.00390625;
+	float CollisionRadius = MaxCenterDistance * 0.00390625;
+
+	// CALCULATING SCALE by height of first frame
+
+	float drawScale = 1.0f;
+	float meshmapScale = 0.00390625f;
+
+	if (scaleTo != 0.0f)
+	{
+		drawScale = scaleTo / RealHeight;
+
+		CollisionHeight *= drawScale;
+		CollisionRadius *= drawScale;
+		meshmapScale *= drawScale;
+	}
+		
+
+
+
+
+
+
+
+
     // Pre-compute some useful values
     int MaxSeqNameLen = 0;
     int NumFrames = 0;
@@ -231,8 +297,8 @@ void cUnrealModel::Write( const string& ProjDir, const string& BaseName )
 
     fprintf( fp, "#exec MESHMAP NEW   MESHMAP=%s MESH=%s\n",
                  BaseName.c_str(), BaseName.c_str() );
-    fprintf( fp, "#exec MESHMAP SCALE MESHMAP=%s X=0.00390625 Y=0.00390625 Z=0.00390625\n\n",
-                 BaseName.c_str());
+    fprintf( fp, "#exec MESHMAP SCALE MESHMAP=%s X=%f Y=%f Z=%f\n\n",
+                 BaseName.c_str(), meshmapScale, meshmapScale, meshmapScale);
 
     if( AnyTextures ) {
         for( int i = 0; i < mTextures.size(); ++i ) {
@@ -244,10 +310,32 @@ void cUnrealModel::Write( const string& ProjDir, const string& BaseName )
         }
     }
 
-    fprintf( fp, "\ndefaultproperties\n{\n" );
-    fprintf( fp, "    DrawType=DT_Mesh\n" );
-    fprintf( fp, "    Mesh=%s\n", BaseName.c_str() );
-    fprintf( fp, "}\n" );
+
+
+
+	// WRITE DEFAULT PROPERTIES
+	fprintf( fp, "\ndefaultproperties\n{\n" );
+	fprintf( fp, "    DrawType=DT_Mesh\n" );
+	fprintf( fp, "    Mesh=%s\n", BaseName.c_str() );
+	
+
+	if (setCollision)
+	{
+	fprintf( fp, "    CollisionHeight=%f\n", CollisionHeight );
+	fprintf( fp, "    CollisionRadius=%f\n", CollisionRadius );
+	fprintf( fp, "    bBlockActors=true\n" );
+	fprintf( fp, "    bBlockPlayers=true\n" );
+	fprintf( fp, "    bCollideActors=true\n" );
+	fprintf( fp, "    bCollideWorld=true\n" );
+	}
+
+	//if (scaleTo != 0.0f)
+	//{
+	//fprintf( fp, "    DrawScale=%f\n", drawScale );
+	//}
+
+	fprintf( fp, "}\n" );
+
 
     fclose( fp );
 }

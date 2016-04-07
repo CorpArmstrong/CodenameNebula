@@ -43,10 +43,12 @@ public:
 
     int GetNumPolygons() const;
 
+	int GetNumFrames() const;
+
     void NewSequence( const string& Name, int Len );
 
     // REQUIRE: GetNumPolygons() > 0
-    void Write( const string& ProjDir, const string& BaseName );
+    void Write( const string& ProjDir, const string& BaseName, float scaleTo, bool calcCollision );
 
 	cUnrealPolygon* GetPolygonByIndex( int indx );
 
