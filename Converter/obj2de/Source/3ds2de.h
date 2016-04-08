@@ -10,6 +10,11 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+#include <iostream>
+#include <fstream>
+#include <sstream>
+#include <cmath>
+
 #include <string>
 using std::string;
 
@@ -27,6 +32,7 @@ using std::map;
 #include "File3DS.h"
 #include "Registry.h"
 #include "UnrealModel.h"
+#include "SomeFunctions.h"
 
 const char Version[] = "0.1a 25-Nov-15";
 

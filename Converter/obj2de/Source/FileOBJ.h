@@ -5,18 +5,12 @@
 // early work alpha
 
 #include <exception>
-#include <vector>
-using namespace std;
-
 
 //===========================================================================
 class cxFileOBJ : public std::exception {
 public:
 	cxFileOBJ( const __exString& What );
 };
-
-
-
 
 //===========================================================================
 class cFileOBJ
