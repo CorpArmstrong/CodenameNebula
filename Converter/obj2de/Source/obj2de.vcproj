@@ -213,6 +213,10 @@
 				</FileConfiguration>
 			</File>
 			<File
+				RelativePath=".\SomeFunctions.cpp"
+				>
+			</File>
+			<File
 				RelativePath="UnrealModel.cpp"
 				>
 				<FileConfiguration
@@ -243,6 +247,10 @@
 			</File>
 			<File
 				RelativePath="Registry.h"
+				>
+			</File>
+			<File
+				RelativePath=".\SomeFunctions.h"
 				>
 			</File>
 			<File

@@ -1,57 +1,15 @@
-#include "FileOBJ.h"
+/*#include "FileOBJ.h"
 
 #include <iostream>
 #include <fstream>
 #include <string>
 
-#include <sstream>
-#include <vector>
-
-#include <cmath>
+#include "SomeFunctions.h"
 
 using namespace std;
-
-
-void split(const string &s, char delim, vector<string> &elems) 
-{
-	stringstream ss(s);
-
-	string item;
-
-	while (getline(ss, item, delim)) {
-		elems.push_back(item);
-	}
-
-}
-
-float s2f ( const string& s )
-{
-	float tmp_val = 0;
-
-	stringstream ss;
-	ss << s;
-	ss >> tmp_val;
-
-	return tmp_val;	
-}
-
-int s2i ( const string& s )
-{
-	int tmp_val = 0;
-
-	stringstream ss;
-	ss << s;
-	ss >> tmp_val;
-
-	return tmp_val;	
-}
-
-float VectorLength( const cFileOBJ::Vertex3d& v )
-{
-	float len = sqrt( v.X*v.X + v.Y*v.Y + v.Z*v.Z );
-
-	return len;
-}
+*/
+#include "3ds2de.h"
+using namespace std;
 
 cFileOBJ::Vertex3d calcTriangleNormal(cFileOBJ::Vertex3d P1, cFileOBJ::Vertex3d P2, cFileOBJ::Vertex3d P3)
 {

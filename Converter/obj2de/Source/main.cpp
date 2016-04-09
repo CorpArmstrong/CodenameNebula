@@ -25,6 +25,7 @@ int main( int argc, char* argv[] )
     bool ShowCopyright = true;
 	bool FlipYZ = false;
 	bool Centering = true;
+	float scaleTo_value = 0.0f;
 
     // Parse options
     int CurArg;
@@ -43,6 +44,21 @@ int main( int argc, char* argv[] )
 
 			} else if (!stricmp( argv[ CurArg ], "-nocentering" ) ) {
 				Centering = false;
+			
+			} else if ( string(argv[CurArg]).find("-scaleTo=") != string::npos ) {
+				string argument(argv[CurArg]);
+				
+				if ( argument[argument.size()-1] == 'u' )
+				{
+					scaleTo_value = s2f( argument.substr( 9, argument.size()-10 ) );
+				}
+				else if ( argument[argument.size()-1] == 'm' )
+				{
+					scaleTo_value = s2f( argument.substr( 9, argument.size()-10 ) );
+					scaleTo_value *= 52.7f;
+				}
+				else
+					Usage();
 
             } else {
                 Usage();
@@ -54,12 +70,11 @@ int main( int argc, char* argv[] )
     }
 
     if( ShowCopyright ) {
-		printf("\nOBJ to DeusEx mesh converter, obj2de V%s\n", Version );
+		printf("\nOBJ to DeusEx single mesh converter, obj2de V%s\n", Version );
 		//printf("\n3DS to Deus Ex mesh converter, 3ds2de V%s\n", Version );
 		printf("based on:\n");
         printf("3ds2unr, Copyright (C) 1998 Legend Entertainment Co.\n");
         printf("3ds2de V1.00 25-May-01, DeusEx modifications by Steve Tack\n");
-		printf("obj2de, OBJ support created by Bortnik Eugene\n\n");
     }
 
     GetProjectDirectory();
@@ -109,7 +124,7 @@ int main( int argc, char* argv[] )
 
         // Create Unreal files
         if( gModel.GetNumPolygons() > 0 )
-            gModel.Write( gProjectDirectory, gBaseName, 10, true );
+            gModel.Write( gProjectDirectory, gBaseName, scaleTo_value, true );
     }
 	catch( const cxFileOBJ& e )
 	{
@@ -333,18 +348,18 @@ static void Usage()
 	puts( "                          Because in old UnrealEngine1, Z coordinate is a height of vertices," );
 	puts( "                          but other programs such as Blender and Max use Y as height." );
 	puts( "" );
-	//puts( "          -scaleTo=XXXm   Model will be proportionally scaled to specified dimension" );
-	//puts( "                          by height. Dimension XXX must be setted in meters." );
-	//puts( "                          Just write" );
-	//puts( "                            -scaleTo=0.25m" );
-	//puts( "                          and your model will be 25cm in game by height." );
-	//puts( "" );
-	//puts( "          -scaleTo=XXXu   Model will be proportionally scaled to specified dimension" );
-	//puts( "                          by height. Dimension XXX must be setted in Unreal Units!" );
-	//puts( "                          Just write" );
-	//puts( "                            -scaleTo=15u" );
-	//puts( "                          and your model will be 15 units in game by height." );
-	//puts( "" );
+	puts( "          -scaleTo=XXXm   Model will be proportionally scaled to specified dimension" );
+	puts( "                          by height. Dimension XXX must be setted in meters." );
+	puts( "                          Just write" );
+	puts( "                            -scaleTo=0.25m" );
+	puts( "                          and your model will be 25cm in game by height." );
+	puts( "" );
+	puts( "          -scaleTo=XXXu   Model will be proportionally scaled to specified dimension" );
+	puts( "                          by height. Dimension XXX must be setted in Unreal Units!" );
+	puts( "                          Just write" );
+	puts( "                            -scaleTo=15u" );
+	puts( "                          and your model will be 15 units in game by height." );
+	puts( "" );
 	puts( "          -nocentering    Disable automatic centering by first frame." );
 	puts( "                          In other ways model will be centered in center of coordinates." );
 	//puts( "" );
