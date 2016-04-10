@@ -1,9 +1,10 @@
-//-----------------------------------------------------------
+//-----------------------------------------------------------------------
 // CNNTestIntro
-//-----------------------------------------------------------
+//-----------------------------------------------------------------------
 class CNNTestIntro expands MissionScript;
 
 var byte savedSoundVolume;
+var bool isIntroCompleted;
 
 // ----------------------------------------------------------------------
 // InitStateMachine()
@@ -13,13 +14,19 @@ function InitStateMachine()
 {
 	Super.InitStateMachine();
 
-	// Destroy all flags!
-	//if (flags != None)
-	//	flags.DeleteAllFlags();
+	if (flags.GetBool('isIntroPlayed'))
+	{
+		// After we've teleported back and map has reloaded
+		// set the flag, to skip recursive intro call.
+		isIntroCompleted = true;
+	}
 
-	// Set the PlayerTraveling flag (always want it set for
-	// the intro and endgames)
-	flags.SetBool('PlayerTraveling', True, True, 0);
+	if (!isIntroCompleted)
+	{
+	    // Set the PlayerTraveling flag (always want it set for
+		// the intro and endgames)
+		flags.SetBool('PlayerTraveling', true, true, 0);
+	}
 }
 
 // ----------------------------------------------------------------------
@@ -31,26 +38,25 @@ function InitStateMachine()
 function FirstFrame()
 {
 	local RiotCop cop;
-
 	Super.FirstFrame();
 
 	if (!flags.GetBool('isIntroPlayed'))
 	{
 	   	if (player != None)
 		{
-		// Make sure all the flags are deleted.
-		DeusExRootWindow(Player.rootWindow).ResetFlags();
+			DeusExRootWindow(Player.rootWindow).ResetFlags();
 
-		foreach AllActors(class'RiotCop', cop)
-			break;
+			foreach AllActors(class'RiotCop', cop)
+				break;
 
-		if (cop != none)
-			player.StartConversationByName('CNNIntro', cop, False, True);
+			if (cop != none) {
+				player.StartConversationByName('CNNIntro', cop, false, true);
+			}
 
-		// turn down the sound so we can hear the speech
-		savedSoundVolume = SoundVolume;
-		SoundVolume = 32;
-		Player.SetInstantSoundVolume(SoundVolume);
+			// turn down the sound so we can hear the speech
+			savedSoundVolume = SoundVolume;
+			SoundVolume = 32;
+			Player.SetInstantSoundVolume(SoundVolume);
 		}
 	}
 }
@@ -63,9 +69,12 @@ function FirstFrame()
 
 function PreTravel()
 {
-	// restore the sound volume
-	SoundVolume = savedSoundVolume;
-	Player.SetInstantSoundVolume(SoundVolume);
+	if (flags.GetBool('isIntroPlayed') && !isIntroCompleted)
+	{
+		// restore the sound volume
+		SoundVolume = savedSoundVolume;
+		Player.SetInstantSoundVolume(SoundVolume);
+	}
 
 	Super.PreTravel();
 }
@@ -80,36 +89,15 @@ function Timer()
 {
 	Super.Timer();
 
-	// After the Intro conversation is over, tell the player to go on
-	// to the next map (which will either be the main menu map or
-	// the first game mission if we're starting a new game.
-
-    //if (flags.GetBool('Intro_Played'))
-	//{
-	//	flags.SetBool('Intro_Played', False,, 1);
-	//	player.PostIntro();
-	//}
-
-	if (flags.GetBool('isIntroPlayed'))
+	if (flags.GetBool('isIntroPlayed') && !isIntroCompleted)
 	{
-		flags.SetBool('isIntroPlayed', False,, 1);
-
-		// From player.PostIntro() code:
-		//-------------------------------------------------------------
-		if (DeusExRootWindow(Player.rootWindow) != None)
+		if (DeusExRootWindow(Player.rootWindow) != None) {
 			DeusExRootWindow(Player.rootWindow).ClearWindowStack();
-
-		// Set a flag designating that we're traveling,
-		// so MissionScript can check and not call FirstFrame() for this map.
-		flags.SetBool('PlayerTraveling', True, True, 0);
-		//-------------------------------------------------------------
+		}
 
 		Level.Game.SendPlayer(player, "50_OpheliaL1_WithIntro#Loc1");
 	}
 }
-
-// ----------------------------------------------------------------------
-// ----------------------------------------------------------------------
 
 defaultproperties
 {
