@@ -26,6 +26,7 @@ int main( int argc, char* argv[] )
 	bool FlipYZ = false;
 	bool Centering = true;
 	float scaleTo_value = 0.0f;
+	bool SetCollision = true;
 
     // Parse options
     int CurArg;
@@ -44,6 +45,9 @@ int main( int argc, char* argv[] )
 
 			} else if (!stricmp( argv[ CurArg ], "-nocentering" ) ) {
 				Centering = false;
+
+			} else if (!stricmp( argv[ CurArg ], "-nocollision" ) ) {
+				SetCollision = false;
 			
 			} else if ( string(argv[CurArg]).find("-scaleTo=") != string::npos ) {
 				string argument(argv[CurArg]);
@@ -70,7 +74,7 @@ int main( int argc, char* argv[] )
     }
 
     if( ShowCopyright ) {
-		printf("\nOBJ to DeusEx single mesh converter, obj2de V%s\n", Version );
+		printf("\nOBJ to DeusEx static mesh converter, obj2de V%s\n", Version );
 		//printf("\n3DS to Deus Ex mesh converter, 3ds2de V%s\n", Version );
 		printf("based on:\n");
         printf("3ds2unr, Copyright (C) 1998 Legend Entertainment Co.\n");
@@ -124,7 +128,7 @@ int main( int argc, char* argv[] )
 
         // Create Unreal files
         if( gModel.GetNumPolygons() > 0 )
-            gModel.Write( gProjectDirectory, gBaseName, scaleTo_value, true );
+            gModel.Write( gProjectDirectory, gBaseName, scaleTo_value, SetCollision );
     }
 	catch( const cxFileOBJ& e )
 	{
@@ -362,9 +366,9 @@ static void Usage()
 	puts( "" );
 	puts( "          -nocentering    Disable automatic centering by first frame." );
 	puts( "                          In other ways model will be centered in center of coordinates." );
-	//puts( "" );
-	//puts( "          -nocollision    Disable automatic collision setting in *.uc file." );
-	//puts( "                          Converter calcs collision as cylinder who touches" );
-	//puts( "                          to most far points of model. With center at coordinates center." );
+	puts( "" );
+	puts( "          -nocollision    Disable automatic collision setting in *.uc file." );
+	puts( "                          Converter calcs collision as cylinder who touches" );
+	puts( "                          to most far points of model. With center at coordinates center." );
     exit( 0 );
 }
