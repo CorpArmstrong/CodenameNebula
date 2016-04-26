@@ -38,7 +38,7 @@ En - Envmapped            (зеркальный)
 
 например:
 
-   windowGlassTexture.TrTs
+   windowGlassTexture.Tr
 
    Этот матерриал используется для стекла какого нибуть окошка
    где "windowGlassTexture" - это текстура стекла этого окошка
