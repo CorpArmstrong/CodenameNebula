@@ -40,14 +40,15 @@ var bool bObjectInside;
 
 //var (Events) name Event;
 var (Events) name EventActOFF;
-//var (Events) name EventTouchIN;         // TODO
-//var (Events) name EventTouchOUT;        // TODO
-//var (Events) name EventTrigger;         // TODO
-//var (Events) name EventTriggerUn;       // TODO
+//var (Events) name EventTouchIN;         // TODO or not TODO
+//var (Events) name EventTouchOUT;        // TODO or not TODO
+//var (Events) name EventTrigger;         // TODO or not TODO
+//var (Events) name EventTriggerUn;       // TODO or not TODO
 
 var (Events) bool UntrigWhenActOFF;
-//var (Events) bool UntrigWhenTouchOUT;  // TODO
-//var (Events) bool UntrigWhenTriggerUn; // TODO
+var (Events) bool UntrigWhenActON;
+//var (Events) bool UntrigWhenTouchOUT;  // TODO or not TODO
+//var (Events) bool UntrigWhenTriggerUn; // TODO or not TODO
 
 function BeginPlay()
 {
@@ -284,10 +285,13 @@ local Actor A;
 
 	// or super.ActivatedON()
 
-	// you can use activating somethig
+	// you can use Event for activating somethig or deactivating
 	if( Event != '' )
 		foreach AllActors( class 'Actor', A, Event )
-			A.Trigger( self, GetPlayerPawn() ); // without PlayerPawn some functionality maybe will lost
+			if (!UntrigWhenActON)
+				A.Trigger( self, GetPlayerPawn() ); // without PlayerPawn some functionality maybe will lost
+			else
+				A.UnTrigger( self, GetPlayerPawn() ); // without PlayerPawn some functionality maybe will lost
 
 	// InitialyActive - analog
 	if (bOnlyOnce)
