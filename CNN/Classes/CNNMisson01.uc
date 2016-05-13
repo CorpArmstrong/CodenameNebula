@@ -1,49 +1,30 @@
 //-----------------------------------------------------------
 // Mission01 - Lower level (low level)
 //-----------------------------------------------------------
-class CNNMisson01 expands MissionScript;
+class CNNMisson01 expands CNNBaseIngameCutscene;
+
 var bool bLasersOn, bLasersOff;
 var LaserSecurityDispatcher laserDipatcher;
 var bool bFirstFrame;
 
-var () name CamTag;
-
-// ----------------------------------------------------------------------
-// FirstFrame()
-//
-// Stuff to check at first frame
-// ----------------------------------------------------------------------
-function FirstFrame() {
-  Super.FirstFrame();
-
-
-}
-
-function InitStateMachine() {
-
-    super.InitStateMachine();
-    FirstFrame();
-
-}
+var() name CamTag;
 
 function InitLaserSystem()
 {
     laserDipatcher = Spawn(class'LaserSecurityDispatcher');
-    //laserDipatcher.targetTag = 'LaserMovers';
-    //laserDipatcher.ToggleOn();
 }
 
-// ----------------------------------------------------------------------
-// PreTravel()
-//
-// Set flags upon exit of a certain map
-// ----------------------------------------------------------------------
-function PreTravel()
+// Override
+function SendPlayerOnceToGame()
 {
+	if (flags.GetBool('isIntroPlayed') && !isIntroCompleted)
+	{
+		if (DeusExRootWindow(player.rootWindow) != none) {
+			DeusExRootWindow(player.rootWindow).ClearWindowStack();
+		}
 
-
-    Super.PreTravel();
-
+		Level.Game.SendPlayer(player, "50_OpheliaL1_Burning_Cutscene#loc2");
+	}
 }
 
 // ----------------------------------------------------------------------
@@ -51,86 +32,86 @@ function PreTravel()
 //
 // Main state machine for the mission
 // ----------------------------------------------------------------------
-function Timer() {
-  local Mover mv;
-  local DamageLaserTrigger A;
-  local SecurityCamera Cam;
+function Timer()
+{
+	local Mover mv;
+	local DamageLaserTrigger A;
+	local SecurityCamera Cam;
 
-  if (!bFirstFrame)
-  {
-      InitLaserSystem();
-      bFirstFrame = true;
-  }
+	if (!bFirstFrame && !flags.GetBool('isIntroPlayed'))
+	{
+		InitLaserSystem();
+		bFirstFrame = true;
+		flags.SetBool('laserSetUp', true, true, 0);
+	}
 
-  if ( (player != None))
-  {
-
-        if(flags.GetBool('laserSecurityWorks') == true)
+	if (player != None && flags.GetBool('isIntroPlayed'))
+	{
+		if(flags.GetBool('laserSecurityWorks') == true)
         {
-           if ( !bLasersOn )
-           {
-              foreach AllActors(class'DamageLaserTrigger', A)
-              {
-                 //A.UnTrigger(None, None);
-                 A.Trigger(None, None);
-              }
-              if (laserDipatcher!=None){
-                  laserDipatcher.ToggleOn();
+			if (!bLasersOn)
+			{
+				foreach AllActors(class'DamageLaserTrigger', A)
+					A.Trigger(None, None);
 
-                  foreach AllActors(class'SecurityCamera', Cam)
-				  {
-				      if (Cam.Tag == 'SCam1' && !Cam.bActive)
-			          {
-                          player.ToggleCameraState(cam, none);
-                          player.ClientMessage("cam+");
-			          }
-				  }
+				if (laserDipatcher != None)
+				{
+					laserDipatcher.ToggleOn();
 
-                  player.ClientMessage("TogleOn включил");
-              }
+					foreach AllActors(class'SecurityCamera', Cam)
+					{
+						if (Cam.Tag == 'SCam1' && !Cam.bActive)
+						{
+							player.ToggleCameraState(cam, None);
+							player.ClientMessage("cam+");
+						}
+					}
 
-              bLasersOn = true;
-           }
-           bLasersOff = false;
+					player.ClientMessage("TogleOn включил");
+				}
+
+				bLasersOn = true;
+			}
+
+			bLasersOff = false;
         }
-        else
-        {
-           if ( !bLasersOff )
-           {
-              foreach AllActors(class'DamageLaserTrigger', A)
-              {
-                 A.UnTrigger(None, None);
-              }
-              if (laserDipatcher!=None)
-              {
-                  laserDipatcher.ToggleOff();
+		else
+		{
+			if (!bLasersOff)
+			{
+				foreach AllActors(class'DamageLaserTrigger', A)
+					A.UnTrigger(None, None);
 
-                   foreach AllActors(class'SecurityCamera', Cam)
-			       {
-			       		if (Cam.Tag == 'SCam1' && Cam.bActive)
-			       		{
-                            player.ToggleCameraState(cam, none);
+				if (laserDipatcher != None)
+				{
+					laserDipatcher.ToggleOff();
+
+					foreach AllActors(class'SecurityCamera', Cam)
+					{
+						if (Cam.Tag == 'SCam1' && Cam.bActive)
+						{
+                            player.ToggleCameraState(cam, None);
 			   	   	   		player.ClientMessage("cam-");
 			       		}
 			       }
 
                	   player.ClientMessage("TogleOff выключил");
-              }
+				}
 
-              bLasersOff = true;
-           }
-           bLasersOn = false;
-        }
-  }
+				bLasersOff = true;
+			}
 
+			bLasersOn = false;
+		}
+	}
 
-
-  Super.Timer();
-  //foreach AllActors(class'Mover', mv) {
-
+	Super.Timer();
 }
 
 defaultproperties
 {
-     CamTag='
+	CamTag='
+	sendToLocation="50_OpheliaL1_Burning_Cutscene#loc2"
+	conversationName=OpheliaUICutscene
+	actorTag=Secretary
 }
