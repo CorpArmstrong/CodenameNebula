@@ -1,7 +1,7 @@
 <DC=255,255,255>
 <P><B>Grey Death</B>
 <P>
-<P>Exhibit name: Containers of Grey Death virus + Ambroria vaccine
+<P>Exhibit name: Containers of Grey Death virus + Ambrosia vaccine
 <P>Danger level: High
 <P>Date of aquisition: 2051
 <P>

@@ -122,7 +122,7 @@ function ShowIntro(optional bool bStartNewGame)
 	AugmentationSystem.DeactivateAll();
 
 	// Reset the player
-	Level.Game.SendPlayer(Self, "moon_mineV1");
+	Level.Game.SendPlayer(Self, "AiPrologue");
 }
 
 // ----------------------------------------------------------------------
@@ -388,7 +388,7 @@ defaultproperties
     Credits=0
 	MenuThemeName="ApostleMod"
 	HUDThemeName="ApostleMod"
-    strStartMap="01_Area51_Clones"
+    strStartMap="AiPrologue"
     CarcassType=Class'JCDentonMaleCarcass'
     Mesh=LodMesh'DeusExCharacters.GM_Trench'
     MultiSkins(0)=Texture'ApocalypseInside.Skins.TantalusFace'

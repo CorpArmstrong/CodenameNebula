@@ -12,6 +12,7 @@ Made by Tantalus Denton apostlemod@outlook.com and ApostleMod www.apostlemod.com
 I am not affiliated or supported by Ion Storm or Eidos.
 
 12/2015 Sci-fi textures by Milosh-Andrich milosh--andrich.deviantart.com/art/Sci-fi-pack-01-335182027
+milosh--andrich.deviantart.com/art/Sci-fi-pack-03-335294667
 STALKERProject files by Lurker 
 Prototype candybars
 Precipitation mod
