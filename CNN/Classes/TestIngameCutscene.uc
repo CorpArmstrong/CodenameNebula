@@ -2,7 +2,7 @@
 // CNNBaseIngameCutscene
 // by CorpArmstrong
 //-----------------------------------------------------------------------
-class CNNBaseIngameCutscene expands MissionScript;
+class TestIngameCutscene expands MissionScript;
 
 var byte savedSoundVolume;
 var bool isIntroCompleted;
@@ -78,6 +78,8 @@ function CheckIntroFlags()
 
 function StartConversationWithActor()
 {
+	local ScriptedPawn pawn;
+
 	if (!flags.GetBool('isIntroPlayed'))
 	{
 	   	if (player != none)
@@ -122,7 +124,7 @@ function SendPlayerOnceToGame()
 
 defaultproperties
 {
-	sendToLocation="50_OpheliaL1_Burning_Cutscene#Loc1"
+	sendToLocation="50_OpheliaL1_Burning_Cutscene#theline"
 	conversationName=OpheliaUICutscene
 	actorTag=Secretary
 }
