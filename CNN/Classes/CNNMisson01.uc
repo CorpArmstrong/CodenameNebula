@@ -110,7 +110,7 @@ function Timer()
 
 defaultproperties
 {
-	CamTag='
+	CamTag=''
 	sendToLocation="50_OpheliaL1_Burning_Cutscene#loc2"
 	conversationName=OpheliaUICutscene
 	actorTag=Secretary

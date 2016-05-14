@@ -90,6 +90,33 @@ event TravelPostAccept() {
 	}
 }
 
+//this is to make sure convos work if actors are far away from e o
+function CheckActiveConversationRadius()
+{
+	local int checkRadius;
+
+	// Ignore if conPlay.GetForcePlay() returns True
+
+	if ((conPlay != None) && (!conPlay.GetForcePlay()) && (conPlay.ConversationStarted()) && (conPlay.displayMode == DM_FirstPerson) && (conPlay.StartActor != None))
+	{
+		// If this was invoked via a radius, then check to make sure the player doesn't 
+		// exceed that radius plus 
+
+		if (conPlay.con.bInvokeRadius) 
+			checkRadius = conPlay.con.radiusDistance + 3000;
+		else
+			checkRadius = 3000; //was 300...too close
+
+		// Add the collisioncylinder since some objects are wider than others
+		checkRadius += conPlay.StartActor.CollisionRadius;
+
+		if (VSize(conPlay.startActor.Location - Location) > checkRadius)
+		{
+			// Abort the conversation
+			conPlay.TerminateConversation(True);
+		}
+	}
+}
 
 // ----------------------------------------------------------------------
 // ShowMainMenu()

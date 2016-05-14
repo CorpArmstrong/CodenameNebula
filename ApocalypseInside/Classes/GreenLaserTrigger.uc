@@ -299,6 +299,8 @@ function Destroyed()
 defaultproperties
 {
      bIsOn=True
+	 AmbientSound=''
+	 SoundVolume=0
      decorationDamage=1.000000
      pawnDamage=1024.000000
      bConstantDamage=True
