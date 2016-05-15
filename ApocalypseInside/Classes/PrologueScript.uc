@@ -42,6 +42,6 @@ function Timer()
 			DeusExRootWindow(Player.rootWindow).ClearWindowStack();
 		}
 
-		Level.Game.SendPlayer(player, "01_Area51_Clones");
+		Level.Game.SendPlayer(player, "A51_Clones");
 	}
 }

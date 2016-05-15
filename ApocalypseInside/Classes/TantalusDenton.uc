@@ -105,7 +105,7 @@ function CheckActiveConversationRadius()
 		if (conPlay.con.bInvokeRadius) 
 			checkRadius = conPlay.con.radiusDistance + 3000;
 		else
-			checkRadius = 3000; //was 300...too close
+			checkRadius = 3000; //was 300...too close. Now Gary Savage can talk on and on in the training in a51
 
 		// Add the collisioncylinder since some objects are wider than others
 		checkRadius += conPlay.StartActor.CollisionRadius;
@@ -116,6 +116,11 @@ function CheckActiveConversationRadius()
 			conPlay.TerminateConversation(True);
 		}
 	}
+}
+
+function bool CheckActorDistances()
+{
+	//mwahaaha! terrible hack, i know -T.
 }
 
 // ----------------------------------------------------------------------
@@ -410,7 +415,7 @@ function CreateColorThemeManager()
 
 defaultproperties
 {
-    TruePlayerName="Thomas D"
+    TruePlayerName="Tantalus Denton"
 	BindName=Tantalus
     Credits=0
 	MenuThemeName="ApostleMod"
