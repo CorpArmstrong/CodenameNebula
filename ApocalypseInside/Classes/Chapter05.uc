@@ -18,7 +18,7 @@ function Timer() {
 
 	function CheckIntroFlags()
 	{
-	if (flags.GetBool('isIntroPlayed'))
+	if (flags.GetBool('IntroInsidePlayed'))
 	{
 		// After we've teleported back and map has reloaded
 		// set the flag, to skip recursive intro call.
@@ -35,7 +35,7 @@ function Timer() {
 
 function StartConversationWithActor()
 {
-	if (!flags.GetBool('isIntroPlayed'))
+	if (!flags.GetBool('IntroInsidePlayed'))
 	{
 	   	if (player != none)
 		{
@@ -58,7 +58,7 @@ function StartConversationWithActor()
 
 function RestoreSoundVolume()
 {
-	if (flags.GetBool('isIntroPlayed') && !isIntroCompleted)
+	if (flags.GetBool('IntroInsidePlayed') && !isIntroCompleted)
 	{
 		SoundVolume = savedSoundVolume;
 		player.SetInstantSoundVolume(SoundVolume);
@@ -67,7 +67,7 @@ function RestoreSoundVolume()
 
 function SendPlayerOnceToGame()
 {
-	if (flags.GetBool('isIntroPlayed') && !isIntroCompleted)
+	if (flags.GetBool('IntroInsidePlayed') && !isIntroCompleted)
 	{
 		if (DeusExRootWindow(player.rootWindow) != none) {
 			DeusExRootWindow(player.rootWindow).ClearWindowStack();
