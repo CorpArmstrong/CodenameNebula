@@ -21,6 +21,7 @@ class Textures expands Object abstract;
 #exec TEXTURE IMPORT FILE=Textures\MagdaleneFace1.pcx NAME=MagdaleneFace1 GROUP=Skins MIPS=Off
 #exec TEXTURE IMPORT FILE=Textures\MagdaleneFace2.pcx NAME=MagdaleneFace2 GROUP=Skins MIPS=Off
 #exec TEXTURE IMPORT FILE=Textures\MagdaleneDress.pcx NAME=MagdaleneDress GROUP=Skins MIPS=Off
+#exec TEXTURE IMPORT FILE=Textures\MagdaleneSkirt.pcx NAME=MagdaleneSkirt GROUP=Skins MIPS=Off
 
 defaultproperties
 {

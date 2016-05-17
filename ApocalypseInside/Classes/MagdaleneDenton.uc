@@ -12,7 +12,7 @@ defaultproperties
 	 Mesh=LodMesh'DeusExCharacters.GFM_Dress'
     MultiSkins(0)=Texture'DeusExCharacters.Skins.NicoletteDuClareTex0'
     MultiSkins(1)=Texture'DeusExCharacters.Skins.ScientistFemaleTex3'
-    MultiSkins(2)=Texture'DeusExCharacters.Skins.NicoletteDuClareTex2'
+    MultiSkins(2)=Texture'ApocalypseInside.Skins.MagdaleneSkirt'
     MultiSkins(3)=Texture'ApocalypseInside.MagdaleneDress'
     MultiSkins(4)=Texture'DeusExItems.Skins.PinkMaskTex'
     MultiSkins(5)=Texture'ApocalypseInside.MagdaleneFace1'

@@ -10,6 +10,7 @@ var String sendToLocation;
 var Name conversationName;
 var Name actorTag;
 var Actor actorToSpeak;
+var Name CutsceneEndFlagName;
 
 // ----------------------------------------------------------------------
 // InitStateMachine()
@@ -61,7 +62,7 @@ function Timer()
 
 function CheckIntroFlags()
 {
-	if (flags.GetBool('isIntroPlayed'))
+	if (flags.GetBool(CutsceneEndFlagName))
 	{
 		// After we've teleported back and map has reloaded
 		// set the flag, to skip recursive intro call.
@@ -78,7 +79,7 @@ function CheckIntroFlags()
 
 function StartConversationWithActor()
 {
-	if (!flags.GetBool('isIntroPlayed'))
+	if (!flags.GetBool(CutsceneEndFlagName))
 	{
 	   	if (player != none)
 		{
@@ -101,7 +102,7 @@ function StartConversationWithActor()
 
 function RestoreSoundVolume()
 {
-	if (flags.GetBool('isIntroPlayed') && !isIntroCompleted)
+	if (flags.GetBool(CutsceneEndFlagName) && !isIntroCompleted)
 	{
 		SoundVolume = savedSoundVolume;
 		player.SetInstantSoundVolume(SoundVolume);
@@ -110,7 +111,7 @@ function RestoreSoundVolume()
 
 function SendPlayerOnceToGame()
 {
-	if (flags.GetBool('isIntroPlayed') && !isIntroCompleted)
+	if (flags.GetBool(CutsceneEndFlagName) && !isIntroCompleted)
 	{
 		if (DeusExRootWindow(player.rootWindow) != none) {
 			DeusExRootWindow(player.rootWindow).ClearWindowStack();
@@ -122,7 +123,8 @@ function SendPlayerOnceToGame()
 
 defaultproperties
 {
-	sendToLocation="50_OpheliaL1_Burning_Cutscene#Loc1"
+	sendToLocation="50_OpheliaL1_WithIntro#Loc1"
 	conversationName=OpheliaUICutscene
 	actorTag=Secretary
+	CutsceneEndFlagName=IsIntroPlayed
 }

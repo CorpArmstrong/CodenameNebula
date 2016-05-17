@@ -14,19 +14,6 @@ function InitLaserSystem()
     laserDipatcher = Spawn(class'LaserSecurityDispatcher');
 }
 
-// Override
-function SendPlayerOnceToGame()
-{
-	if (flags.GetBool('isIntroPlayed') && !isIntroCompleted)
-	{
-		if (DeusExRootWindow(player.rootWindow) != none) {
-			DeusExRootWindow(player.rootWindow).ClearWindowStack();
-		}
-
-		Level.Game.SendPlayer(player, "50_OpheliaL1_Burning_Cutscene#loc2");
-	}
-}
-
 // ----------------------------------------------------------------------
 // Timer()
 //

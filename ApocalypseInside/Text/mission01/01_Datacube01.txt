@@ -6,3 +6,7 @@
 <DC=255,255,0>
 <JC>NOTES</JC>
 <P>Miraculous genetic foundation. If there was such this space aliens I would say it's extraterrestrial in origin. If only Dr. Kavanaugh and I had a sample of the specimen when we were working on the OCM things would be so different. 15 years of work on subject and I was never able to figure out why I configure Pikadon-grade nanites in Tantalus' neuron cells. Like it or not, Bob's the boss. I guess that this projects is so secret we will never find out what we were working on...
+<P>
+<DC=255,255,0>
+<P>WARNING:
+<P>DO NOT attempt any experementation with the 'killswitch' mechanism. The Pikadon nanites that power subject's systems WILL NOT STOP replecating. The process is dangerous and WILL go out of control, theoretically causing mass destruction with danage radius larger that a nuclear bomb. This is a 'Grey Goo' type danger. Killswitch is STRICTLY FORBIDDEN to install by order of Bob Page.
