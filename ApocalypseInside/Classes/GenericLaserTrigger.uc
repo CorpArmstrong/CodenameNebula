@@ -1,9 +1,9 @@
 //=============================================================================
-// GreenLaserTrigger.
+// GenericLaserTrigger.
 //=============================================================================
-class GreenLaserTrigger extends CNNTrigger;
+class GenericLaserTrigger extends CNNTrigger;
 
-var() AiLaserEmitter emitter;
+var AiLaserEmitter emitter;
 var() bool bIsOn;
 var() bool bNoAlarm;			// if True, does NOT sound alarm
 
@@ -12,6 +12,8 @@ var() float pawnDamage;
 var() bool bConstantDamage;
 var() float damageInterval;
 var() name damageType;
+
+var() Texture skinNameTex;
 
 var actor LastHitActor;
 var bool bConfused;				// used when hit by EMP
@@ -186,8 +188,6 @@ local DeusExMover DxMover;
 // if we are triggered, turn us on
 function Trigger(Actor Other, Pawn Instigator)
 {
-
-
 	if (bConfused)
 		return;
 
@@ -234,7 +234,11 @@ function BeginPlay()
 	Super.BeginPlay();
 
 	LastHitActor = None;
+
 	emitter = Spawn(class'AiLaserEmitter');
+
+    // Assign custom texture for laser emitter
+	emitter.SkinTex = skinNameTex;
 
 	if (emitter != None)
 	{
@@ -298,6 +302,7 @@ function Destroyed()
 
 defaultproperties
 {
+	 skinNameTex=Texture'Effects.Fire.Wepn_Prifle_SFX'
      bIsOn=True
 	 AmbientSound=''
 	 SoundVolume=0
