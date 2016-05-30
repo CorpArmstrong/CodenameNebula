@@ -25,14 +25,14 @@ function Timer()
 	local DamageLaserTrigger A;
 	local SecurityCamera Cam;
 
-	if (!bFirstFrame && !flags.GetBool('isIntroPlayed'))
+	if (/*!bFirstFrame && */!flags.GetBool('isIntroPlayed'))
 	{
 		InitLaserSystem();
 		bFirstFrame = true;
 		flags.SetBool('laserSetUp', true, true, 0);
 	}
 
-	if (player != None && flags.GetBool('isIntroPlayed'))
+	if (player != None /*&& flags.GetBool('isIntroPlayed')*/)
 	{
 		if(flags.GetBool('laserSecurityWorks') == true)
         {

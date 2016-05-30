@@ -116,9 +116,10 @@ function SendPlayerOnceToGame()
 		if (DeusExRootWindow(player.rootWindow) != none) {
 			DeusExRootWindow(player.rootWindow).ClearWindowStack();
 		}
-
-		Level.Game.SendPlayer(player, sendToLocation);
+			Level.Game.SendPlayer(player, sendToLocation);
+		
 	}
+	
 }
 
 defaultproperties

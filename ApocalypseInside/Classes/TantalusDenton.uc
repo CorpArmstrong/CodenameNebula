@@ -23,11 +23,13 @@ function PostBeginPlay() {
 
 event TravelPostAccept() {
 	local flagbase flags;
+	local DeusExLevelInfo info;
+	info = DeusExPlayer(GetPlayerPawn()).GetLevelInfo();
 	Super.TravelPostAccept();
-
+	
 
 	flags = flagbase;
-
+	
    	switch(PlayerSkin)
 	{
 		case 0:
@@ -87,6 +89,13 @@ event TravelPostAccept() {
 			MultiSkins[6] = Texture'DeusExCharacters.Skins.FramesTex4';
 			MultiSkins[7] = FireTexture'Effects.Fire.SparkFX1';
 		break;
+	}
+	
+	//== in white house mission you play as sec bot, so we nullify skins
+	if(caps(info.mapName) == "WHITEHOUSE") {
+		Mesh=Mesh(DynamicLoadObject("HDTPCharacters.HDTPSecBot2", class'Mesh', True));
+		MultiSkins[0] = Texture'DeusExCharacters.Skins.RobotWeaponTex1';
+		MultiSkins[1] = Texture(DynamicLoadObject("HDTPCharacters.Skins.HDTPSecBot2tex1", class'Texture', True));
 	}
 }
 

@@ -69,8 +69,6 @@ function Explode(optional vector HitLocation)
 
 function SetSkin (DeusExPlayer Player)
 {
-	/*if ( UnknownFunction119(Player,None) )
-	{*/
 		switch (Player.PlayerSkin)
 		{
 			case 0:
@@ -90,7 +88,6 @@ function SetSkin (DeusExPlayer Player)
 			break;
 			default:
 		}
-	//}
 }
 
 defaultproperties
