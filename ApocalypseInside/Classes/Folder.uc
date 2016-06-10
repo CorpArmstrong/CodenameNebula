@@ -27,7 +27,7 @@ defaultproperties
      bAddToVault=True
      bCanBeBase=True
      ItemName="Documents Folder"
-     Mesh=LodMesh'fgrhk.Folder'
+     Mesh=LodMesh'ApocalypseInside.Folder'
      CollisionRadius=9.000000
      CollisionHeight=0.200000
      Mass=1.000000

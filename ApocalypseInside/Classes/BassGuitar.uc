@@ -36,7 +36,7 @@ defaultproperties
      bCanBeBase=True
      ItemName="Bass Guitar"
      DrawScale=0.003500
-     Mesh=LodMesh'fgrhk.Bassein'
+     Mesh=LodMesh'ApocalypseInside.Bassein'
      CollisionRadius=25.639999
      CollisionHeight=25.639999
      Mass=750.000000
