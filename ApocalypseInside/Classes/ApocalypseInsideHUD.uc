@@ -12,7 +12,7 @@ event InitWindow()
 	local DeusExRootWindow root;
 	local DeusExPlayer player;
 
-	Super.InitWindow();
+	//Super.InitWindow();
 
 	// Get a pointer to the root window
 	root = DeusExRootWindow(GetRootWindow());
@@ -24,15 +24,15 @@ event InitWindow()
 	SetSensitivity(false);
 
 	ammo			= HUDAmmoDisplay(NewChild(Class'HUDAmmoDisplay'));
-	hit				= HUDHitDisplay(NewChild(Class'HUDHitDisplay'));
+	hit				= IwHUDHitDisplay(NewChild(Class'IwHUDHitDisplay'));
 	cross.Destroy(); 
 	cross			= Crosshair(NewChild(Class'Crosshair'));
-	belt			= HUDObjectBelt(NewChild(Class'HUDObjectBelt'));
-	activeItems		= HUDActiveItemsDisplay(NewChild(Class'HUDActiveItemsDisplay'));
+	belt			= IwHUDObjectBelt(NewChild(Class'IwHUDObjectBelt'));
+	activeItems		= IwHUDActiveItemsDisplay(NewChild(Class'IwHUDActiveItemsDisplay'));
 	damageDisplay.Destroy();
-	damageDisplay	= DamageHUDDisplay(NewChild(Class'AiDamageHUDDisplay'));
+	damageDisplay	= AiDamageHUDDisplay(NewChild(Class'AiDamageHUDDisplay'));
 	compass.Destroy(); 
-	compass     	= HUDCompassDisplay(NewChild(Class'AiHUDCompassDisplay'));
+	compass     	= AiHUDCompassDisplay(NewChild(Class'AiHUDCompassDisplay'));
 	hms				= HUDMultiSkills(NewChild(Class'HUDMultiSkills'));
 
 	// Create the InformationWindow

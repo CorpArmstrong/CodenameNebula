@@ -4,7 +4,7 @@
 
 //Modified -- Y|yukichigai
 
-class WeaponCoilGun extends DeusExWeapon;
+class WeaponCoilGun extends WeaponSawedOffShotgun;
 
 simulated function PreBeginPlay()
 {
@@ -67,16 +67,16 @@ defaultproperties
      InventoryGroup=53
      ItemName="Coil Gun"
      PlayerViewOffset=(X=11.00,Y=-4.00,Z=-13.00)
-    PlayerViewMesh=LodMesh'DeusExItems.Shotgun'
-    PickupViewMesh=LodMesh'DeusExItems.ShotgunPickup'
-    ThirdPersonMesh=LodMesh'DeusExItems.Shotgun3rd'
+   //PlayerViewMesh=LodMesh'gauss1st'
+    //PickupViewMesh=LodMesh'gausspickup'
+    //ThirdPersonMesh=LodMesh'gauss3rd'
      Icon=Texture'DeusExUI.Icons.BeltIconShotgun'
      largeIcon=Texture'DeusExUI.Icons.BeltIconShotgun'
      largeIconWidth=47
      largeIconHeight=37
      Description="A Coil Gin utilizes electromagnetic coils to propel a metallic projectile. The principle is the same as you eject a dvd from an optical drive, but the coil gun uses much more powerful capacitors. Due to long recharge time of the capacitors this weapon can't fire very fast, however it is silent, long-distance and easy to use to injure your opponents in a non-lethal manner."
      beltDescription="COIL"
-     Mesh=LodMesh'DeusExItems.ShotgunPickup'
+     //Mesh=LodMesh'gausspickup'
      CollisionRadius=8.000000
      CollisionHeight=0.800000
 	 bHasMuzzleFlash=False

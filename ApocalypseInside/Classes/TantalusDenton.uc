@@ -97,6 +97,17 @@ event TravelPostAccept() {
 		MultiSkins[0] = Texture'DeusExCharacters.Skins.RobotWeaponTex1';
 		MultiSkins[1] = Texture(DynamicLoadObject("HDTPCharacters.Skins.HDTPSecBot2tex1", class'Texture', True));
 	}
+	if(caps(info.mapName) == "HONGKONG") {
+		Mesh=Mesh(DynamicLoadObject("DeusExCharacters.GFM_SuitSkirt", class'Mesh', True));
+		MultiSkins[0] = Texture'DeusExCharacters.Skins.WIBTex0';
+		MultiSkins[1] = Texture'DeusExItems.Skins.PinkMaskTex';
+		MultiSkins[2] = Texture'DeusExCharacters.Skins.WIBTex0';
+		MultiSkins[3] = Texture'DeusExCharacters.Skins.LegsTex2';
+		MultiSkins[4] = Texture'DeusExCharacters.Skins.WIBTex1';
+		MultiSkins[5] = Texture'DeusExCharacters.Skins.WIBTex1';
+		MultiSkins[6] = Texture'DeusExCharacters.Skins.FramesTex3';
+		MultiSkins[7] = Texture'DeusExCharacters.Skins.LensesTex4';
+	}
 }
 
 //this is to make sure convos work if actors are far away from e o
