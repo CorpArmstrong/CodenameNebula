@@ -34,7 +34,7 @@ defaultproperties
 {
      FragType=Class'DeusEx.WoodFragment'
      bCanBeBase=True
-     ItemName="Bass Guitar"
+     ItemName="Guitar"
      DrawScale=0.003500
      Mesh=LodMesh'ApocalypseInside.Bassein'
      CollisionRadius=25.639999
