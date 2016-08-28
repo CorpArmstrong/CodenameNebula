@@ -6,7 +6,7 @@
 // May 25, 2001: Modified for the Deus Ex format -- Steve Tack
 
 #include "3ds2de.h"
-#include <cmath>
+
 using namespace std;
 
 
@@ -126,7 +126,7 @@ void cUnrealModel::Write( const string& ProjDir, const string& BaseName, float s
 
 	// collision of body looks like a cylinder 
 	// who touches to most far points of model.
-	// centering all models if very recommended.
+	// centering all models is very recommended.
 	float MinHeight = 0, MaxHeight = 0; // real top & bottom of cylinder
 	float MaxCenterDistance = 0; // radius of cylinder
 
