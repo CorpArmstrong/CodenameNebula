@@ -4,7 +4,7 @@
 // at 26-11-15
 // early work alpha
 
-#include <exception>
+//#include <exception>
 
 //===========================================================================
 class cxFileOBJ : public std::exception {

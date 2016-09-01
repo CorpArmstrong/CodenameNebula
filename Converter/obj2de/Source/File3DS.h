@@ -6,7 +6,7 @@
 #ifndef FILE3DS_H
 #define FILE3DS_H
 
-#include <exception>
+//#include <exception>
 
 //===========================================================================
 class cxFile3DS : public std::exception {
